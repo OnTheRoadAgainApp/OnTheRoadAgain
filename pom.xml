@@ -37,7 +37,8 @@
         </dependency>
 
         <dependency>
-            <groupId>mysql</groupId>
+
+          <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
@@ -49,6 +50,11 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf-spring4</artifactId>
+            <version>2.1.6.RELEASE</version>
+        </dependency>
+
 
     </dependencies>
 
