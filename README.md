@@ -1,11 +1,8 @@
 # OnTheRoadAgain
----
 Maintains communication between customers, mechanics, and managers in regards to auto repair shop visits, as well as tracks maintenance history and allow for scheduling of appointments.
 
 ## Feature List
----
 ### Core Functionality 
----
 * Initial home page shown to all users, upon login home page will change based on user credentials (Customer, Technicians or Advisor)
 * Customer can register an account and their car(s) 
 * Customer can create service appointment for their car(s)
@@ -19,14 +16,12 @@ Maintains communication between customers, mechanics, and managers in regards to
 * Advisor needs to confirm service complete before checking out customer
 
 ### Addt’l Functionality 
----
 * Customers can see history of maintenance 
 * Customers are reminded to schedule regular maintenance - A reminder function to alert customer when maintenance is due based on average miles and time since last visit.
 * Advisors can search for customer’s last appointment 
 * Advisors have reminder to make appt if customer has upcoming service
 
 ### Suppl’ Functionality 
----
 * Customers can pay for repairs once vehicle is ready using outward API 
 * A customer loyalty program and the ability to track it.
 * An API to post vehicle recall/safety information.
