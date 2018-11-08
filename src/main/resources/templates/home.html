@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/fragments :: head"></head>
+<!--<head>-->
+    <!--<meta charset="UTF-8" />-->
+
+    <!--<title>On the road again</title>-->
+<!--</head>-->
+<body class=" bg-light">
+    <nav th:replace="fragments/fragments :: navbar"></nav>
+
+    <main class="container mt-5">
+    <header th:replace=" fragments/fragments :: header"></header>
+
+    <h1>Home</h1>
+    <p>you made it</p>
+    <p>this is the home page if you are not logged in</p>
+    </main>
+
+    <footer th:replace="fragments/fragments :: footer"></footer>
+
+</body>
+</html>
