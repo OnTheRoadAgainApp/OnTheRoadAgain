@@ -16,6 +16,6 @@ public class VehicleController {
     @GetMapping("/vehicles")
     public String vehicles(Model m) {
         m.addAttribute("vehicles", vehicleSvc.findAll());
-        return "/vehicles";
+        return "vehicles";
     }
 }
