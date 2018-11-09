@@ -16,29 +16,29 @@ public class Vehicle {
     @Column(nullable = false, length = 20, unique = true)
     private String  license;
 
-    @Column(nullable = false, length = 50)
+//    @Column(nullable = false, length = 50)
     private String make;
 
-    @Column(nullable = false, length = 50)
+//    @Column(nullable = false, length = 50)
     private String model;
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private long mileage;
 
-    @Column(nullable = true)
+//    @Column(nullable = true)
     private long engine_size;
 
-    @Column(nullable = false, length = 50)
+//    @Column(nullable = false, length = 50)
     private String color;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    private User user;
 
     public Vehicle() {
     }
 
-    public Vehicle(Integer year, String license, String make, String model, long mileage, long engine_size, String color, User user) {
+    public Vehicle(Integer year, String license, String make, String model, long mileage, long engine_size, String color) {
         this.year = year;
         this.license = license;
         this.make = make;
@@ -46,7 +46,7 @@ public class Vehicle {
         this.mileage = mileage;
         this.engine_size = engine_size;
         this.color = color;
-        this.user = user;
+//        this.user = user;
     }
 
     public long getId() {
@@ -113,12 +113,12 @@ public class Vehicle {
         this.color = color;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 }
 
