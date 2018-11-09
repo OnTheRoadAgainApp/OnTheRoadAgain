@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/fragments :: head"></head>
+<!--<head>-->
+<!--<meta charset="UTF-8" />-->
+
+<!--<title>On the road again</title>-->
+<!--</head>-->
+<body class=" bg-light">
+<nav th:replace="fragments/fragments :: navbar"></nav>
+
+<header th:replace=" fragments/fragments :: header"></header>
+<h1 class="container text-info">Enter your vehicle info: </h1>
+
+<main class="container mx-auto">
+    <form action="/posts/create" method="post" th:object="${vehicle}">
+        <input type="text" th:field="*{year}" placeholder="Enter post title..." />
+        <br />
+        <input type="text" th:field="*{make}" placeholder="Enter post body..." />
+        <br />
+        <input type="text" th:field="*{model}" placeholder="Enter post body..." />
+        <br />
+        <input type="text" th:field="*{engine_size}" placeholder="Enter post body..." />
+        <br />
+        <input type="text" th:field="*{color}" placeholder="Enter post body..." />
+        <br />
+        <input type="text" th:field="*{license}" placeholder="Enter post body..." />
+        <br />
+        <input type="text" th:field="*{mileage}" placeholder="Enter post body..." />
+        <br />
+        <input type="hidden" th:field="*{user}" th:value="${user}" />
+        <br />
+        <input type="submit" />
+    </form>
+</main>
+
+<footer th:replace="fragments/fragments :: footer"></footer>
+
+</body>
+</html>
