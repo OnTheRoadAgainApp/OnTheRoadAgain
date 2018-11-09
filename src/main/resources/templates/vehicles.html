@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/fragments :: head"></head>
+<!--<head>-->
+<!--<meta charset="UTF-8" />-->
+
+<!--<title>On the road again</title>-->
+<!--</head>-->
+<body class=" bg-light">
+<nav th:replace="fragments/fragments :: navbar"></nav>
+
+<header th:replace=" fragments/fragments :: header"></header>
+<h1 class="container text-info">Vehicles </h1>
+
+<main class="container mx-auto">
+    <article th:each="vehicle : ${vehicles}">
+        <h2 th:text="${vehicle.year + ' ' + vehicle.make + ' ' + vehicle.model}"></h2>
+    </article>
+</main>
+
+<footer th:replace="fragments/fragments :: footer"></footer>
+
+</body>
+</html>
