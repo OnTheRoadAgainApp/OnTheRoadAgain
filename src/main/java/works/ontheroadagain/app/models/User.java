@@ -62,8 +62,7 @@ public class User {
     public User() {
     }
 
-    public User(String first_name, String last_name, String username, String email, String password, long phone_number,
-                String address, String city, String state, long zipcode, UserRole user_role ) {
+    public User(String first_name, String last_name, String username, String email, String password, long phone_number, String address, String city, String state, long zipcode, List<Vehicle> vehicles, UserRole user_role, List<Speciality> specialities) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.username = username;
@@ -74,91 +73,94 @@ public class User {
         this.city = city;
         this.state = state;
         this.zipcode = zipcode;
+        this.vehicles = vehicles;
         this.user_role = user_role;
+        this.specialities = specialities;
     }
+
 
     public long getId() {
         return id;
-    }
-
-    public String getFirst_name() {
-        return first_name;
-    }
-
-    public String getLast_name() {
-        return last_name;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public long getPhone_number() {
-        return phone_number;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public long getZipcode() {
-        return zipcode;
     }
 
     public void setId(long id) {
         this.id = id;
     }
 
+    public String getFirst_name() {
+        return first_name;
+    }
+
     public void setFirst_name(String first_name) {
         this.first_name = first_name;
+    }
+
+    public String getLast_name() {
+        return last_name;
     }
 
     public void setLast_name(String last_name) {
         this.last_name = last_name;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public long getPhone_number() {
+        return phone_number;
     }
 
     public void setPhone_number(long phone_number) {
         this.phone_number = phone_number;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getCity() {
+        return city;
     }
 
     public void setCity(String city) {
         this.city = city;
     }
 
+    public String getState() {
+        return state;
+    }
+
     public void setState(String state) {
         this.state = state;
+    }
+
+    public long getZipcode() {
+        return zipcode;
     }
 
     public void setZipcode(long zipcode) {
@@ -179,6 +181,14 @@ public class User {
 
     public void setUser_role(UserRole user_role) {
         this.user_role = user_role;
+    }
+
+    public List<Speciality> getSpecialities() {
+        return specialities;
+    }
+
+    public void setSpecialities(List<Speciality> specialities) {
+        this.specialities = specialities;
     }
 }
 

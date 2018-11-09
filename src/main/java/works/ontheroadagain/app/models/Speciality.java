@@ -22,10 +22,12 @@ public class Speciality {
     public Speciality() {
     }
 
-    public Speciality(long id, String name) {
-        this.id = id;
+
+    public Speciality(String name, List<User> users) {
         this.name = name;
+        this.users = users;
     }
+
 
     public long getId() {
         return id;
@@ -41,5 +43,13 @@ public class Speciality {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }
