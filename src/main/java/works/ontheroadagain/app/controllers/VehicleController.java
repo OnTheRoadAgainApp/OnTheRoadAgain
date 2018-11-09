@@ -34,6 +34,6 @@ public class VehicleController {
     @PostMapping("addVehicle")
     public String create(@ModelAttribute Vehicle vehicle) {
         vehicleRepo.save(vehicle);
-        return "/vehicles";
+        return "redirect:/vehicles";
     }
 }

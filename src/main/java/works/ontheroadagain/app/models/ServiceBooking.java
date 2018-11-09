@@ -21,23 +21,32 @@ public class ServiceBooking {
     @Column(nullable = false)
     private double cost;
 
-    @OneToOne
-    private User user_id;
+//    @OneToOne
+//    private User user;
 
     //    advisor_id??? we have one userid releted to customer...
     @OneToOne
-    private User advisor_id;
+    private User advisor;
 
     @OneToOne
-    private Vehicle vehicle_id;
+    private Vehicle vehicle;
 
     @OneToOne
-    private ServiceType service_type_id;
-    
+    private ServiceType service_type;
 
 
+    public ServiceBooking() {
+    }
 
-
+    public ServiceBooking(Date service_date, String service_time, double cost, User advisor, Vehicle vehicle, ServiceType service_type) {
+        this.service_date = service_date;
+        this.service_time = service_time;
+        this.cost = cost;
+//        this.user = user;
+        this.advisor = advisor;
+        this.vehicle = vehicle;
+        this.service_type = service_type;
+    }
 
     public long getId() {
         return id;
@@ -71,27 +80,35 @@ public class ServiceBooking {
         this.cost = cost;
     }
 
-    public User getUser_id() {
-        return user_id;
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
+
+    public User getAdvisor() {
+        return advisor;
     }
 
-    public void setUser_id(User user_id) {
-        this.user_id = user_id;
+    public void setAdvisor(User advisor) {
+        this.advisor = advisor;
     }
 
-    public Vehicle getVehicle_id() {
-        return vehicle_id;
+    public Vehicle getVehicle() {
+        return vehicle;
     }
 
-    public void setVehicle_id(Vehicle vehicle_id) {
-        this.vehicle_id = vehicle_id;
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 
-    public ServiceType getService_type_id() {
-        return service_type_id;
+    public ServiceType getService_type() {
+        return service_type;
     }
 
-    public void setService_type_id(ServiceType service_type_id) {
-        this.service_type_id = service_type_id;
+    public void setService_type(ServiceType service_type) {
+        this.service_type = service_type;
     }
 }

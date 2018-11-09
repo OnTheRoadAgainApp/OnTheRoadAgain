@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="vehicles")
+@Table(name="service_events")
 public class ServiceEvent {
 
     @Id
@@ -15,23 +15,24 @@ public class ServiceEvent {
     private Date date;
 
     @OneToOne
-    private ServiceBooking service_booking_id;
+    private ServiceBooking service_booking;
 
     @OneToOne
-    private Event event_id;
+    private Event event;
     
     @OneToOne
-    private User technician_id;
+    private User technician;
 
     public ServiceEvent() {
     }
 
-    public ServiceEvent(Date date, ServiceBooking service_booking_id, Event event_id, User technician_id) {
+    public ServiceEvent(Date date, ServiceBooking service_booking, Event event, User technician) {
         this.date = date;
-        this.service_booking_id = service_booking_id;
-        this.event_id = event_id;
-        this.technician_id = technician_id;
+        this.service_booking = service_booking;
+        this.event = event;
+        this.technician = technician;
     }
+
 
     public long getId() {
         return id;
@@ -49,27 +50,27 @@ public class ServiceEvent {
         this.date = date;
     }
 
-    public ServiceBooking getService_booking_id() {
-        return service_booking_id;
+    public ServiceBooking getService_booking() {
+        return service_booking;
     }
 
-    public void setService_booking_id(ServiceBooking service_booking_id) {
-        this.service_booking_id = service_booking_id;
+    public void setService_booking(ServiceBooking service_booking) {
+        this.service_booking = service_booking;
     }
 
-    public Event getEvent_id() {
-        return event_id;
+    public Event getEvent() {
+        return event;
     }
 
-    public void setEvent_id(Event event_id) {
-        this.event_id = event_id;
+    public void setEvent(Event event) {
+        this.event = event;
     }
 
-    public User getTechnician_id() {
-        return technician_id;
+    public User getTechnician() {
+        return technician;
     }
 
-    public void setTechnician_id(User technician_id) {
-        this.technician_id = technician_id;
+    public void setTechnician(User technician) {
+        this.technician = technician;
     }
 }
