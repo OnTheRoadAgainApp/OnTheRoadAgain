@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/fragments :: head"></head>
+<body class=" bg-light">
+<nav th:replace="fragments/fragments :: navbar"></nav>
+<header th:replace=" fragments/fragments :: header"></header>
+
+<main class="container row mx-auto">
+    <section class="col-6">
+        <!--Technician profile card-->
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h4 class="card-title">Technician Profile</h4>
+                <h5 class="card-subtitle mb-2 text-muted">Tech name</h5>
+                <!--th:text="${user}"-->
+                <h6 class="card-text">Tech ID</h6>
+                <!--th:text="${technician.id}"-->
+                <h6 class="card-text">Tech Specialties</h6>
+                <!--th:text="${specialties.id}"-->
+            </div>
+        </div>
+        <!--Shop Notes card-->
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h4 class="card-title">SHOP NOTES</h4>
+                <h5 class="card-subtitle mb-2 text-muted">Timesheets Due EVERY Friday!</h5>
+                <h6 class="card-text">Upcoming Vactation</h6>
+                <h6 class="card-text">Check email for important updates.</h6>
+            </div>
+        </div>
+        <!--Completed Vehicles card-->
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h4 class="card-title">Completed Vehicles</h4>
+                <h5 class="card-subtitle mb-2 text-muted">Vehicle 1</h5>
+                <!--th:text="${user}"-->
+                <h5 class="card-subtitle mb-2 text-muted">Vehicle 2</h5>
+                <!--th:text="${user}"-->
+            </div>
+        </div>
+    </section>
+
+    <section class="col-6 row">
+        <h2>Today's Scheduled Vehicles</h2>
+        <!--2 cards-->
+        <div class="card" style="width: 18rem;">
+            <h4>Customer Information</h4>
+            <hr/>
+            <div class="card-body">
+                <h5 class="card-title">Name</h5>
+                <!--th:text="${user.first_name + user.last_name}"-->
+                <h6 class="card-text">Service requested:</h6>
+                <blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</blockquote>
+            </div>
+            <ul class="list-group list-group-flush">
+                <!--th:each="vehicle : ${vehicles}"-->
+                <li class="list-group-item">Vehicle Make</li>
+                <!--th:text="${vehicle.make}"-->
+                <li class="list-group-item">Vehicle Model</li>
+                <!--th:text="${vehicle.model}"-->
+                <li class="list-group-item">Vehicle Year</li>
+                <!--th:text="${vehicle.year}"-->
+            </ul>
+            <a href="#" class="btn btn-primary">Appointment Page</a>
+        </div>
+        <h2>Upcoming Vehicle Appointments</h2>
+        <!--2 cards-->
+        <div class="card" style="width: 18rem;">
+            <h4>Customer Information</h4>
+            <hr/>
+            <div class="card-body">
+                <h5 class="card-title">Name</h5>
+                <!--th:text="${user.first_name + user.last_name}"-->
+                <h6 class="card-text">Service requested:</h6>
+                <blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</blockquote>
+            </div>
+            <ul class="list-group list-group-flush">
+                <!--th:each="vehicle : ${vehicles}"-->
+                <li class="list-group-item">Vehicle Make</li>
+                <!--th:text="${vehicle.make}"-->
+                <li class="list-group-item">Vehicle Model</li>
+                <!--th:text="${vehicle.model}"-->
+                <li class="list-group-item">Vehicle Year</li>
+                <!--th:text="${vehicle.year}"-->
+            </ul>
+            <a href="#" class="btn btn-primary">Appointment Page</a>
+        </div>
+    </section>
+</main>
+
+
+
+<footer th:replace="fragments/fragments :: footer"></footer>
+</body>
+</html>

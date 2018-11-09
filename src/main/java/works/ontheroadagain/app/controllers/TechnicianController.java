@@ -5,12 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class HomeController {
+public class TechnicianController {
 
-    @GetMapping("/")
+    @GetMapping("/technicians")
     public String welcome() {
-        return "/home";
+        return "/technicians";
     }
-
-
 }
