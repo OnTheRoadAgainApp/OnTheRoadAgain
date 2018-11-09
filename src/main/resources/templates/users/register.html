@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/fragments :: head"></head>
+<!--<head>-->
+<!--<meta charset="UTF-8" />-->
+
+<!--<title>On the road again</title>-->
+<!--</head>-->
+<body class=" bg-light">
+<nav th:replace="fragments/fragments :: navbar"></nav>
+
+<header th:replace=" fragments/fragments :: header"></header>
+<h1 class="container text-info">Enter your vehicle info: </h1>
+
+<main class="container mx-auto">
+    <form th:action="@{/register}" method="post" th:object="${user}">
+        <input type="text" th:field="*{first_name}" placeholder="First Name" />
+        <br />
+        <input type="text" th:field="*{last_name}" placeholder="Last Name" />
+        <br />
+        <input type="email" th:field="*{email}" placeholder="Email" />
+        <br />
+        <input type="text" th:field="*{username}" placeholder="Username" />
+        <br />
+        <input type="password" th:field="*{password}" placeholder="password" />
+        <br />
+        <input type="text" th:field="*{phone_number}" placeholder="Phone Number" />
+        <br />
+        <input type="text" th:field="*{address}" placeholder="Address" />
+        <br />
+        <input type="text" th:field="*{state}" placeholder="State" />
+        <br />
+        <input type="text" th:field="*{zipcode}" placeholder="Zipcode" />
+        <br />
+        <input type="submit" />
+    </form>
+</main>
+
+<footer th:replace="fragments/fragments :: footer"></footer>
+
+</body>
+</html>

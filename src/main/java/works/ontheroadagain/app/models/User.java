@@ -57,7 +57,13 @@ public class User {
     )
     private List<Speciality> specialities;
 
-    
+
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
 
     public User() {
     }
@@ -77,6 +83,21 @@ public class User {
         this.user_role = user_role;
         this.specialities = specialities;
     }
+
+
+    public User(String first_name, String last_name, String username, String email, String password, long phone_number, String address, String city, String state, long zipcode) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.phone_number = phone_number;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.zipcode = zipcode;
+    }
+
 
 
     public long getId() {
