@@ -21,8 +21,8 @@ public class ServiceBooking {
     @Column(nullable = false)
     private double cost;
 
-    @OneToOne
-    private User user;
+//    @OneToOne
+//    private User user;
 
     //    advisor_id??? we have one userid releted to customer...
     @OneToOne
@@ -38,11 +38,11 @@ public class ServiceBooking {
     public ServiceBooking() {
     }
 
-    public ServiceBooking(Date service_date, String service_time, double cost, User user, User advisor, Vehicle vehicle, ServiceType service_type) {
+    public ServiceBooking(Date service_date, String service_time, double cost, User advisor, Vehicle vehicle, ServiceType service_type) {
         this.service_date = service_date;
         this.service_time = service_time;
         this.cost = cost;
-        this.user = user;
+//        this.user = user;
         this.advisor = advisor;
         this.vehicle = vehicle;
         this.service_type = service_type;
@@ -80,13 +80,13 @@ public class ServiceBooking {
         this.cost = cost;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     public User getAdvisor() {
         return advisor;
