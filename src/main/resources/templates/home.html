@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/fragments :: head"></head>
+<!--<head>-->
+    <!--<meta charset="UTF-8" />-->
+
+    <!--<title>On the road again</title>-->
+<!--</head>-->
+<body class=" bg-light">
+    <nav th:replace="fragments/fragments :: navbar"></nav>
+
+    <header th:replace=" fragments/fragments :: header"></header>
+    <h1 class="container">Home</h1>
+    <main class="container row mx-auto">
+        <section class="col-6">
+            <p>this is the home page if you are not logged in</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, architecto atque consequatur cupiditate ducimus provident rem tempore voluptates. Consequatur cumque exercitationem illo quas quo. Adipisci fuga nam quae quia saepe! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores autem dolorem doloremque dolorum eius ex explicabo inventore labore, nobis odio officia quos ratione, unde velit! Ea excepturi facilis provident.</p>
+        </section>
+
+        <section class="col-6 row">
+            <article class="col-6"><h2>MAP</h2></article>
+            <article class="col-6"><h2>Safety Recalls</h2></article>
+            <article class="col-6"><h2>Contact</h2></article>
+            <article class="col-6"><h2>Hours</h2></article>
+        </section>
+    </main>
+
+    <footer th:replace="fragments/fragments :: footer"></footer>
+
+</body>
+</html>
