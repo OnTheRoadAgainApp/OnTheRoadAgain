@@ -3,9 +3,8 @@ package works.ontheroadagain.app.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Service_types")
-public class ServiceType {
-
+@Table(name="events")
+public class Event {
     @Id
     @GeneratedValue
     private long id;
@@ -13,13 +12,13 @@ public class ServiceType {
     @Column(nullable = false, length = 100, unique = true)
     private String description;
 
-    public ServiceType() {
+    public Event() {
     }
 
-    public ServiceType(String description) {
+    public Event(long id, String description) {
+        this.id = id;
         this.description = description;
     }
-
 
     public long getId() {
         return id;

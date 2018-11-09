@@ -1,6 +1,7 @@
 package works.ontheroadagain.app.services;
 
 import org.springframework.stereotype.Service;
+import works.ontheroadagain.app.models.User;
 import works.ontheroadagain.app.models.Vehicle;
 
 import java.util.ArrayList;
@@ -30,8 +31,8 @@ public class VehicleService {
     }
 
     private void createVehicles() {
-        save(new Vehicle(2012, "DV20109", "Mazda", "3", 40000, 1000, "dark gray"));
-        save(new Vehicle(2010, "bh7w357", "honda", "civic", 157000, 6, "silver"));
+        save(new Vehicle(2012, "DV20109", "Mazda", "3", 40000, 1000, "dark gray", new User()));
+        save(new Vehicle(2010, "bh7w357", "honda", "civic", 157000, 6, "silver", new User()));
     }
 }
 
