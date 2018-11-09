@@ -13,12 +13,13 @@ public class ServiceType {
     @Column(nullable = false, length = 100, unique = true)
     private String description;
 
+    public ServiceType() {
+    }
+
     public ServiceType(String description) {
         this.description = description;
     }
 
-    public ServiceType() {
-    }
 
     public long getId() {
         return id;
