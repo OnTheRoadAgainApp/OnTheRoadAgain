@@ -13,7 +13,7 @@
 <h1 class="container text-info">Enter your vehicle info: </h1>
 
 <main class="container mx-auto">
-    <form action="/posts/create" method="post" th:object="${vehicle}">
+    <form action="/addVehicle" method="post" th:object="${vehicle}">
         <input type="text" th:field="*{year}" placeholder="Enter post title..." />
         <br />
         <input type="text" th:field="*{make}" placeholder="Enter post body..." />
@@ -27,8 +27,6 @@
         <input type="text" th:field="*{license}" placeholder="Enter post body..." />
         <br />
         <input type="text" th:field="*{mileage}" placeholder="Enter post body..." />
-        <br />
-        <input type="hidden" th:field="*{user}" th:value="${user}" />
         <br />
         <input type="submit" />
     </form>
