@@ -41,7 +41,7 @@ public class User {
     @Column(nullable = false)
     private long zipcode;
 
-//    aused by: org.hibernate.AnnotationException: mappedBy reference an unknown target entity property:
+    //    aused by: org.hibernate.AnnotationException: mappedBy reference an unknown target entity property:
 // works.ontheroadagain.app.models.Vehicle.vehicle in works.ontheroadagain.app.models.User.vehicles
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Vehicle> vehicles;
@@ -63,7 +63,15 @@ public class User {
         email = copy.email;
         username = copy.username;
         password = copy.password;
+        first_name = copy.first_name;
+        last_name = copy.last_name;
+        phone_number = copy.phone_number;
+        address = copy.address;
+        city = copy.city;
+        state = copy.state;
+        zipcode = copy.zipcode;
     }
+
 
     public User() {
     }
@@ -83,21 +91,6 @@ public class User {
         this.user_role = user_role;
         this.specialities = specialities;
     }
-
-
-    public User(String first_name, String last_name, String username, String email, String password, long phone_number, String address, String city, String state, long zipcode) {
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.phone_number = phone_number;
-        this.address = address;
-        this.city = city;
-        this.state = state;
-        this.zipcode = zipcode;
-    }
-
 
 
     public long getId() {
@@ -212,4 +205,3 @@ public class User {
         this.specialities = specialities;
     }
 }
-
