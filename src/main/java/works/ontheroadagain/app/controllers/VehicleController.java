@@ -25,13 +25,13 @@ public class VehicleController {
         return "/vehicles";
     }
 
-    @GetMapping("addVehicle")
+    @GetMapping("/vehicles/add")
     public String showCreateForm(Model model) {
         model.addAttribute("vehicle", new Vehicle());
         return "/addVehicle";
     }
 
-    @PostMapping("addVehicle")
+    @PostMapping("/vehicles/add")
     public String create(@ModelAttribute Vehicle vehicle) {
         vehicleRepo.save(vehicle);
         return "redirect:/vehicles";
