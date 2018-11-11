@@ -78,6 +78,10 @@ public class User {
         this.specialities = specialities;
     }
 
+    public User(String first_name) {
+        this.first_name = first_name;
+    }
+
 
     public long getId() {
         return id;

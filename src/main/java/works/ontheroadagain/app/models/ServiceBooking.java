@@ -1,5 +1,7 @@
 package works.ontheroadagain.app.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -12,6 +14,7 @@ public class ServiceBooking {
     private long id;
 
     @Column(nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date service_date;
 
     //    what type of that time period?
