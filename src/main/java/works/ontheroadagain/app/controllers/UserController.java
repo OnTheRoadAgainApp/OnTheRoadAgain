@@ -1,5 +1,6 @@
 package works.ontheroadagain.app.controllers;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,6 +34,15 @@ public class UserController {
         usersRepository.save(user);
         return "redirect:/login";
     }
+
+    @GetMapping("/profile")
+    public String showProfile(Model model) {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", usersRepository.findOne(currentUser.getId()));
+        return "users/profile";
+
+    }
+
 }
 
 

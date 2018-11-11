@@ -12,10 +12,51 @@
 <header th:replace=" fragments/fragments :: header"></header>
 <h1 class="container">Profile</h1>
 <main class="container row mx-auto">
-    <h2>user info</h2>
+
+    <article class="col-6">
+        <h2>user info</h2>
+        <h5><span th:text="${#authentication.principal.id}"/></h5>
+        <h5>Username: <span th:text="${#authentication.principal.username}"/></h5>
+        <h5>Email: <span th:text="${#authentication.principal.email}"/></h5>
+    </article>
+
+    <article class="col-6">
+        <h2>vehicle info</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+            </tbody>
+        </table>
+        <a class="btn btn-warning" href="/vehicles/add">Add Vehicle</a>
+    </article>
+
 </main>
 
 <footer th:replace="fragments/fragments :: footer"></footer>
-
 </body>
 </html>

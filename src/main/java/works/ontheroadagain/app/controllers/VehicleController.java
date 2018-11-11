@@ -19,10 +19,6 @@ public class VehicleController {
     public VehicleController(VehicleRepository vehicleRepo, BookingRepository bookingRepo) {
         this.vehicleRepo = vehicleRepo;
         this.bookingRepo = bookingRepo;
-    private final VehicleService vehicleSvc;
-
-    public VehicleController(VehicleService vehicleSvc) {
-        this.vehicleSvc = vehicleSvc;
     }
 
     @GetMapping("/vehicles")
@@ -38,27 +34,23 @@ public class VehicleController {
     }
 
     @PostMapping("/vehicles/add")
-    public String create(@ModelAttribute Vehicle vehicle) {
+    public String create(Model m, @ModelAttribute Vehicle vehicle) {
         vehicleRepo.save(vehicle);
+        m.addAttribute("vehicles", vehicleRepo.findAll());
         return "redirect:/vehicles";
-        m.addAttribute("vehicles", vehicleSvc.findAll());
-        return "vehicles";
     }
 
     @GetMapping("/vehicles/book")
     public String showBookingForm(Model model) {
         model.addAttribute("serviceBooking", new ServiceBooking());
-        return "/createBooking";
+        return "vehicles/createBooking";
     }
 
     @PostMapping("/vehicles/book")
     public String book(@ModelAttribute ServiceBooking booking, @RequestParam("advise") String advise) {
-
         User thisUser = booking.getAdvisor();
         booking.setAdvisor(new User(advise));
-
-//        bookingRepo.save(booking);
-
-        return "home";
+        bookingRepo.save(booking);
+        return "users/profile";
     }
 }
