@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments/fragments :: head"></head>
-<!--<head>-->
-<!--<meta charset="UTF-8" />-->
+<head>
+    <meta charset="UTF-8" />
+    <title>Log In</title>
+</head>
+<body>
+<h1>Log In</h1>
+<div th:if="${param.error}">
+    Invalid Username and Password.
+</div>
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
 
-<!--<title>On the road again</title>-->
-<!--</head>-->
-<body class=" bg-light">
-<nav th:replace="fragments/fragments :: navbar"></nav>
-
-<header th:replace=" fragments/fragments :: header"></header>
-<h1 class="container">Profile</h1>
-<main class="container row mx-auto">
-    <h2>user info</h2>
-</main>
-
-<footer th:replace="fragments/fragments :: footer"></footer>
-
+<form th:action="@{/login}" method="post">
+    <label for="username">Username</label>
+    <input id="username" name="username" type="text" />
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" />
+    <input type="submit" value="Log In" />
+</form>
 </body>
 </html>
