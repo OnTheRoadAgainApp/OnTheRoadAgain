@@ -19,6 +19,10 @@ public class VehicleController {
     public VehicleController(VehicleRepository vehicleRepo, BookingRepository bookingRepo) {
         this.vehicleRepo = vehicleRepo;
         this.bookingRepo = bookingRepo;
+    private final VehicleService vehicleSvc;
+
+    public VehicleController(VehicleService vehicleSvc) {
+        this.vehicleSvc = vehicleSvc;
     }
 
     @GetMapping("/vehicles")
@@ -37,6 +41,8 @@ public class VehicleController {
     public String create(@ModelAttribute Vehicle vehicle) {
         vehicleRepo.save(vehicle);
         return "redirect:/vehicles";
+        m.addAttribute("vehicles", vehicleSvc.findAll());
+        return "vehicles";
     }
 
     @GetMapping("/vehicles/book")
