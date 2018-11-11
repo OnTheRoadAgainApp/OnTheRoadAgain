@@ -10,24 +10,42 @@
 <nav th:replace="fragments/fragments :: navbar"></nav>
 
 <header th:replace=" fragments/fragments :: header"></header>
-<h1 class="container text-info">Enter your vehicle info: </h1>
+<h1 class="container text-info">Create your booking </h1>
 
 <main class="container mx-auto">
-    <form action="/createBooking" method="post" th:object="${serviceBooking}">
-        <input type="text" th:field="*{year}" placeholder="Enter post title..." />
-        <br />
-        <input type="text" th:field="*{make}" placeholder="Enter post body..." />
-        <br />
-        <input type="text" th:field="*{model}" placeholder="Enter post body..." />
-        <br />
-        <input type="text" th:field="*{engine_size}" placeholder="Enter post body..." />
-        <br />
-        <input type="text" th:field="*{color}" placeholder="Enter post body..." />
-        <br />
-        <input type="text" th:field="*{license}" placeholder="Enter post body..." />
-        <br />
-        <input type="text" th:field="*{mileage}" placeholder="Enter post body..." />
-        <br />
+    <form action="/vehicles/book" method="post" th:object="${serviceBooking}">
+        <select name="car">
+            <option value="mazda">Mazda</option>
+            <option value="civic">Civic</option>
+        </select>
+
+        <section class="form-row">
+            <article class="form-group col-md-8">
+                <label for="date">Date of Appointment:</label>
+                <input type="date" id="date" name="date" th:field="*{service_date}"/>
+            </article>
+
+            <article class="form-group col-md-8">
+                <label for="time">Time of Appointment:</label>
+                <input type="time" id="time" name="time" />
+            </article>
+        </section>
+
+        <select name="advise">
+            <option value="Tom">Tom</option>
+            <option value="Will">Will</option>
+            <option value="Jerry">Jerry</option>
+        </select>
+
+        <select name="service-type">
+            <option value="oil">Oil Change</option>
+            <option value="tires">Tire Rotation</option>
+            <option value="maintenance">Regular Maintenance</option>
+            <option value="diagnostic">Diagnostic</option>
+            <option value="air-filter">Air Filter</option>
+            <option value="brakes">Brakes</option>
+        </select>
+
         <input type="submit" />
     </form>
 </main>
