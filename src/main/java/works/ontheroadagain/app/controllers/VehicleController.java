@@ -1,5 +1,6 @@
 package works.ontheroadagain.app.controllers;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -35,9 +36,11 @@ public class VehicleController {
 
     @PostMapping("/vehicles/add")
     public String create(Model m, @ModelAttribute Vehicle vehicle) {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        vehicle.setUser(currentUser);
         vehicleRepo.save(vehicle);
-        m.addAttribute("vehicles", vehicleRepo.findAll());
-        return "redirect:/vehicles";
+
+        return "redirect:/profile";
     }
 
     @GetMapping("/vehicles/book")
