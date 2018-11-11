@@ -24,13 +24,13 @@ public class VehicleController {
     @GetMapping("/vehicles")
     public String vehicles(Model m) {
         m.addAttribute("vehicles", vehicleRepo.findAll());
-        return "/vehicles";
+        return "vehicles";
     }
 
     @GetMapping("/vehicles/add")
     public String showCreateForm(Model model) {
         model.addAttribute("vehicle", new Vehicle());
-        return "/addVehicle";
+        return "vehicles/addVehicle";
     }
 
     @PostMapping("/vehicles/add")
