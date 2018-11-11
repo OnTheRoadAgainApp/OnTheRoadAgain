@@ -8,7 +8,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class TechnicianController {
 
     @GetMapping("/technicians")
-    public String welcome() {
+    public String technicianHomePage() {
         return "/technicians";
+    }
+
+    @GetMapping("vehicheles/{id}")
+    public String showVehicleAppointment(){
+        return "vehicleAppt";
     }
 }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/fragments :: head"></head>
+<body class=" bg-light">
+<nav th:replace="fragments/fragments :: navbar"></nav>
+
+<header th:replace=" fragments/fragments :: header"></header>
+<h1 class="container text-info">Customer Service Information</h1>
+
+<main class="container mx-auto">
+    <article th:each="vehicle : ${vehicles}">
+        <h2 th:text="${vehicle.year}"></h2>
+        <h2 th:text="${vehicle.make}"></h2>
+        <h2 th:text="${vehicle.model}"></h2>
+    </article>
+    <article th:each="service_booking : ${service_bookings}">
+        <h2 th:text="${service_type_id}"></h2>
+        <h2 th:text="${service_date}"></h2>
+        <h2 th:text="${service_time}"></h2>
+        <h2 th:text="${service_type.description}"></h2>
+    </article>
+</main>
+
+<footer th:replace="fragments/fragments :: footer"></footer>
+
+</body>
+</html>

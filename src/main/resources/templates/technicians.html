@@ -82,7 +82,7 @@
                 <li class="list-group-item">Vehicle Year</li>
                 <!--th:text="${vehicle.year}"-->
             </ul>
-            <a href="#" class="btn btn-primary">Appointment Page</a>
+            <a th:href="@{/vehicle/{id}/showVehicleAppt(id=${vehicle.id})}"><input type="button" value="More Info" class="btn btn-primary" /></a>
         </div>
         </div>
         <h2 style="text-align: center">Upcoming Vehicle Appointments</h2>
