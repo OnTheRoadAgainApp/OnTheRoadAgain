@@ -36,6 +36,7 @@
     <div class="custom-control custom-radio" style="padding-left: 10%">
         <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" />
         <label class="custom-control-label" for="customRadio1" style="color: red">Error Encountered</label>
+        <button type="button" class="btn btn-outline-info btn-sm">Clear Error</button>
     </div>
         <hr/>
     <div class="custom-control custom-checkbox">
@@ -46,6 +47,7 @@
     <div class="custom-control custom-radio" style="padding-left: 10%">
         <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" />
         <label class="custom-control-label" for="customRadio2" style="color: red">Error Encountered</label>
+        <button type="button" class="btn btn-outline-info btn-sm">Clear Error</button>
     </div>
         <hr/>
     <div class="custom-control custom-checkbox">
@@ -56,24 +58,60 @@
     <div class="custom-control custom-radio" style="padding-left: 10%">
         <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input" />
         <label class="custom-control-label" for="customRadio3" style="color: red">Error Encountered</label>
+        <button type="button" class="btn btn-outline-info btn-sm">Clear Error</button>
     </div>
         <hr/>
     <div class="custom-control custom-checkbox">
         <input type="checkbox" class="custom-control-input" id="customCheck5" />
         <label class="custom-control-label" for="customCheck5">Advisor Approval / Vehicle Complete</label>
+        <button type="button" class="btn btn-outline-success btn-sm">Vehicle Complete</button>
     </div>
     </div>
     </div>
     </section>
     <section class="col-6 row">
-        <h3>Vehicle Inspection Checklist goes here.</h3>
-        <ul>
-
-        </ul>
+        <h3>Vehicle Inspection Checklist</h3>
+        <form>
+            <button type="button" class="btn btn-success btn-sm disabled">Satisfactory</button>
+            <button type="button" class="btn btn-warning btn-sm disabled">Warning</button>
+            <button type="button" class="btn btn-danger btn-sm disabled">Critical</button>
+            <table BORDER="2">
+                <tr>
+                    <th>Vehicle Condition</th>
+                    <th>Interior / Exterior</th>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" class="btn btn-success btn-sm">1</button>
+                        <button type="button" class="btn btn-warning btn-sm">2</button>
+                        <button type="button" class="btn btn-danger btn-sm">3</button>
+                    </td>
+                    <td>Head Lights/Tail Lights/Turn Signals/Brake Lights/Hazard Warning Lights/Exterior Lamps</td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" class="btn btn-success btn-sm">1</button>
+                        <button type="button" class="btn btn-warning btn-sm">2</button>
+                        <button type="button" class="btn btn-danger btn-sm">3</button>
+                    </td>
+                    <td>Windshield Washer Spray/Wiper Blades</td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" class="btn btn-success btn-sm">1</button>
+                        <button type="button" class="btn btn-warning btn-sm">2</button>
+                        <button type="button" class="btn btn-danger btn-sm">3</button>
+                    </td>
+                    <td>Windshield Condition (Cracks, Chips, or Fitting)</td>
+                </tr>
+            </table>
+            <textarea name="comment" style="resize: none; width: 36rem">Enter Vehicle Comments Here</textarea>
+            <input class="btn btn-primary btn-block" type="submit" value="Submit" />
+        </form>
     </section>
 </main>
 
-<footer th:replace="fragments/fragments :: footer"></footer>
+<!--<footer th:replace="fragments/fragments :: footer"></footer>-->
 
 </body>
 </html>
