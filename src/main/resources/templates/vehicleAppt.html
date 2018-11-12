@@ -7,18 +7,70 @@
 <header th:replace=" fragments/fragments :: header"></header>
 <h1 class="container text-info">Customer Service Information</h1>
 
-<main class="container mx-auto">
-    <article th:each="vehicle : ${vehicles}">
-        <h2 th:text="${vehicle.year}"></h2>
-        <h2 th:text="${vehicle.make}"></h2>
-        <h2 th:text="${vehicle.model}"></h2>
-    </article>
-    <article th:each="service_booking : ${service_bookings}">
-        <h2 th:text="${service_type_id}"></h2>
-        <h2 th:text="${service_date}"></h2>
-        <h2 th:text="${service_time}"></h2>
-        <h2 th:text="${service_type.description}"></h2>
-    </article>
+<main class="container row mx-auto">
+    <section class="col-6">
+        <div class="card" style="width: 18rem;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Customer Name</li>
+                <li class="list-group-item">Service Requested</li>
+                <li class="list-group-item">Vehicle Year</li>
+                <li class="list-group-item">Vehicle Make</li>
+                <li class="list-group-item">Vehicle Model</li>
+            </ul>
+        </div>
+    </section>
+    <section>
+    <div class="card" style="width: 18rem; padding-left: 1%">
+        <div class="card-body">
+        <h5 class="card-title" style="text-align: center">Vehicle Status</h5>
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="customCheck1" />
+        <label class="custom-control-label" for="customCheck1">Vehicle Accepted</label>
+    </div>
+        <hr/>
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="customCheck2" />
+        <label class="custom-control-label" for="customCheck2">Service Started</label>
+    </div>
+        <hr/>
+    <div class="custom-control custom-radio" style="padding-left: 10%">
+        <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" />
+        <label class="custom-control-label" for="customRadio1" style="color: red">Error Encountered</label>
+    </div>
+        <hr/>
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="customCheck3" />
+        <label class="custom-control-label" for="customCheck3">Halfway point reached</label>
+    </div>
+        <hr/>
+    <div class="custom-control custom-radio" style="padding-left: 10%">
+        <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" />
+        <label class="custom-control-label" for="customRadio2" style="color: red">Error Encountered</label>
+    </div>
+        <hr/>
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="customCheck4" />
+        <label class="custom-control-label" for="customCheck4">Checklist Complete / Final QC Inspection</label>
+    </div>
+        <hr/>
+    <div class="custom-control custom-radio" style="padding-left: 10%">
+        <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input" />
+        <label class="custom-control-label" for="customRadio3" style="color: red">Error Encountered</label>
+    </div>
+        <hr/>
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="customCheck5" />
+        <label class="custom-control-label" for="customCheck5">Advisor Approval / Vehicle Complete</label>
+    </div>
+    </div>
+    </div>
+    </section>
+    <section class="col-6 row">
+        <h3>Vehicle Inspection Checklist goes here.</h3>
+        <ul>
+
+        </ul>
+    </section>
 </main>
 
 <footer th:replace="fragments/fragments :: footer"></footer>

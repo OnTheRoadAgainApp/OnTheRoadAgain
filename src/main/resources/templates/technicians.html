@@ -39,7 +39,6 @@
             </div>
         </div>
     </section>
-
     <section class="col-6 row">
         <h2 style="text-align: center">Today's Scheduled Vehicles</h2>
         <!--2 cards-->
@@ -62,7 +61,8 @@
                 <li class="list-group-item">Vehicle Year</li>
                 <!--th:text="${vehicle.year}"-->
             </ul>
-            <a href="#" class="btn btn-primary">Appointment Page</a>
+            <a ><input type="button" value="Vehicle Page" class="btn btn-primary" /></a>
+            <!--th:href="@{/vehicle/{id}/showVehicleAppt(id=${vehicle.id})}"-->
         </div>
         <div class="card" style="width: 18rem; display: flex">
             <h4>Customer Information</h4>
@@ -82,7 +82,9 @@
                 <li class="list-group-item">Vehicle Year</li>
                 <!--th:text="${vehicle.year}"-->
             </ul>
-            <a th:href="@{/vehicle/{id}/showVehicleAppt(id=${vehicle.id})}"><input type="button" value="More Info" class="btn btn-primary" /></a>
+            <a ><input type="button" value="Vehicle Page" class="btn btn-primary" /></a>
+            <!--th:href="@{/vehicle/{id}/showVehicleAppt(id=${vehicle.id})}"-->
+            <!--th:href="@{/vehicle/{id}/showVehicleAppt(id=${vehicle.id})}"-->
         </div>
         </div>
         <h2 style="text-align: center">Upcoming Vehicle Appointments</h2>
@@ -106,7 +108,7 @@
                 <li class="list-group-item">Vehicle Year</li>
                 <!--th:text="${vehicle.year}"-->
             </ul>
-            <a href="#" class="btn btn-primary">Appointment Page</a>
+            <!--<a href="#" class="btn btn-primary">Appointment Page</a>-->
         </div>
         </div>
     </section>
