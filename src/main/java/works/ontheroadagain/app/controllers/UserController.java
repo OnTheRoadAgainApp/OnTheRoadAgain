@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import works.ontheroadagain.app.models.User;
 import works.ontheroadagain.app.repositories.UsersRepository;
+import works.ontheroadagain.app.services.ServiceBookingRepository;
 import works.ontheroadagain.app.services.VehicleRepository;
 
 @Controller
@@ -16,11 +17,13 @@ public class UserController {
     private UsersRepository usersRepository;
     private PasswordEncoder passwordEncoder;
     private VehicleRepository vehicleRepository;
+    private ServiceBookingRepository serviceBookingRepository;
 
-    public UserController(UsersRepository usersRepository, PasswordEncoder passwordEncoder, VehicleRepository vehicleRepository) {
+    public UserController(UsersRepository usersRepository, PasswordEncoder passwordEncoder, VehicleRepository vehicleRepository, ServiceBookingRepository serviceBookingRepository) {
         this.usersRepository = usersRepository;
         this.passwordEncoder = passwordEncoder;
         this.vehicleRepository = vehicleRepository;
+        this.serviceBookingRepository = serviceBookingRepository;
     }
 
     @GetMapping("/register")
@@ -44,6 +47,13 @@ public class UserController {
         currentUser.setVehicles(vehicleRepository.findAllByUser(currentUser));
         model.addAttribute("user", currentUser);
         return "users/profile";
+
+    }
+
+    @GetMapping("/advisor")
+    public String showAdvisorPage(Model model) {
+        model.addAttribute("user", new User());
+        return "users/advisor";
 
     }
 
