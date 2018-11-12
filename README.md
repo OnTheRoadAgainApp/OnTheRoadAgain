@@ -4,8 +4,8 @@ Maintains communication between customers, mechanics, and managers in regards to
 ## Feature List
 ### Core Functionality 
 - [ ] Initial home page shown to all users, upon login home page will change based on user credentials (Customer, Technicians or Advisor)
-- [ ] Customer can register an account 
-- [ ] Customer can add their car(s) 
+- [x] Customer can register an account 
+- [x] Customer can add their car(s) 
 - [ ] Customer can create service appointment for their car(s)
 - [ ] Customer can monitor status of their car 
 - [ ] Customers receive an alert when unexpected error occurs or vehicle complete

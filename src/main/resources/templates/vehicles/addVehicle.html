@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/fragments :: head"></head>
+<!--<head>-->
+<!--<meta charset="UTF-8" />-->
+
+<!--<title>On the road again</title>-->
+<!--</head>-->
+<body class=" bg-light">
+<nav th:replace="fragments/fragments :: navbar"></nav>
+
+<header th:replace=" fragments/fragments :: header"></header>
+<h1 class="container text-warning">Enter your vehicle info: </h1>
+
+<main class="container mx-auto">
+    <form th:action="@{/vehicles/add}" method="post" th:object="${vehicle}">
+        <section class="form-row">
+            <article class="form-group col-md-1">
+                <label for="year">Year</label>
+                <input type="number" min="1900" max="2019" id="year" name="year" class="form-control"
+                       th:field="*{year}" placeholder="Year"/>
+            </article>
+
+            <article class="form-group col-md-3">
+                <label for="make">Make</label>
+                <input type="text" id="make" name="make" class="form-control"
+                       th:field="*{make}" placeholder="Make" />
+            </article>
+
+            <article class="form-group col-md-3">
+                <label for="year">Model</label>
+                <input type="text" id="model" name="model" class="form-control"
+                       th:field="*{model}" placeholder="Model" />
+            </article>
+
+            <article class="form-group col-md-1">
+                <label for="engine-size">Engine</label>
+                <input type="number" id="engine-size" name="engine-size" class="form-control"
+                       th:field="*{engine_size}" placeholder="Engine" />
+            </article>
+        </section>
+
+        <section class="form-row">
+            <article class="form-group col-md-3">
+                <label for="color">Color</label>
+                <input type="text" id="color" name="color" class="form-control"
+                       th:field="*{color}" placeholder="Color"  />
+            </article>
+
+            <article class="form-group col-md-3">
+                <label for="license">License</label>
+                <input type="text" id="license" name="license" class="form-control"
+                       th:field="*{license}" placeholder="License"  />
+            </article>
+
+            <article class="form-group col-md-2">
+                <label for="mileage">Mileage</label>
+                <input type="text" id="mileage" name="mileage" class="form-control"
+                       th:field="*{mileage}" placeholder="Mileage"  />
+            </article>
+
+        </section>
+
+        <input type="submit" />
+    </form>
+</main>
+
+<footer th:replace="fragments/fragments :: footer"></footer>
+
+</body>
+</html>
