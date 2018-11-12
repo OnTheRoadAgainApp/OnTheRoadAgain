@@ -14,21 +14,22 @@
 <main class="container row mx-auto">
 
     <article class="col-6">
-        <h2>user info</h2>
+        <h2>Your Info</h2>
+        <hr class="hr-4" />
         <h5><span th:text="${#authentication.principal.id}"/></h5>
         <h5>Username: <span th:text="${#authentication.principal.username}"/></h5>
         <h5>Email: <span th:text="${#authentication.principal.email}"/></h5>
-    </article>
-
-    <article class="col-6">
-        <h2>vehicle info</h2>
+        <hr class="hr-4" />
+        <h2>Your Vehicles</h2>
         <table class="table table-striped">
             <thead>
             <tr>
                 <th scope="col">Year</th>
-                <th scope="col">Make Model, Color</th>
+                <th scope="col">Vehicle</th>
                 <th scope="col">Mileage</th>
                 <th scope="col">License</th>
+                <th scope="col">Service</th>
+
             </tr>
             </thead>
             <tbody>
@@ -37,10 +38,54 @@
                 <td th:text="${vehicle.make + ' ' + vehicle.model + ', ' + vehicle.color}" />
                 <td th:text="${vehicle.mileage}" />
                 <td th:text="${vehicle.license}" />
+                <td><a href="/vehicles/book" class="btn btn-warning">Book Service</a></td>
             </tr>
             </tbody>
         </table>
-        <a class="btn btn-warning" href="/vehicles/add">Add Vehicle</a>
+        <a class="btn btn-warning btn-lg btn-block" href="/vehicles/add">Add Vehicle</a>
+    </article>
+
+    <article class="col-6">
+        <h2>Upcoming Appointments</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Vehicle</th>
+                <th scope="col">Type</th>
+                <th scope="col">Advisor</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--<tr th:each="booking : ${#authentication.principal.vehicles}">-->
+                <!--<td th:text="${vehicle.year}" />-->
+                <!--<td th:text="${vehicle.make + ' ' + vehicle.model + ', ' + vehicle.color}" />-->
+                <!--<td th:text="${vehicle.mileage}" />-->
+                <!--<td th:text="${vehicle.license}" />-->
+                <!--<td><a href="/vehicles/book" class="btn btn-warning">Book Service</a></td>-->
+            <!--</tr>-->
+            </tbody>
+        </table>
+        <hr class="hr-4" />
+        <h2>Past Appointments</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Vehicle</th>
+                <th scope="col">Type</th>
+                <th scope="col">Advisor</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--<tr th:each="vehicle : ${#authentication.principal.vehicles}">-->
+                <!--<td th:text="${vehicle.year}" />-->
+                <!--<td th:text="${vehicle.make + ' ' + vehicle.model + ', ' + vehicle.color}" />-->
+                <!--<td th:text="${vehicle.mileage}" />-->
+                <!--<td th:text="${vehicle.license}" />-->
+            <!--</tr>-->
+            </tbody>
+        </table>
     </article>
 
 </main>
