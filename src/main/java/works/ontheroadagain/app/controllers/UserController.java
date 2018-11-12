@@ -9,15 +9,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import works.ontheroadagain.app.models.User;
 import works.ontheroadagain.app.repositories.UsersRepository;
+import works.ontheroadagain.app.services.VehicleRepository;
 
 @Controller
 public class UserController {
     private UsersRepository usersRepository;
     private PasswordEncoder passwordEncoder;
+    private VehicleRepository vehicleRepository;
 
-    public UserController(UsersRepository usersRepository, PasswordEncoder passwordEncoder) {
+    public UserController(UsersRepository usersRepository, PasswordEncoder passwordEncoder, VehicleRepository vehicleRepository) {
         this.usersRepository = usersRepository;
         this.passwordEncoder = passwordEncoder;
+        this.vehicleRepository = vehicleRepository;
     }
 
     @GetMapping("/register")
@@ -38,7 +41,8 @@ public class UserController {
     @GetMapping("/profile")
     public String showProfile(Model model) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("user", usersRepository.findOne(currentUser.getId()));
+        currentUser.setVehicles(vehicleRepository.findAllByUser(currentUser));
+        model.addAttribute("user", currentUser);
         return "users/profile";
 
     }
