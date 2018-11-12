@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/fragments :: head"></head>
+<!--<head>-->
+<!--<meta charset="UTF-8" />-->
+
+<!--<title>On the road again</title>-->
+<!--</head>-->
+<body class=" bg-light">
+<nav th:replace="fragments/fragments :: navbar"></nav>
+
+<header th:replace=" fragments/fragments :: header"></header>
+<h1 class="container text-info">Create your booking </h1>
+
+<main class="container mx-auto">
+    <form action="/vehicles/book" method="post" th:object="${serviceBooking}">
+        <select name="car">
+            <option value="mazda">Mazda</option>
+            <option value="civic">Civic</option>
+        </select>
+
+        <section class="form-row">
+            <article class="form-group col-md-8">
+                <label for="date">Date of Appointment:</label>
+                <input type="date" id="date" name="date" th:field="*{service_date}"/>
+            </article>
+
+            <article class="form-group col-md-8">
+                <label for="time">Time of Appointment:</label>
+                <input type="time" id="time" name="time" />
+            </article>
+        </section>
+
+        <select name="advise">
+            <option value="Tom">Tom</option>
+            <option value="Will">Will</option>
+            <option value="Jerry">Jerry</option>
+        </select>
+
+        <select name="service-type">
+            <option value="oil">Oil Change</option>
+            <option value="tires">Tire Rotation</option>
+            <option value="maintenance">Regular Maintenance</option>
+            <option value="diagnostic">Diagnostic</option>
+            <option value="air-filter">Air Filter</option>
+            <option value="brakes">Brakes</option>
+        </select>
+
+        <input type="submit" />
+    </form>
+</main>
+
+<footer th:replace="fragments/fragments :: footer"></footer>
+
+</body>
+</html>

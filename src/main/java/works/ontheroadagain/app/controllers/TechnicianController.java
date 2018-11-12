@@ -15,10 +15,10 @@ public class TechnicianController {
         return "/technicians";
     }
 
-    @GetMapping("/vehicleAppt")
+    @GetMapping("/vehicleAppointment")
     public String showVehicleAppointment(){
 //        @PathVariable long id, Model vModel
 //        vModel.addAttribute("vehicle", VehicleService.findOne(id));
-        return "/vehicleAppt";
+        return "/vehicleAppointment";
     }
 }

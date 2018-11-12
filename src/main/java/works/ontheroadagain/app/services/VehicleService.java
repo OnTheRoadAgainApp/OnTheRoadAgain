@@ -1,7 +1,6 @@
 package works.ontheroadagain.app.services;
 
 import org.springframework.stereotype.Service;
-//import works.ontheroadagain.app.models.User;
 import works.ontheroadagain.app.models.User;
 import works.ontheroadagain.app.models.Vehicle;
 

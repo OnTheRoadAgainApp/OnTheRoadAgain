@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:include="fragments/fragments :: head"></head>
+
+
+<body class=" bg-light">
+
+<!-- responsive navbar -->
+<nav th:replace="fragments/fragments :: navbar"></nav>
+
+<!-- header with website logo -->
+<header th:replace=" fragments/fragments :: header"></header>
+
+
+<h1 class="container text-warning">Log In</h1>
+
+<main class="container mx-auto">
+
+    <aside th:if="${param.error}" class="alert alert-danger" role="alert">
+        Invalid Username and Password.
+    </aside>
+
+    <aside th:if="${param.logout}" class="alert alert-warning" role="alert">
+        You have been logged out.
+    </aside>
+
+    <form th:action="@{/login}" method="post">
+        <fieldset>
+            <article class="form-group col-md-6">
+                <label class="col-3" for="username">Username</label>
+                <input id="username" name="username" type="text"/>
+            </article>
+
+            <article class="form-group col-md-6">
+                <label class="col-3" for="password">Password</label>
+                <input id="password" name="password" type="password"/>
+            </article>
+
+            <input type="submit" class="btn btn-warning" value="Log In"/>
+        </fieldset>
+    </form>
+
+</main>
+<!-- red footer with links  -->
+<footer th:replace="fragments/fragments :: footer"></footer>
+</body>
+</html>

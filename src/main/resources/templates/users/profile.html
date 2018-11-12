@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/fragments :: head"></head>
+<!--<head>-->
+<!--<meta charset="UTF-8" />-->
+
+<!--<title>On the road again</title>-->
+<!--</head>-->
+<body class=" bg-light">
+<nav th:replace="fragments/fragments :: navbar"></nav>
+
+<header th:replace=" fragments/fragments :: header"></header>
+<h1 class="container">Welcome back, <span th:text="${#authentication.principal.first_name}"/>!</h1>
+<main class="container row mx-auto">
+
+    <article class="col-6">
+        <h2>user info</h2>
+        <h5><span th:text="${#authentication.principal.id}"/></h5>
+        <h5>Username: <span th:text="${#authentication.principal.username}"/></h5>
+        <h5>Email: <span th:text="${#authentication.principal.email}"/></h5>
+    </article>
+
+    <article class="col-6">
+        <h2>vehicle info</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Year</th>
+                <th scope="col">Make Model, Color</th>
+                <th scope="col">Mileage</th>
+                <th scope="col">License</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="vehicle : ${#authentication.principal.vehicles}">
+                <td th:text="${vehicle.year}" />
+                <td th:text="${vehicle.make + ' ' + vehicle.model + ', ' + vehicle.color}" />
+                <td th:text="${vehicle.mileage}" />
+                <td th:text="${vehicle.license}" />
+            </tr>
+            </tbody>
+        </table>
+        <a class="btn btn-warning" href="/vehicles/add">Add Vehicle</a>
+    </article>
+
+</main>
+
+<footer th:replace="fragments/fragments :: footer"></footer>
+</body>
+</html>
