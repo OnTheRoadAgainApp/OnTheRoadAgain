@@ -54,6 +54,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 /* Pages that require authentication */
                 .and()
                 .authorizeRequests()
+                .antMatchers() //put for each role 402 - access is denied
+                .hasAuthority("TECHNICIAN")
+                .and()
+                .authorizeRequests()
+                .antMatchers() //put for each role
+                .hasAuthority("ADVISOR")
+                .and()
+                .authorizeRequests()
+                .antMatchers() //put for each role
+                .hasAuthority("CUSTOMER")
+                .and()
+                .authorizeRequests()
                 
                 //I'll add these things below later
                 .antMatchers(

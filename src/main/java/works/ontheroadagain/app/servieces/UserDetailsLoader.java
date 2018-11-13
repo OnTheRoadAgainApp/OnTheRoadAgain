@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import works.ontheroadagain.app.models.User;
 import works.ontheroadagain.app.models.UserWithRoles;
 import works.ontheroadagain.app.repositories.UsersRepository;
+import works.ontheroadagain.app.services.RolesRepository;
 
 @Service
 public class UserDetailsLoader implements UserDetailsService {

@@ -47,7 +47,7 @@ public class User {
     private List<Vehicle> vehicles;
 
     @OneToOne
-    private UserRole user_role;
+    private Role role;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -76,7 +76,8 @@ public class User {
     public User() {
     }
 
-    public User(String first, String last_name, String username, String email, String password, long phone_number, String address, String city, String state, long zipcode, List<Vehicle> vehicles, UserRole user_role, List<Speciality> specialities) {
+
+    public User(String first, String last_name, String username, String email, String password, long phone_number, String address, String city, String state, long zipcode, List<Vehicle> vehicles, Role role, List<Speciality> specialities) {
         this.first = first;
         this.last_name = last_name;
         this.username = username;
@@ -88,14 +89,9 @@ public class User {
         this.state = state;
         this.zipcode = zipcode;
         this.vehicles = vehicles;
-        this.user_role = user_role;
+        this.role = role;
         this.specialities = specialities;
     }
-
-    public User(String first) {
-        this.first = first;
-    }
-
 
     public long getId() {
         return id;
@@ -193,12 +189,12 @@ public class User {
         this.vehicles = vehicles;
     }
 
-    public UserRole getUser_role() {
-        return user_role;
+    public Role getRole() {
+        return role;
     }
 
-    public void setUser_role(UserRole user_role) {
-        this.user_role = user_role;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public List<Speciality> getSpecialities() {
