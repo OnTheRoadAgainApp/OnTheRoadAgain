@@ -27,9 +27,13 @@
             </thead>
             <tbody>
             <tr th:each="service_booking : ${serviceBookings}">
-                <td></td>
-                <!--<td th:text="${service_booking.vehicle.license}" />-->
+                <td th:text="${service_booking.vehicle.make + ' ' + service_booking.vehicle.model + ', ' + service_booking.vehicle.color}" />
+                <td th:text="${service_booking.vehicle.license}" />
                 <td th:text="${service_booking.service_date}" />
+                <td th:text="${service_booking.service_type.description}" />
+                <!--<td th:text="${service_booking.event.description}" />-->
+                <td>status</td>
+                <td th:text="${service_booking.advisor.first_name}" />
                 <td></td>
                 <td></td>
                 <th>
