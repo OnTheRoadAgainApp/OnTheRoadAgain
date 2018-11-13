@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import works.ontheroadagain.app.servieces.UserDetailsLoader;
+import works.ontheroadagain.app.services.UserDetailsLoader;
 
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -57,8 +57,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 
                 //I'll add these things below later
                 .antMatchers(
-                        "/profile", // only authenticated users can go there
-                        "/vehicles/add" // only authenticated users can go there
+                        "/profile", // user profile, only authenticated users can go there
+                        "/vehicles/add", // add vehicles,  only authenticated users can go there
+                        "/vehicles/book" // book service, only authenticated users can go there
 
                 )
                 .authenticated()
