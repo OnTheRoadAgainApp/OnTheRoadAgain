@@ -8,5 +8,4 @@ import java.util.List;
 
 public interface RolesRepository extends CrudRepository<Role, Long> {
 
-
 }
