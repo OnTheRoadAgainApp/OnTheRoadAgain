@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/fragments :: head"></head>
+
+<body class=" bg-light">
+<nav th:replace="fragments/fragments :: navbar"></nav>
+
+<header th:replace=" fragments/fragments :: header"></header>
+<br />
+<!--<h1 class="container">Welcome, <span th:text="${#authentication.principal.first_name}"/> - our favorite advisor!</h1>-->
+<br />
+<main class="container row mx-auto">
+
+    <div class="col">
+
+        <h2>All Vehicles with booked appointments</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Vehicle</th>
+                <th scope="col">License</th>
+                <th scope="col">Booking Date</th>
+                <th scope="col">Service</th>
+                <th scope="col">Status</th>
+                <th scope="col">Technican</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="service_booking : ${serviceBookings}">
+                <td th:text="${service_booking.vehicle.make + ' ' + service_booking.vehicle.model + ', ' + service_booking.vehicle.color}" />
+                <td th:text="${service_booking.vehicle.license}" />
+                <td th:text="${service_booking.service_date}" />
+                <td th:text="${service_booking.service_type.description}" />
+                <!--<td th:text="${service_booking.event.description}" />-->
+                <td>status</td>
+                <!--<td th:text="${service_booking.advisor.first_name}" />-->
+                <td></td>
+                <td></td>
+                <th>
+                    <form>
+                        <div class="form-group">
+                            <select class="form-control" id="technicanSelect">
+                                <option>Technican</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </form>
+                </th>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</main>
+
+<footer th:replace="fragments/fragments :: footer"></footer>
+</body>
+</html>
