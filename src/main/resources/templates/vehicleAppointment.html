@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments/fragments :: head"></head>
+<head th:include="fragments/fragments :: head">
+    <!--<script th:inline="javascript">-->
+        <!--function Clear()-->
+        <!--{-->
+            <!--clearRadioGroup("customRadio");-->
+        <!--}-->
+
+        <!--function clearRadioGroup(GroupName)-->
+        <!--{-->
+            <!--var ele = document.getElementsByName(GroupName);-->
+            <!--for(var i=0;i < ele.length;i++)-->
+                <!--ele[i].checked = false;-->
+        <!--}-->
+    <!--</script>-->
+</head>
 <body class=" bg-light">
 <nav th:replace="fragments/fragments :: navbar"></nav>
 
@@ -36,7 +50,7 @@
     <div class="custom-control custom-radio" style="padding-left: 10%">
         <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" />
         <label class="custom-control-label" for="customRadio1" style="color: red">Error Encountered</label>
-        <button type="button" class="btn btn-outline-info btn-sm">Clear Error</button>
+        <button type="button" name="clear" class="btn btn-outline-info btn-sm">Clear Error</button>
     </div>
         <hr/>
     <div class="custom-control custom-checkbox">
@@ -47,7 +61,7 @@
     <div class="custom-control custom-radio" style="padding-left: 10%">
         <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" />
         <label class="custom-control-label" for="customRadio2" style="color: red">Error Encountered</label>
-        <button type="button" class="btn btn-outline-info btn-sm">Clear Error</button>
+        <button type="button" name="clear1" class="btn btn-outline-info btn-sm">Clear Error</button>
     </div>
         <hr/>
     <div class="custom-control custom-checkbox">
@@ -58,7 +72,7 @@
     <div class="custom-control custom-radio" style="padding-left: 10%">
         <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input" />
         <label class="custom-control-label" for="customRadio3" style="color: red">Error Encountered</label>
-        <button type="button" class="btn btn-outline-info btn-sm">Clear Error</button>
+        <button type="button" name="clear2" class="btn btn-outline-info btn-sm">Clear Error</button>
     </div>
         <hr/>
     <div class="custom-control custom-checkbox">
@@ -840,7 +854,7 @@
                 </tr>
             </table>
             <textarea name="comment" style="resize: none; width: 36rem" placeholder="Enter Vehicle Notes Here"></textarea>
-            <input class="btn btn-primary btn-block" type="submit" value="Submit" />
+            <a href="/technicians" class="btn btn-primary btn-block">Submit</a>
         </form>
     </section>
 </main>
