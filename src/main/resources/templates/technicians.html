@@ -40,14 +40,14 @@
         </div>
     </section>
     <section class="col-6 row">
-        <h2 style="text-align: center">Today's Scheduled Vehicles</h2>
+        <h2>Scheduled Vehicles</h2>
         <!--2 cards-->
         <div class="card-deck">
         <div class="card" style="width: 18rem; display: flex">
             <h4>Customer Information</h4>
             <hr/>
             <div class="card-body">
-                <h5 class="card-title">Name</h5>
+                <h5 class="card-title" th:text="${user.first_name + user.last_name}"></h5>
                 <!--th:text="${user.first_name + user.last_name}"-->
                 <h6 class="card-text">Service requested:</h6>
                 <blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</blockquote>
@@ -61,54 +61,7 @@
                 <li class="list-group-item">Vehicle Year</li>
                 <!--th:text="${vehicle.year}"-->
             </ul>
-            <a ><input type="button" value="Vehicle Page" class="btn btn-primary" /></a>
-            <!--th:href="@{/vehicle/{id}/showVehicleAppt(id=${vehicle.id})}"-->
-        </div>
-        <div class="card" style="width: 18rem; display: flex">
-            <h4>Customer Information</h4>
-            <hr/>
-            <div class="card-body">
-                <h5 class="card-title">Name</h5>
-                <!--th:text="${user.first_name + user.last_name}"-->
-                <h6 class="card-text">Service requested:</h6>
-                <blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</blockquote>
-            </div>
-            <ul class="list-group list-group-flush">
-                <!--th:each="vehicle : ${vehicles}"-->
-                <li class="list-group-item">Vehicle Make</li>
-                <!--th:text="${vehicle.make}"-->
-                <li class="list-group-item">Vehicle Model</li>
-                <!--th:text="${vehicle.model}"-->
-                <li class="list-group-item">Vehicle Year</li>
-                <!--th:text="${vehicle.year}"-->
-            </ul>
-            <a ><input type="button" value="Vehicle Page" class="btn btn-primary" /></a>
-            <!--th:href="@{/vehicle/{id}/showVehicleAppt(id=${vehicle.id})}"-->
-            <!--th:href="@{/vehicle/{id}/showVehicleAppt(id=${vehicle.id})}"-->
-        </div>
-        </div>
-        <h2 style="text-align: center">Upcoming Vehicle Appointments</h2>
-        <!--2 cards-->
-        <div class="card-deck">
-        <div class="card" style="width: 18rem;">
-            <h4>Customer Information</h4>
-            <hr/>
-            <div class="card-body">
-                <h5 class="card-title">Name</h5>
-                <!--th:text="${user.first_name + user.last_name}"-->
-                <h6 class="card-text">Service requested:</h6>
-                <blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</blockquote>
-            </div>
-            <ul class="list-group list-group-flush">
-                <!--th:each="vehicle : ${vehicles}"-->
-                <li class="list-group-item">Vehicle Make</li>
-                <!--th:text="${vehicle.make}"-->
-                <li class="list-group-item">Vehicle Model</li>
-                <!--th:text="${vehicle.model}"-->
-                <li class="list-group-item">Vehicle Year</li>
-                <!--th:text="${vehicle.year}"-->
-            </ul>
-            <!--<a href="#" class="btn btn-primary">Appointment Page</a>-->
+            <a th:href="@{/vehicle/{id}/vehicleAppointment(id=${vehicle.id})}"><input type="button" value="Vehicle Page" class="btn btn-primary btn-block" /></a>
         </div>
         </div>
     </section>
