@@ -57,7 +57,7 @@ public class UserController {
         for(Vehicle vehicle : currentVehicles) {
             bookings.addAll(bookingRepo.findAllByVehicle(vehicle));
         }
-
+        System.out.println(bookings);
         model.addAttribute("bookings", bookings);
         return "users/profile";
 

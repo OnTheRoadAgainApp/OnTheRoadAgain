@@ -10,7 +10,8 @@
 <nav th:replace="fragments/fragments :: navbar"></nav>
 
 <header th:replace=" fragments/fragments :: header"></header>
-<h1 class="container">Welcome back, <span th:text="${#authentication.principal.first}"/>!</h1>
+<h1 class="container">Welcome back, <span th:text="${#authentication.principal.first}"/>! <hr class="hr-4"/></h1>
+
 <main class="container row mx-auto">
 
     <article class="col-6">
@@ -28,7 +29,7 @@
                 <th scope="col">Vehicle</th>
                 <th scope="col">Mileage</th>
                 <th scope="col">License</th>
-                <th scope="col">Service</th>
+                <th scope="col">Remove</th>
 
             </tr>
             </thead>
@@ -38,7 +39,7 @@
                 <td th:text="${vehicle.make + ' ' + vehicle.model + ', ' + vehicle.color}" />
                 <td th:text="${vehicle.mileage}" />
                 <td th:text="${vehicle.license}" />
-                <td><a href="/vehicles/book" class="btn btn-warning">Book Service</a></td>
+                <td><a href="/vehicles/delete" class="btn btn-danger">Remove</a></td>
             </tr>
             </tbody>
         </table>
@@ -54,15 +55,16 @@
                 <th scope="col">Vehicle</th>
                 <th scope="col">Type</th>
                 <th scope="col">Advisor</th>
+                <th scope="col">Cancel Appt.</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="booking : ${bookings}">
                 <td th:text="${booking.service_date}" />
                 <td th:text="${booking.vehicle.make + ' ' + booking.vehicle.model}" />
-                <td th:text="${booking.type}" />
-                <td th:text="${booking.advisor}" />
-                <td><a href="/vehicles/book" class="btn btn-warning">Book Service</a></td>
+                <td th:text="${booking.service_type.description}" />
+                <td th:text="${booking.advisor.first}" />
+                <td><a href="/booking/cancel" class="btn btn-danger">Cancel</a></td>
             </tr>
             </tbody>
         </table>
