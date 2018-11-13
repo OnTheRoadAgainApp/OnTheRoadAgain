@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface VehicleRepository extends CrudRepository<Vehicle, Long> {
     List<Vehicle> findAllByUser(User user);
+    Vehicle findByLicense(String license);
 }

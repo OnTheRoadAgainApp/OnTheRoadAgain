@@ -7,6 +7,7 @@ import works.ontheroadagain.app.models.User;
 @Repository
 public interface UsersRepository extends CrudRepository<User, Long> {
     User findByUsername(String username);
+    User findByFirst(String first);
 }
 
 

@@ -16,7 +16,7 @@ public class UserRole {
     @Column(name = "role")
     private String role;
 
-    
+
 
     public UserRole() {
     }

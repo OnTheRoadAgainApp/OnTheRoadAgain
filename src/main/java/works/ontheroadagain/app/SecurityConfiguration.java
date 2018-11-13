@@ -57,8 +57,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 
                 //I'll add these things below later
                 .antMatchers(
-                        "/profile", // only authenticated users can go there
-                        "/vehicles/add" // only authenticated users can go there
+                        "/profile", // user profile, only authenticated users can go there
+                        "/vehicles/add", // add vehicles,  only authenticated users can go there
+                        "/vehicles/book" // book service, only authenticated users can go there
 
                 )
                 .authenticated()

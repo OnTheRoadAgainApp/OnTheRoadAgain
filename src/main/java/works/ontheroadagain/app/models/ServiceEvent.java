@@ -19,7 +19,7 @@ public class ServiceEvent {
 
     @OneToOne
     private Event event;
-    
+
     @OneToOne
     private User technician;
 

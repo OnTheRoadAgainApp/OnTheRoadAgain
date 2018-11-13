@@ -31,3 +31,9 @@ Maintains communication between customers, mechanics, and managers in regards to
 * Convert alerts to SMS API feature to alert customer that vehicle work has started, is 80% complete, and finally complete (to request payment).
 * An API with a VIN decoder to specifically identify vehicles before arrival to repair shop.
 
+## Beta is currently focused on customer stories. only integrate customer stories to beta. once completed, will be added to master.
+### Latest integrations - 11/11/18 11:45a
+* Micheal 
+* models
+* authentication 
+* forms 
