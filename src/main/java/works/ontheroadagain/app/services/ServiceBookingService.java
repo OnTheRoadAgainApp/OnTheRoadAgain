@@ -12,7 +12,7 @@ public class ServiceBookingService {
 
     public ServiceBookingService() {
         serviceBookings = new ArrayList<>();
-//        createServiceBookings();
+        findAll();
     }
 
     public List<ServiceBooking> findAll() {
