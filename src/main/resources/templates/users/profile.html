@@ -10,7 +10,8 @@
 <nav th:replace="fragments/fragments :: navbar"></nav>
 
 <header th:replace=" fragments/fragments :: header"></header>
-<h1 class="container">Welcome back, <span th:text="${#authentication.principal.first_name}"/>!</h1>
+<h1 class="container">Welcome back, <span th:text="${#authentication.principal.first}"/>! <hr class="hr-4"/></h1>
+
 <main class="container row mx-auto">
     <!--progress bar test-->
     <!--<div id="myProgress">-->
@@ -43,7 +44,7 @@
                 <th scope="col">Vehicle</th>
                 <th scope="col">Mileage</th>
                 <th scope="col">License</th>
-                <th scope="col">Service</th>
+                <th scope="col">Remove</th>
 
             </tr>
             </thead>
@@ -53,11 +54,11 @@
                 <td th:text="${vehicle.make + ' ' + vehicle.model + ', ' + vehicle.color}" />
                 <td th:text="${vehicle.mileage}" />
                 <td th:text="${vehicle.license}" />
-                <td><a href="/vehicles/book" class="btn btn-warning">Book Service</a></td>
+                <td><a href="/vehicles/delete" class="btn btn-danger">Remove</a></td>
             </tr>
             </tbody>
         </table>
-        <a class="btn btn-warning btn-lg btn-block" href="/vehicles/add">Add Vehicle</a>
+        <a class="btn btn-warning btn-block" href="/vehicles/add">Add Vehicle</a>
     </article>
 
     <article class="col-6">
@@ -69,18 +70,20 @@
                 <th scope="col">Vehicle</th>
                 <th scope="col">Type</th>
                 <th scope="col">Advisor</th>
+                <th scope="col">Cancel Appt.</th>
             </tr>
             </thead>
             <tbody>
-            <!--<tr th:each="booking : ${#authentication.principal.vehicles}">-->
-                <!--<td th:text="${vehicle.year}" />-->
-                <!--<td th:text="${vehicle.make + ' ' + vehicle.model + ', ' + vehicle.color}" />-->
-                <!--<td th:text="${vehicle.mileage}" />-->
-                <!--<td th:text="${vehicle.license}" />-->
-                <!--<td><a href="/vehicles/book" class="btn btn-warning">Book Service</a></td>-->
-            <!--</tr>-->
+            <tr th:each="booking : ${bookings}">
+                <td th:text="${booking.service_date}" />
+                <td th:text="${booking.vehicle.make + ' ' + booking.vehicle.model}" />
+                <td th:text="${booking.service_type.description}" />
+                <td th:text="${booking.advisor.first}" />
+                <td><a href="/booking/cancel" class="btn btn-danger">Cancel</a></td>
+            </tr>
             </tbody>
         </table>
+        <a class="btn btn-warning btn-block" href="/vehicles/book">Book Service Appt</a>
         <hr class="hr-4" />
         <h2>Past Appointments</h2>
         <table class="table table-striped">
@@ -92,14 +95,14 @@
                 <th scope="col">Advisor</th>
             </tr>
             </thead>
-            <tbody>
+            <!--<tbody>-->
             <!--<tr th:each="vehicle : ${#authentication.principal.vehicles}">-->
                 <!--<td th:text="${vehicle.year}" />-->
                 <!--<td th:text="${vehicle.make + ' ' + vehicle.model + ', ' + vehicle.color}" />-->
                 <!--<td th:text="${vehicle.mileage}" />-->
                 <!--<td th:text="${vehicle.license}" />-->
             <!--</tr>-->
-            </tbody>
+            <!--</tbody>-->
         </table>
     </article>
 

@@ -1,4 +1,4 @@
-package works.ontheroadagain.app.servieces;
+package works.ontheroadagain.app.services;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
