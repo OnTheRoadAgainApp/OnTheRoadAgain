@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments/fragments :: head"></head>
+<head th:include="fragments/fragments :: head">
+<script>
+    // document.getElementById("clear-button").addEventListener("click", function(e){
+    //     e.preventDefault();
+    //     // document.getElementById("customRadio1");
+    //     alert("You did a thing");
+    // });
+</script>
+</head>
 <body class=" bg-light">
 <nav th:replace="fragments/fragments :: navbar"></nav>
 
@@ -24,46 +32,44 @@
         <div class="card-body">
         <h5 class="card-title" style="text-align: center">Vehicle Status</h5>
     <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="customCheck1" />
-        <label class="custom-control-label" for="customCheck1">Vehicle Accepted</label>
+        <input type="checkbox" class="custom-control-input" id="check1" />
+        <label class="custom-control-label" id="test" for="check1">Vehicle Accepted</label>
     </div>
         <hr/>
     <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="customCheck2" />
-        <label class="custom-control-label" for="customCheck2">Service Started</label>
+        <input type="checkbox" class="custom-control-input" id="check2" />
+        <label class="custom-control-label" for="check2">Service Started</label>
     </div>
         <hr/>
-    <div class="custom-control custom-radio" style="padding-left: 10%">
-        <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" />
-        <label class="custom-control-label" for="customRadio1" style="color: red">Error Encountered</label>
-        <button type="button" name="clear" class="btn btn-outline-info btn-sm">Clear Error</button>
-    </div>
-        <hr/>
-    <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="customCheck3" />
-        <label class="custom-control-label" for="customCheck3">Halfway point reached</label>
-    </div>
-        <hr/>
-    <div class="custom-control custom-radio" style="padding-left: 10%">
-        <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" />
-        <label class="custom-control-label" for="customRadio2" style="color: red">Error Encountered</label>
-        <button type="button" name="clear1" class="btn btn-outline-info btn-sm">Clear Error</button>
+    <div class="custom-control custom-checkbox" style="padding-left: 10%">
+        <input type="checkbox" class="custom-control-input" id="check2E" />
+        <label class="custom-control-label" for="check2E" style="color: red">Error Encountered</label>
     </div>
         <hr/>
     <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="customCheck4" />
-        <label class="custom-control-label" for="customCheck4">Checklist Complete / Final QC Inspection</label>
+        <input type="checkbox" class="custom-control-input" id="check3" />
+        <label class="custom-control-label" for="check3">Halfway point reached</label>
     </div>
         <hr/>
-    <div class="custom-control custom-radio" style="padding-left: 10%">
-        <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input" />
-        <label class="custom-control-label" for="customRadio3" style="color: red">Error Encountered</label>
-        <button type="button" name="clear2" class="btn btn-outline-info btn-sm">Clear Error</button>
+    <div class="custom-control custom-checkbox" style="padding-left: 10%">
+        <input type="checkbox" class="custom-control-input" id="check3E" />
+        <label class="custom-control-label" for="check3E" style="color: red">Error Encountered</label>
     </div>
         <hr/>
     <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="customCheck5" />
-        <label class="custom-control-label" for="customCheck5">Advisor Approval / Vehicle Complete</label>
+        <input type="checkbox" class="custom-control-input" id="check4" />
+        <label class="custom-control-label" for="check4">Checklist Complete / Final QC Inspection</label>
+    </div>
+        <hr/>
+    <div class="custom-control custom-checkbox" style="padding-left: 10%">
+        <input type="checkbox" class="custom-control-input" id="check4E" />
+        <label class="custom-control-label" for="check4E" style="color: red">Error Encountered</label>
+    </div>
+        <hr/>
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="check5" />
+        <label class="custom-control-label" for="check5">Advisor Approval / Vehicle Complete</label>
+        <!--Button should save this vehicle to the technicians completed vehicles card.-->
         <button type="button" class="btn btn-outline-success btn-sm">Vehicle Complete</button>
     </div>
     </div>
@@ -72,6 +78,7 @@
     <section class="col-6 row">
         <h3>Vehicle Inspection Checklist</h3>
         <form>
+            <!--th:method="post" & th:action="users/profile page somehow?!?!?!?!-->
             <button type="button" class="btn btn-success btn-sm disabled">Satisfactory</button>
             <button type="button" class="btn btn-warning btn-sm disabled">Warning</button>
             <button type="button" class="btn btn-danger btn-sm disabled">Critical</button>
@@ -840,7 +847,7 @@
                 </tr>
             </table>
             <textarea name="comment" style="resize: none; width: 36rem" placeholder="Enter Vehicle Notes Here"></textarea>
-            <a href="/technicians" class="btn btn-primary btn-block">Submit</a>
+            <a onclick="window.location.href = '/technicians';" class="btn btn-primary btn-block">Submit</a>
         </form>
     </section>
 </main>
