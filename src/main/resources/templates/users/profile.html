@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments/fragments :: head"></head>
+<style type="text/css">
+    #map-canvas {
+        width: 500px;
+        height: 300px;
+    }
+</style>
+
+
 <!--<head>-->
 <!--<meta charset="UTF-8" />-->
 
@@ -90,8 +98,32 @@
             <!--</tbody>-->
         </table>
     </article>
+    <div id="map-canvas"></div>
 
 </main>
+
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC96DvMPlkNkha8pQ0QUy9abAXnfT7F2lY"></script>
+
+<script type="text/javascript">
+    (function() {
+        "use strict";
+
+        var mapOptions = {
+
+            zoom: 19,
+
+
+            center: {
+                lat:  29.426791,
+                lng: -98.489602
+            }
+        };
+
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+    })();
+</script>
 
 <footer th:replace="fragments/fragments :: footer"></footer>
 </body>
