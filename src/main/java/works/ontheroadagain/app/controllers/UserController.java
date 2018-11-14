@@ -7,22 +7,31 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import works.ontheroadagain.app.models.ServiceBooking;
 import works.ontheroadagain.app.models.User;
+import works.ontheroadagain.app.models.Vehicle;
 import works.ontheroadagain.app.repositories.UsersRepository;
+import works.ontheroadagain.app.services.BookingRepository;
+import works.ontheroadagain.app.services.RolesRepository;
 import works.ontheroadagain.app.services.VehicleRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class UserController {
     private UsersRepository usersRepository;
     private PasswordEncoder passwordEncoder;
     private VehicleRepository vehicleRepository;
-//    private ServiceBookingRepository serviceBookingRepository;
+    private BookingRepository bookingRepo;
+    private RolesRepository rolesRepo;
 
-    public UserController(UsersRepository usersRepository, PasswordEncoder passwordEncoder, VehicleRepository vehicleRepository) {
+    public UserController(UsersRepository usersRepository, PasswordEncoder passwordEncoder, VehicleRepository vehicleRepository, BookingRepository bookingRepo, RolesRepository rolesRepo) {
         this.usersRepository = usersRepository;
         this.passwordEncoder = passwordEncoder;
         this.vehicleRepository = vehicleRepository;
-//        this.serviceBookingRepository = serviceBookingRepository;
+        this.bookingRepo = bookingRepo;
+        this.rolesRepo = rolesRepo;
     }
 
     @GetMapping("/register")
@@ -36,6 +45,11 @@ public class UserController {
     public String saveUser(@ModelAttribute User user) {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
+
+        //sets default to customer
+        user.setRole(rolesRepo.findOne(1L));
+
+        //sets new form
         usersRepository.save(user);
         return "redirect:/login";
     }
@@ -43,18 +57,19 @@ public class UserController {
     @GetMapping("/profile")
     public String showProfile(Model model) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<Vehicle> currentVehicles = vehicleRepository.findAllByUser(currentUser);
         currentUser.setVehicles(vehicleRepository.findAllByUser(currentUser));
         model.addAttribute("user", currentUser);
+
+        List<ServiceBooking> bookings = new ArrayList<>();
+        for(Vehicle vehicle : currentVehicles) {
+            bookings.addAll(bookingRepo.findAllByVehicle(vehicle));
+        }
+        System.out.println(bookings);
+        model.addAttribute("bookings", bookings);
         return "users/profile";
 
     }
-
-//    @GetMapping("/advisor")
-//    public String showAdvisorPage(Model model) {
-//        model.addAttribute("user", new User());
-//        return "users/advisor";
-//
-//    }
 
 }
 
