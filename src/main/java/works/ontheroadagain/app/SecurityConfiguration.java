@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import works.ontheroadagain.app.services.UserDetailsLoader;
+import works.ontheroadagain.app.servieces.UserDetailsLoader;
 
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -52,6 +52,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
 
                 /* Pages that require authentication */
+                .and()
+                .authorizeRequests()
+                .antMatchers() //put for each role 402 - access is denied
+                .hasAuthority("TECHNICIAN")
+                .and()
+                .authorizeRequests()
+                .antMatchers() //put for each role
+                .hasAuthority("ADVISOR")
+                .and()
+                .authorizeRequests()
+                .antMatchers() //put for each role
+                .hasAuthority("CUSTOMER")
                 .and()
                 .authorizeRequests()
                 
