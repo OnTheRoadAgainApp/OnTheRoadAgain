@@ -32,6 +32,8 @@ public class UserController {
         this.vehicleRepository = vehicleRepository;
         this.bookingRepo = bookingRepo;
         this.rolesRepo = rolesRepo;
+
+        
     }
 
     @GetMapping("/register")

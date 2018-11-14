@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/fragments :: head"></head>
+<body class=" bg-light">
+<nav th:replace="fragments/fragments :: navbar"></nav>
+<header th:replace=" fragments/fragments :: header"></header>
+
+<main class="container row mx-auto">
+    <section class="col-6">
+        <!--Technician profile card-->
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h4 class="card-title">Technician Profile</h4>
+                <h5 class="card-subtitle mb-2 text-muted">Tech name</h5>
+                <!--th:text="${user}"-->
+                <h6 class="card-text">Tech ID</h6>
+                <!--th:text="${technician.id}"-->
+                <h6 class="card-text">Tech Specialties</h6>
+                <!--th:text="${specialties.id}"-->
+            </div>
+        </div>
+        <!--Completed Vehicles card-->
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h4 class="card-title">Completed Vehicles</h4>
+                <h5 class="card-subtitle mb-2 text-muted">Vehicle 1</h5>
+                <!--th:text="${user}"-->
+                <h5 class="card-subtitle mb-2 text-muted">Vehicle 2</h5>
+                <!--th:text="${user}"-->
+            </div>
+        </div>
+    </section>
+    <section class="col-6 row">
+        <h2>Scheduled Vehicles</h2>
+        <!--2 cards-->
+        <div class="card-deck">
+        <div class="card" style="width: 18rem; display: flex">
+            <h4>Customer Name Goes Here</h4>
+            <hr/>
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <!--th:text="${user.first + user.last}-->
+                <h6 class="card-text">Service requested:</h6>
+                <blockquote></blockquote>
+                <!--th:text="${service_booking.description}"-->
+            </div>
+            <ul class="list-group list-group-flush">
+                <!--th:each="vehicle : ${vehicles}"-->
+                <li class="list-group-item"></li>
+                <!--th:text="${vehicle.make}"-->
+                <li class="list-group-item" ></li>
+                <!--th:text="${vehicle.model}"-->
+                <li class="list-group-item" ></li>
+                <!--th:text="${vehicle.year}"-->
+            </ul>
+            <a href="/vehicleAppointment" class="btn btn-primary btn-block">Vehicle Page</a>
+            <!--th:href="@{/vehicle/{id}/vehicleAppointment(id=${vehicle.id})}"-->
+        </div>
+        </div>
+    </section>
+</main>
+
+
+
+<footer th:replace="fragments/fragments :: footer"></footer>
+</body>
+</html>
