@@ -62,7 +62,7 @@ public class BookingController {
         booking.setVehicle(vehicleRepo.findByLicense(license));
         booking.setService_type(serviceTypeRepo.findById(serviceId));
         bookingRepo.save(booking);
-        return "users/profile";
+        return "redirect:/profile";
     }
 
     @GetMapping("/advisor")
