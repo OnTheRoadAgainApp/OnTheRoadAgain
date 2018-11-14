@@ -17,21 +17,24 @@ public class ServiceBooking {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date service_date;
 
-    //    what type of that time period?
+    //    what type of that time period? HN - not sure... can look at datetime or time for data type TJ
     @Column(nullable = false)
     private String service_time;
 
-    @Column(nullable = false)
+    @Column  //(nullable = false) removing nullability because at creation cost not available TJ
     private double cost;
 
 //    @OneToOne
 //    private User user;
 
-    //    advisor_id??? we have one userid releted to customer...
+    //    advisor_id??? we have one userid related to customer... HN
     @OneToOne
     private User advisor;
 
     @OneToOne
+    private User technician;
+
+    @OneToOne //vehicle not nullable because need vehicle entered to create booking
     private Vehicle vehicle;
 
     @OneToOne
@@ -41,10 +44,9 @@ public class ServiceBooking {
     public ServiceBooking() {
     }
 
-    public ServiceBooking(Date service_date, String service_time, double cost, User advisor, Vehicle vehicle, ServiceType service_type) {
+    public ServiceBooking(Date service_date, String service_time, User advisor, Vehicle vehicle, ServiceType service_type) {
         this.service_date = service_date;
         this.service_time = service_time;
-        this.cost = cost;
 //        this.user = user;
         this.advisor = advisor;
         this.vehicle = vehicle;
