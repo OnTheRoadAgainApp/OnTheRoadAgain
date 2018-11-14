@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/fragments :: head"></head>
+<body class=" bg-light">
+<nav th:replace="fragments/fragments :: navbar"></nav>
+
+<header th:replace=" fragments/fragments :: header"></header>
+<h1 class="container">Look at this booking details, <span th:text="${#authentication.principal.first_name}"/>!</h1>
+<main class="container row mx-auto">
+
+    <article class="col-6">
+        <h2>Your Info</h2>
+        <hr class="hr-4"/>
+        <h5><span th:text="${#authentication.principal.id}"/></h5>
+        <h5>Username: <span th:text="${#authentication.principal.username}"/></h5>
+        <h5>Email: <span th:text="${#authentication.principal.email}"/></h5>
+        <hr class="hr-4"/>
+        <h2>Your Vehicles</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Year</th>
+                <th scope="col">Vehicle</th>
+                <th scope="col">Mileage</th>
+                <th scope="col">License</th>
+                <th scope="col">Service</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="service_booking : ${#authentication.principal.serviceBookings}">
+                <td th:text="${service_booking.vehicle.make + ' ' + service_booking.vehicle.model + ', ' + service_booking.vehicle.color}"/>
+                <td th:text="${service_booking.vehicle.license}"/>
+                <td th:text="${service_booking.service_date}"/>
+                <td th:text="${service_booking.service_type.description}"/>
+                <!--<td th:text="${service_booking.event.description}" />-->
+                <td>status</td>
+                <td th:text="${service_booking.advisor.first_name}"/>
+            </tr>
+            </tbody>
+        </table>
+        <a class="btn btn-warning btn-lg btn-block" href="/vehicles/add">Add Vehicle</a>
+    </article>
+    
+
+</main>
+
+<footer th:replace="fragments/fragments :: footer"></footer>
+</body>
+</html>

@@ -30,5 +30,7 @@ public class BookingController {
         model.addAttribute("serviceBookings", bookingRepository.findAll());
         return "users/advisor";
     }
+
+
     
 }
