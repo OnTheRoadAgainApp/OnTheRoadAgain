@@ -68,6 +68,7 @@ public class BookingController {
     @GetMapping("/advisor")
     public String vehicles(Model model) {
         model.addAttribute("serviceBookings", bookingRepo.findAll());
+        model.addAttribute("technicans", userRepo.findAllByRole(rolesRepo.findById(3L)));
         return "users/advisor";
     }
 

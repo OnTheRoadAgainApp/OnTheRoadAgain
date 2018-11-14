@@ -44,11 +44,12 @@ public class ServiceBooking {
     public ServiceBooking() {
     }
 
-    public ServiceBooking(Date service_date, String service_time, User advisor, Vehicle vehicle, ServiceType service_type) {
+    public ServiceBooking(Date service_date, String service_time, User advisor, User technician, Vehicle vehicle, ServiceType service_type) {
         this.service_date = service_date;
         this.service_time = service_time;
 //        this.user = user;
         this.advisor = advisor;
+        this.technician = technician;
         this.vehicle = vehicle;
         this.service_type = service_type;
     }
@@ -92,6 +93,15 @@ public class ServiceBooking {
 //    public void setUser(User user) {
 //        this.user = user;
 //    }
+
+
+    public User getTechnician() {
+        return technician;
+    }
+
+    public void setTechnician(User technician) {
+        this.technician = technician;
+    }
 
     public User getAdvisor() {
         return advisor;
