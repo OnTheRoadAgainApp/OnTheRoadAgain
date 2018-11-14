@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments/fragments :: head">
-<script>
-    // document.getElementById("clear-button").addEventListener("click", function(e){
-    //     e.preventDefault();
-    //     // document.getElementById("customRadio1");
-    //     alert("You did a thing");
-    // });
-</script>
+<script src="/static/jsThings.js"></script>
+<link rel="stylesheet" href="/static/styles.css" />
 </head>
 <body class=" bg-light">
 <nav th:replace="fragments/fragments :: navbar"></nav>
@@ -27,10 +22,17 @@
             </ul>
         </div>
     </section>
-    <section>
+    <section class="col-6">
+    <h2>Vehicle Status</h2>
+    <div class="progress">
+        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <div class = "ready"></div>
+    <!--</section>-->
+    <!--<section>-->
     <div class="card" style="width: 18rem; padding-left: 1%">
         <div class="card-body">
-        <h5 class="card-title" style="text-align: center">Vehicle Status</h5>
+        <h5 class="card-title" style="text-align: center">Vehicle Checklist</h5>
     <div class="custom-control custom-checkbox">
         <input type="checkbox" class="custom-control-input" id="check1" />
         <label class="custom-control-label" id="test" for="check1">Vehicle Accepted</label>
