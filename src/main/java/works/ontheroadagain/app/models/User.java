@@ -12,7 +12,7 @@ public class User {
     private long id;
 
     @Column(nullable = false, length = 100)
-    private String first_name;
+    private String first;
 
     @Column(nullable = false, length = 100)
     private String last_name;
@@ -63,7 +63,7 @@ public class User {
         email = copy.email;
         username = copy.username;
         password = copy.password;
-        first_name = copy.first_name;
+        first = copy.first;
         last_name = copy.last_name;
         phone_number = copy.phone_number;
         address = copy.address;
@@ -76,8 +76,8 @@ public class User {
     public User() {
     }
 
-    public User(String first_name, String last_name, String username, String email, String password, long phone_number, String address, String city, String state, long zipcode, List<Vehicle> vehicles, UserRole user_role, List<Speciality> specialities) {
-        this.first_name = first_name;
+    public User(String first, String last_name, String username, String email, String password, long phone_number, String address, String city, String state, long zipcode, List<Vehicle> vehicles, UserRole user_role, List<Speciality> specialities) {
+        this.first = first;
         this.last_name = last_name;
         this.username = username;
         this.email = email;
@@ -92,8 +92,8 @@ public class User {
         this.specialities = specialities;
     }
 
-    public User(String first_name) {
-        this.first_name = first_name;
+    public User(String first) {
+        this.first = first;
     }
 
 
@@ -105,12 +105,12 @@ public class User {
         this.id = id;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirst() {
+        return first;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirst(String first) {
+        this.first = first;
     }
 
     public String getLast_name() {

@@ -10,43 +10,58 @@
 <nav th:replace="fragments/fragments :: navbar"></nav>
 
 <header th:replace=" fragments/fragments :: header"></header>
-<h1 class="container text-info">Create your booking </h1>
+<h1 class="container text-warning">Create your booking </h1>
 
 <main class="container mx-auto">
-    <form action="/vehicles/book" method="post" th:object="${serviceBooking}">
-        <select name="car">
-            <option value="mazda">Mazda</option>
-            <option value="civic">Civic</option>
-        </select>
+    <form th:action="@{/vehicles/book}" method="post" th:object="${serviceBooking}">
 
         <section class="form-row">
-            <article class="form-group col-md-8">
+            <article class="form-group col-md-2">
                 <label for="date">Date of Appointment:</label>
-                <input type="date" id="date" name="date" th:field="*{service_date}"/>
+                <input type="date" id="date" name="date" class="form-control" th:field="*{service_date}"/>
             </article>
 
-            <article class="form-group col-md-8">
+            <article class="form-group col-md-2">
                 <label for="time">Time of Appointment:</label>
-                <input type="time" id="time" name="time" />
+                <input type="time" id="time" name="time" class="form-control" th:field="*{service_time}"/>
+            </article>
+
+            <article class="form-group col-md-3">
+                <label for="advisor">Advisor</label>
+                <select name="advise" id="advisor" class="form-control">
+                    <option value="Tom">Tom</option>
+                    <option value="Will">Will</option>
+                    <option value="Jerry">Jerry</option>
+                </select>
             </article>
         </section>
 
-        <select name="advise">
-            <option value="Tom">Tom</option>
-            <option value="Will">Will</option>
-            <option value="Jerry">Jerry</option>
-        </select>
+        <section class="form-row">
+            <article class="form-group col-md-3">
+                <label for="vehicle">Vehicle</label>
 
-        <select name="service-type">
-            <option value="oil">Oil Change</option>
-            <option value="tires">Tire Rotation</option>
-            <option value="maintenance">Regular Maintenance</option>
-            <option value="diagnostic">Diagnostic</option>
-            <option value="air-filter">Air Filter</option>
-            <option value="brakes">Brakes</option>
-        </select>
+                <select name="license" id="vehicle" class="form-control">
+                    <option th:each="vehicle : ${vehicles}" th:value="${vehicle.license}">
+                        <span th:text="${vehicle.year + ' ' + vehicle.make + ' ' + vehicle.model}" />
+                    </option>
+                </select>
 
-        <input type="submit" />
+            </article>
+
+
+            <article class="form-group col-md-4">
+                <label for="service-type">Service Type</label>
+                <select name="service-type" id="service-type" class="form-control">
+                    <option value="oil">Oil Change</option>
+                    <option value="tires">Tire Rotation</option>
+                    <option value="maintenance">Regular Maintenance</option>
+                    <option value="diagnostic">Diagnostic</option>
+                    <option value="air-filter">Air Filter</option>
+                    <option value="brakes">Brakes</option>
+                </select>
+            </article>
+        </section>
+        <input type="submit"/>
     </form>
 </main>
 
