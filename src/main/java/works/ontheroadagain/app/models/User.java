@@ -93,6 +93,20 @@ public class User {
         this.specialities = specialities;
     }
 
+    public User(String first, String last_name, String username, String password, String email, long phone_number, String address, String city, String state, long zipcode, Role role) {
+        this.first = first;
+        this.last_name = last_name;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.phone_number = phone_number;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.zipcode = zipcode;
+        this.role = role;
+    }
+
     public long getId() {
         return id;
     }
