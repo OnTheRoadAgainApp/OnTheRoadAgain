@@ -19,6 +19,14 @@
         </li>
 
         <li sec:authorize="isAuthenticated()" class="nav-item">
+            <a class="nav-link" href="/technicians">Dashboard</a>
+        </li>
+
+        <li sec:authorize="isAuthenticated()" class="nav-item">
+            <a class="nav-link" href="#">Work Order History</a>
+        </li>
+
+        <li sec:authorize="isAuthenticated()" class="nav-item">
             <a class="nav-link" href="/profile">Profile</a>
         </li>
 
