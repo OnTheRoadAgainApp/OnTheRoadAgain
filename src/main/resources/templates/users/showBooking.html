@@ -5,43 +5,37 @@
 <nav th:replace="fragments/fragments :: navbar"></nav>
 
 <header th:replace=" fragments/fragments :: header"></header>
-<h1 class="container">Look at this booking details, <span th:text="${#authentication.principal.first_name}"/>!</h1>
+<h3 class="container mt-5 mb-5">Look at your booking details, <span th:text="${#authentication.principal.first}"/>!</h3>
+
 <main class="container row mx-auto">
 
-    <article class="col-6">
-        <h2>Your Info</h2>
-        <hr class="hr-4"/>
-        <h5><span th:text="${#authentication.principal.id}"/></h5>
-        <h5>Username: <span th:text="${#authentication.principal.username}"/></h5>
-        <h5>Email: <span th:text="${#authentication.principal.email}"/></h5>
-        <hr class="hr-4"/>
-        <h2>Your Vehicles</h2>
+    <div class="border border-warning rounded">
         <table class="table table-striped">
             <thead>
             <tr>
-                <th scope="col">Year</th>
+                <th scope="col">Service Date</th>
                 <th scope="col">Vehicle</th>
-                <th scope="col">Mileage</th>
-                <th scope="col">License</th>
-                <th scope="col">Service</th>
+                <th scope="col">Service Type</th>
+                <th scope="col">Advisor</th>
 
             </tr>
             </thead>
             <tbody>
-            <tr th:each="service_booking : ${#authentication.principal.serviceBookings}">
-                <td th:text="${service_booking.vehicle.make + ' ' + service_booking.vehicle.model + ', ' + service_booking.vehicle.color}"/>
-                <td th:text="${service_booking.vehicle.license}"/>
-                <td th:text="${service_booking.service_date}"/>
-                <td th:text="${service_booking.service_type.description}"/>
-                <!--<td th:text="${service_booking.event.description}" />-->
-                <td>status</td>
-                <td th:text="${service_booking.advisor.first_name}"/>
+            <tr th:each="booking : ${bookings}">
+                <td th:text="${booking.service_date}"/>
+                <td th:text="${booking.vehicle.make + ' ' + booking.vehicle.model}"/>
+                <!--uncomment when database is filled-->
+                <!--<td th:text="${booking.service_type.description}" />-->
+                <!--<td th:text="${booking.advisor.first}" />-->
             </tr>
             </tbody>
         </table>
-        <a class="btn btn-warning btn-lg btn-block" href="/vehicles/add">Add Vehicle</a>
-    </article>
-    
+    </div>
+
+    <div class="mt-5">
+           <h1>THIS IS AN AWESOME PROGRESS BAR</h1>
+    </div>
+
 
 </main>
 
