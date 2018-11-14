@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments/fragments :: head">
-<script src="/static/jsThings.js"></script>
-<link rel="stylesheet" href="/static/styles.css" />
+<!--<script src="/static/jsThings.js"></script>-->
+<!--<link rel="stylesheet" href="/static/styles.css" />-->
 </head>
 <body class=" bg-light">
 <nav th:replace="fragments/fragments :: navbar"></nav>
@@ -851,7 +851,12 @@
         </form>
     </section>
 </main>
-
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+    $('#check1').click(function() {
+        alert('it did a thing');
+    });
+</script>
 <!--<footer th:replace="fragments/fragments :: footer"></footer>-->
 
 </body>
