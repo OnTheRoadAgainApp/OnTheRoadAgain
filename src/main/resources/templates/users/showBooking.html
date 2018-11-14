@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/fragments :: head"></head>
+<body class=" bg-light">
+<nav th:replace="fragments/fragments :: navbar"></nav>
+
+<header th:replace=" fragments/fragments :: header"></header>
+<h3 class="container mt-5 mb-5">Look at your booking details, <span th:text="${#authentication.principal.first}"/>!</h3>
+
+<main class="container row mx-auto">
+
+    <div class="border border-warning rounded">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Service Date</th>
+                <th scope="col">Vehicle</th>
+                <th scope="col">Service Type</th>
+                <th scope="col">Advisor</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="booking : ${bookings}">
+                <td th:text="${booking.service_date}"/>
+                <td th:text="${booking.vehicle.make + ' ' + booking.vehicle.model}"/>
+                <!--uncomment when database is filled-->
+                <td th:text="${booking.service_type.description}" />
+                <td th:text="${booking.advisor.first}" />
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mt-5">
+           <h1>THIS IS AN AWESOME PROGRESS BAR</h1>
+    </div>
+
+
+</main>
+
+<footer th:replace="fragments/fragments :: footer"></footer>
+</body>
+</html>

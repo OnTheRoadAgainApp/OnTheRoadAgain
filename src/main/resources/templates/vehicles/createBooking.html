@@ -13,7 +13,7 @@
 <h1 class="container text-warning">Create your booking </h1>
 
 <main class="container mx-auto">
-    <form th:action="@{/vehicles/book}" method="post" th:object="${serviceBooking}">
+    <form th:action="@{/booking/create}" method="post" th:object="${serviceBooking}">
 
         <section class="form-row">
             <article class="form-group col-md-2">
@@ -29,9 +29,9 @@
             <article class="form-group col-md-3">
                 <label for="advisor">Advisor</label>
                 <select name="advise" id="advisor" class="form-control">
-                    <option value="Tom">Tom</option>
-                    <option value="Will">Will</option>
-                    <option value="Jerry">Jerry</option>
+                    <option th:each="advisor : ${advisors}" th:value="${advisor.id}">
+                        <span th:text="${advisor.first}" />
+                    </option>
                 </select>
             </article>
         </section>
@@ -52,12 +52,9 @@
             <article class="form-group col-md-4">
                 <label for="service-type">Service Type</label>
                 <select name="service-type" id="service-type" class="form-control">
-                    <option value="oil">Oil Change</option>
-                    <option value="tires">Tire Rotation</option>
-                    <option value="maintenance">Regular Maintenance</option>
-                    <option value="diagnostic">Diagnostic</option>
-                    <option value="air-filter">Air Filter</option>
-                    <option value="brakes">Brakes</option>
+                    <option th:each="serviceType : ${serviceTypes}" th:value="${serviceType.id}">
+                        <span th:text="${serviceType.description}" />
+                    </option>
                 </select>
             </article>
         </section>

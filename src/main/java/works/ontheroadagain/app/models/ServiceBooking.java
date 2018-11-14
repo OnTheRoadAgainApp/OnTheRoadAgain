@@ -31,6 +31,9 @@ public class ServiceBooking {
     @OneToOne
     private User advisor;
 
+    @OneToOne
+    private User technician;
+
     @OneToOne //vehicle not nullable because need vehicle entered to create booking
     private Vehicle vehicle;
 

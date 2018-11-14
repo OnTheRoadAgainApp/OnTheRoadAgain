@@ -63,20 +63,29 @@
                 <th scope="col">Vehicle</th>
                 <th scope="col">Type</th>
                 <th scope="col">Advisor</th>
-                <th scope="col">Cancel Appt.</th>
+                <th scope="col">Options</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="booking : ${bookings}">
                 <td th:text="${booking.service_date}" />
                 <td th:text="${booking.vehicle.make + ' ' + booking.vehicle.model}" />
+                <!--uncomment when database is filled-->
                 <td th:text="${booking.service_type.description}" />
                 <td th:text="${booking.advisor.first}" />
-                <td><a href="/booking/cancel" class="btn btn-danger">Cancel</a></td>
+                <td>
+                    <a href="/booking/cancel" class="btn btn-danger">Cancel</a>
+                    
+                    <form th:action="@{/book/{id}(id=${booking.id})}" method="get" th:object="${booking.id}">
+                        <button type="submit" class="btn btn-success">Details</button>
+                    </form>
+
+
+                </td>
             </tr>
             </tbody>
         </table>
-        <a class="btn btn-warning btn-block" href="/vehicles/book">Book Service Appt</a>
+        <a class="btn btn-warning btn-block" href="/booking/create">Book Service Appt</a>
         <hr class="hr-4" />
         <h2>Past Appointments</h2>
         <table class="table table-striped">
