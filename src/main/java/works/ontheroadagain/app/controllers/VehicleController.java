@@ -49,31 +49,4 @@ public class VehicleController {
         return "redirect:/profile";
     }
 
-    @GetMapping("/vehicles/book")
-    public String showBookingForm(Model model) {
-        //adding empty service booking to be filled by form
-        model.addAttribute("serviceBooking", new ServiceBooking());
-
-        //finding current user and their vehicles
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("vehicles", vehicleRepo.findAllByUser(currentUser));
-
-        //find all service types to populate form
-
-
-        //find advisors to populate form
-
-
-        return "vehicles/createBooking";
-    }
-
-    @PostMapping("/vehicles/book")
-    public String book(@ModelAttribute ServiceBooking booking, @RequestParam("advise") String advise,
-                       @RequestParam("license") String license) {
-
-        booking.setAdvisor(userRepo.findByFirst(advise));
-        booking.setVehicle(vehicleRepo.findByLicense(license));
-        bookingRepo.save(booking);
-        return "users/profile";
-    }
 }

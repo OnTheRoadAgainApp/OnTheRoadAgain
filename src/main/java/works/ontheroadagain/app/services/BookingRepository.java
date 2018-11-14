@@ -7,6 +7,7 @@ import works.ontheroadagain.app.models.Vehicle;
 import java.util.List;
 
 public interface BookingRepository extends CrudRepository<ServiceBooking, Long> {
-    ServiceBooking findByVehicle(Vehicle vehicle);
-    List<ServiceBooking> findAllByVehicle(Vehicle vehicle);
+
+      List<ServiceBooking> findAllByVehicle (Vehicle vehicle);
+
 }

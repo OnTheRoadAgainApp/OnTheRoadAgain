@@ -23,13 +23,13 @@ public class TechnicianController {
 
     @GetMapping("/technicians")
     public String technicianHomePage() {
-        return "/technicians";
+        return "technicians";
     }
 
 
     @GetMapping("/vehicleAppointment")
     public String vehicleAppointmentPage(){
-        return "/vehicleAppointment";
+        return "vehicleAppointment";
 
     }
 }
