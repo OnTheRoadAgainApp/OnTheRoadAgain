@@ -78,8 +78,8 @@
                 <td th:text="${booking.service_date}" />
                 <td th:text="${booking.vehicle.make + ' ' + booking.vehicle.model}" />
                 <!--uncomment when database is filled-->
-                <!--<td th:text="${booking.service_type.description}" />-->
-                <!--<td th:text="${booking.advisor.first}" />-->
+                <td th:text="${booking.service_type.description}" />
+                <td th:text="${booking.advisor.first}" />
                 <td>
                     <a href="/booking/cancel" class="btn btn-danger">Cancel</a>
                     
