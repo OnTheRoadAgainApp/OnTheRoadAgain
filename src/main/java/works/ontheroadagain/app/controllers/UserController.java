@@ -12,6 +12,7 @@ import works.ontheroadagain.app.models.User;
 import works.ontheroadagain.app.models.Vehicle;
 import works.ontheroadagain.app.repositories.UsersRepository;
 import works.ontheroadagain.app.services.BookingRepository;
+import works.ontheroadagain.app.services.RolesRepository;
 import works.ontheroadagain.app.services.VehicleRepository;
 
 import java.util.ArrayList;
@@ -23,12 +24,16 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
     private VehicleRepository vehicleRepository;
     private BookingRepository bookingRepo;
+    private RolesRepository rolesRepo;
 
-    public UserController(UsersRepository usersRepository, PasswordEncoder passwordEncoder, VehicleRepository vehicleRepository, BookingRepository bookingRepo) {
+    public UserController(UsersRepository usersRepository, PasswordEncoder passwordEncoder, VehicleRepository vehicleRepository, BookingRepository bookingRepo, RolesRepository rolesRepo) {
         this.usersRepository = usersRepository;
         this.passwordEncoder = passwordEncoder;
         this.vehicleRepository = vehicleRepository;
         this.bookingRepo = bookingRepo;
+        this.rolesRepo = rolesRepo;
+
+        
     }
 
     @GetMapping("/register")
@@ -42,6 +47,11 @@ public class UserController {
     public String saveUser(@ModelAttribute User user) {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
+
+        //sets default to customer
+        user.setRole(rolesRepo.findOne(1L));
+
+        //sets new form
         usersRepository.save(user);
         return "redirect:/login";
     }
@@ -62,13 +72,6 @@ public class UserController {
         return "users/profile";
 
     }
-
-//    @GetMapping("/advisor")
-//    public String showAdvisorPage(Model model) {
-//        model.addAttribute("user", new User());
-//        return "users/advisor";
-//
-//    }
 
 }
 

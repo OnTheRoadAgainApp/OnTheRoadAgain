@@ -11,6 +11,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import works.ontheroadagain.app.models.ServiceBooking;
 import works.ontheroadagain.app.models.User;
 import works.ontheroadagain.app.services.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import works.ontheroadagain.app.services.BookingRepository;
+import works.ontheroadagain.app.services.ServiceBookingRepository;
+import works.ontheroadagain.app.services.ServiceBookingService;
+import works.ontheroadagain.app.services.UserRepository;
 
 @Controller
 public class BookingController {
@@ -63,5 +70,13 @@ public class BookingController {
         model.addAttribute("serviceBookings", bookingRepo.findAll());
         return "users/advisor";
     }
-    
+
+
+    @GetMapping(path = "/book/{id}")
+    public String bookingsId(@PathVariable long id, Model vModel) {
+
+        vModel.addAttribute("bookings", bookingRepo.findOne(id));
+        return "users/showBooking";
+    }
+
 }
