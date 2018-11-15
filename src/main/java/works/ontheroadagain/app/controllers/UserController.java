@@ -63,6 +63,14 @@ public class UserController {
 
     }
 
+    @GetMapping("/payments")
+    public String showPaymentForm(Model model) {
+        model.addAttribute("user", new User());
+        return "users/payments";
+    }
+
+
+
 //    @GetMapping("/advisor")
 //    public String showAdvisorPage(Model model) {
 //        model.addAttribute("user", new User());
