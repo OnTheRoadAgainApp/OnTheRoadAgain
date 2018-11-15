@@ -68,9 +68,18 @@ public class BookingController {
     @GetMapping("/advisor")
     public String vehicles(Model model) {
         model.addAttribute("serviceBookings", bookingRepo.findAll());
-        model.addAttribute("technicans", userRepo.findAllByRole(rolesRepo.findById(3L)));
+        model.addAttribute("technicians", userRepo.findAllByRole(rolesRepo.findById(3L)));
         return "users/advisor";
     }
+
+    //assign a technician to booking
+    @PostMapping("/advisor")
+    public String technician(@ModelAttribute ServiceBooking serviceBooking, @RequestParam("tech") Long technicianId){
+        serviceBooking.setTechnician(userRepo.findById(technicianId));
+        bookingRepo.save(serviceBooking);
+        return "users/advisor";
+    }
+
 
 
     @GetMapping(path = "/book/{id}")
@@ -79,5 +88,7 @@ public class BookingController {
         vModel.addAttribute("bookings", bookingRepo.findOne(id));
         return "users/showBooking";
     }
+
+
 
 }

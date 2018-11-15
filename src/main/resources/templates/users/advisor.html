@@ -38,13 +38,16 @@
                     <td></td>
                     <td></td>
                     <td>
-                        <div class="form-group">
-                            <select name="technic" id="technican" class="form-control">
-                                <option th:each="technican : ${technicans}" th:value="${technican.id}">
-                                    <span th:text="${technican.first}"/>
-                                </option>
-                            </select>
-                        </div>
+                        <form th:action="@{/advisor}" method="post" th:object="${serviceBooking}">
+                            <div class="form-group">
+                                <select name="technic" id="technician" class="form-control">
+                                    <option th:each="technician : ${technicians}" th:value="${technician.id}">
+                                        <span th:text="${technician.first}"/>
+                                    </option>
+                                </select>
+                            </div>
+                            <input type="submit" name="tech"/>
+                        </form>
                     </td>
                 </tr>
                 </tbody>
