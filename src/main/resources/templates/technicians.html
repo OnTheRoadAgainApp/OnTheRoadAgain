@@ -5,59 +5,44 @@
 <nav th:replace="fragments/fragments :: navbar"></nav>
 <header th:replace=" fragments/fragments :: header"></header>
 
-<main class="container row mx-auto">
-    <section class="col-6">
-        <!--Technician profile card-->
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h4 class="card-title">Technician Profile</h4>
-                <h5 class="card-subtitle mb-2 text-muted">Tech name</h5>
-                <!--th:text="${user}"-->
-                <h6 class="card-text">Tech ID</h6>
-                <!--th:text="${technician.id}"-->
-                <h6 class="card-text">Tech Specialties</h6>
-                <!--th:text="${specialties.id}"-->
-            </div>
-        </div>
-        <!--Completed Vehicles card-->
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h4 class="card-title">Completed Vehicles</h4>
-                <h5 class="card-subtitle mb-2 text-muted">Vehicle 1</h5>
-                <!--th:text="${user}"-->
-                <h5 class="card-subtitle mb-2 text-muted">Vehicle 2</h5>
-                <!--th:text="${user}"-->
-            </div>
-        </div>
-    </section>
-    <section class="col-6 row">
+<main class="container mx-auto">
+    <h1>Welcome Back, <span th:text="${#authentication.principal.first}"></span></h1>
+    <hr class="hr-6"/>
+    <section class="row">
+    <article class="col-6">
+        <h2>Your Info:</h2>
+        <h4 th:text="${#authentication.principal.email}"/>
+        <h4 th:text="${#authentication.principal.phone_number}"/>
+    </article>
+    <article class="col-6 row">
         <h2>Scheduled Vehicles</h2>
-        <!--2 cards-->
-        <div class="card-deck">
-        <div class="card" style="width: 18rem; display: flex">
-            <h4>Customer Name Goes Here</h4>
-            <!--th:text="${user.first + user.last}-->
-            <hr/>
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <h6 class="card-text">Service requested:</h6>
-                <blockquote></blockquote>
-                <!--th:text="${service_booking.description}"-->
-            </div>
-            <ul class="list-group list-group-flush">
-                <!--th:each="vehicle : ${vehicles}"-->
-                <li class="list-group-item"></li>
-                <!--th:text="${vehicle.make}"-->
-                <li class="list-group-item" ></li>
-                <!--th:text="${vehicle.model}"-->
-                <li class="list-group-item" ></li>
-                <!--th:text="${vehicle.year}"-->
-            </ul>
-            <a onclick="window.location.href = '/vehicleAppointment';" class="btn btn-primary btn-block">Vehicle Page</a>
-            <!--th:href="@{/vehicle/{id}/vehicleAppointment(id=${vehicle.id})}"-->
-        </div>
-        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">License Plate</th>
+                <th scope="col">Service Requested</th>
+                <th scope="col">Make</th>
+                <th scope="col">Model</th>
+                <th scope="col">Year</th>
+                <th scope="col">Vehicle Page</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="booking : ${serviceBookings}">
+                <td th:text="${booking.vehicle.license}" />
+                <td th:text="${booking.service_type.description}" />
+                <td th:text="${booking.vehicle.make}" />
+                <td th:text="${booking.vehicle.model}" />
+                <td th:text="${booking.vehicle.year}" />
+                <td><a th:href="@{/booking/{id}(id=${booking.id})}"  class="btn btn-primary btn-block">Vehicle Page</a></td>
+
+            </tr>
+            </tbody>
+        </table>
+    </article>
     </section>
+
+
 </main>
 
 
