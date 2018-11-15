@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/fragments :: head">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" />
+</head>
+<body class=" bg-light">
+<nav th:replace="fragments/fragments :: navbar"></nav>
+<header th:replace=" fragments/fragments :: header"></header>
+
+<main class="container mx-auto">
+<section>
+    <div class="card-deck">
+        <div class="card">
+            <img class="card-img-top" src="/static/images/ColeJimenez.jpg" alt="Cole Developer picture">
+            <div class="card-body">
+                <h5 class="card-title">Cole Jimenez</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a target="_blank" href="taylor.cole.jimenez@gmail.com" style="text-decoration: none"><i class="far fa-envelope"></i>Cole's email</a></li>
+                    <li class="list-group-item"><a target="_blank" href="https://www.linkedin.com/in/taylor-cole-jimenez" style="text-decoration: none"><i class="fab fa-linkedin">Cole's Linkedin</i></a></li>
+                    <li class="list-group-item"><a target="_blank" href="https://github.com/tcolejimenez" style="text-decoration: none"><i class="fab fa-github-square"></i>Cole's Github</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="/static/images/HaniaNowak.jpg" alt="Hania Developer picture">
+            <div class="card-body">
+                <h5 class="card-title">Hania Nowak</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a target="_blank" href="hania.nowak2018@gmail.com" style="text-decoration: none"><i class="far fa-envelope"></i>Hania's email</a></li>
+                    <li class="list-group-item"><a target="_blank" href="https://www.linkedin.com/in/hania-nowak" style="text-decoration: none"><i class="fab fa-linkedin">Hania's Linkedin</i></a></li>
+                    <li class="list-group-item"><a target="_blank" href="https://github.com/hanianowak" style="text-decoration: none"><i class="fab fa-github-square"></i>Hania's Github</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+</main>
+
+
+
+<footer th:replace="fragments/fragments :: footer"></footer>
+</body>
+</html>

@@ -63,6 +63,12 @@ public class UserController {
 
     }
 
+    @GetMapping("/About")
+    public String aboutUsPage() {
+        return "users/aboutUs";
+
+    }
+
 //    @GetMapping("/advisor")
 //    public String showAdvisorPage(Model model) {
 //        model.addAttribute("user", new User());
