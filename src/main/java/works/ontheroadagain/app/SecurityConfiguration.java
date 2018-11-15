@@ -54,27 +54,27 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 /* Pages that require authentication */
                 .and()
                 .authorizeRequests()
-                .antMatchers() //put for each role 402 - access is denied
+                .antMatchers("/technicians", "/vehicleAppointment") //put for each role 402 - access is denied
                 .hasAuthority("TECHNICIAN")
                 .and()
                 .authorizeRequests()
-                .antMatchers() //put for each role
+                .antMatchers("/advisor") //put for each role
                 .hasAuthority("ADVISOR")
                 .and()
                 .authorizeRequests()
-                .antMatchers() //put for each role
+                .antMatchers("/profile", "/vehicles/add", "vehicles/book", "/booking/create") //put for each role
                 .hasAuthority("CUSTOMER")
-                .and()
-                .authorizeRequests()
-                
-                //I'll add these things below later
-                .antMatchers(
-                        "/profile", // user profile, only authenticated users can go there
-                        "/vehicles/add", // add vehicles,  only authenticated users can go there
-                        "/vehicles/book" // book service, only authenticated users can go there
-
-                )
-                .authenticated()
+//                .and()
+//                .authorizeRequests()
+//
+//                //I'll add these things below later
+//                .antMatchers(
+//                        "/profile", // user profile, only authenticated users can go there
+//                        "/vehicles/add", // add vehicles,  only authenticated users can go there
+//                        "/vehicles/book" // book service, only authenticated users can go there
+//
+//                )
+//                .authenticated()
         ;
     }
 }

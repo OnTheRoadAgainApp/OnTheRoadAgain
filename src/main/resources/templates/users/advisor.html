@@ -34,17 +34,20 @@
                     <td th:text="${service_booking.service_type.description}"/>
                     <!--<td th:text="${service_booking.event.description}" />-->
                     <td>status</td>
-                    <!--<td th:text="${service_booking.advisor.first}" />-->
+                    <th:block  th:if="${service_booking.technician != null}">
+                        <td th:text="${service_booking.technician.first}" />
+                    </th:block>
                     <td></td>
                     <td></td>
                     <td>
                         <form th:action="@{/advisor}" method="post" th:object="${serviceBooking}">
                             <div class="form-group">
-                                <select name="technic" id="technician" class="form-control">
+                                <select name="tech" id="technician" class="form-control">
                                     <option th:each="technician : ${technicians}" th:value="${technician.id}">
                                         <span th:text="${technician.first}"/>
                                     </option>
                                 </select>
+                                <input type="hidden" name="booking-id" th:value="${service_booking.id}"/>
                             </div>
                             <input type="submit" name="tech"/>
                         </form>
