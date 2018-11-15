@@ -65,6 +65,13 @@ public class BookingController {
         return "redirect:/profile";
     }
 
+    @PostMapping("booking/delete/{id}")
+    public String delete(@PathVariable Long id) {
+        vehicleRepo.delete(id);
+        return "redirect:/profile";
+    }
+
+
     @GetMapping("/advisor")
     public String vehicles(Model model) {
         model.addAttribute("serviceBookings", bookingRepo.findAll());
