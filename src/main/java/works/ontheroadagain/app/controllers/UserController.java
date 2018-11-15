@@ -33,7 +33,7 @@ public class UserController {
         this.bookingRepo = bookingRepo;
         this.rolesRepo = rolesRepo;
 
-        
+
     }
 
     @GetMapping("/register")
@@ -72,6 +72,21 @@ public class UserController {
         return "users/profile";
 
     }
+
+    @GetMapping("/payments")
+    public String showPaymentForm(Model model) {
+        model.addAttribute("user", new User());
+        return "users/payments";
+    }
+
+
+
+//    @GetMapping("/advisor")
+//    public String showAdvisorPage(Model model) {
+//        model.addAttribute("user", new User());
+//        return "users/advisor";
+//
+//    }
 
 }
 
