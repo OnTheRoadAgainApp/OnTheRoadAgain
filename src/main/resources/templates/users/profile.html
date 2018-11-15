@@ -47,7 +47,7 @@
                 <td th:text="${vehicle.make + ' ' + vehicle.model + ', ' + vehicle.color}" />
                 <td th:text="${vehicle.mileage}" />
                 <td th:text="${vehicle.license}" />
-                <td><a href="/vehicles/delete" class="btn btn-danger">Remove</a></td>
+                <td><a th:href="@{vehicles/delete/(id=${vehicle.id})}" class="btn btn-danger">Remove</a></td>
             </tr>
             </tbody>
         </table>
