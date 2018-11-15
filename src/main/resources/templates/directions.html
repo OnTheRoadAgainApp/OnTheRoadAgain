@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:include="fragments/fragments :: head"></head>
+
+<style type="text/css">
+    #map-canvas {
+        /*width: 600px;*/
+        /*height: 400px;*/
+        width: 100%;
+        height: 400px;
+    }
+</style>
+
+<body class=" bg-light">
+<nav th:replace="fragments/fragments :: navbar"></nav>
+
+<header th:replace=" fragments/fragments :: header"></header>
+
+<div class="container">
+    <h3 class="mt-5 mb-5">Look, we are here!</h3>
+    <div class="row mt-5">
+        <div class="col-7 text-center">
+            <div id="map-canvas" class="shadow-lg rounded">
+
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBCb3OVKS1Nw3mKX1J71YxktoI-fkj0tk"></script>
+
+                <script type="text/javascript">
+                    "use strict";
+                    (function () {
+                        var mapOptions = {
+                            zoom: 17,
+                            center: {
+                                lat: 29.426791,
+                                lng: -98.489602
+                            }
+                        };
+                        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+                        var position =
+                            {
+                                name: 'On The Road Again!',
+                                position: {lat: 29.427122, lng: -98.489651}
+                            };
+
+                        var marker = new google.maps.Marker({
+                            position: position.position,
+                            map: map,
+                            animation: google.maps.Animation.DROP,
+                            // icon: icon
+                        });
+
+                        var infowindow = new google.maps.InfoWindow({
+                            content: "<h4>" + position.name + "</h4>"
+                        });
+                        marker.addListener('click', function () {
+                            infowindow.open(map, marker);
+                        });
+
+                    })();
+                </script>
+            </div>
+        </div>
+        <div class="col-5">
+            <h5 class="mb-5">Don't know where to find us? Don't worry! We are located in Downtown San Antonio. Right
+                next to Travis Park.</h5>
+            <h6>Depending on which way you are driving take those exits:</h6>
+            <ul class="list-inline">
+                <li>I-37 141 - E Commerce</li>
+                <li>I-35 157A - San Pedro Ave</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+
+<footer class="navbar navbar-light navbar-expand-lg fixed-bottom bg-danger text-center mt-5">
+    <ul class="navbar-nav mr-3 mx-auto">
+        <li class="nav-item mt-2">&copy;On The Road Again</li>
+        <li class="nav-item"><a class="nav-link" href="#">Directions</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">FAQs</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Privacy</a></li>
+    </ul>
+</footer>
+
+</body>
+</html>
