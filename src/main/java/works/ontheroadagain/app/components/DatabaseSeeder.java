@@ -134,16 +134,18 @@ public class DatabaseSeeder {
                 eventRepo.findAll().spliterator(),
                 false)
                 .count();
-        if (count < 8) {
+        if (count < 10) {
             Event events[] = {
                     new Event("Booking Created"),
                     new Event("Vehicle Checked-in"),
                     new Event("Service Started"),
+                    new Event("Service Started - Error Encountered"),
                     new Event("Halfway Point Reached"),
+                    new Event("Halfway Point Reached - Error Encountered"),
                     new Event("Inspection Underway"),
+                    new Event("Inspection Underway - Error Encountered"),
                     new Event("Final Quality Check"),
-                    new Event("Vehicle Ready"),
-                    new Event("Error Encountered"),
+                    new Event("Vehicle Ready")
             };
             eventRepo.save(Arrays.asList(events));
         }
