@@ -46,6 +46,10 @@
             <a class="nav-link" href="/register">Register</a>
         </li>
 
+        <li sec:authorize="hasAuthority('CUSTOMER')" class="nav-item">
+            <a class="nav-link" href="/payments">Pay for Service</a>
+        </li>
+
         <li sec:authorize="isAuthenticated()" class="nav-item">
             <form th:action="@{/logout}" th:method="post"><button class="btn-link btn text-danger">Logout</button></form>
         </li>
@@ -57,7 +61,7 @@
     <ul class="navbar-nav mr-3 mx-auto">
         <li class="nav-item mt-2">&copy;On The Road Again</li>
         <li class="nav-item"><a class="nav-link" href="/directions">Directions</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">FAQs</a></li>
+        <li class="nav-item"><a class="nav-link" href="/faq">FAQs</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
         <li class="nav-item"><a class="nav-link" href="#">About</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Privacy</a></li>
