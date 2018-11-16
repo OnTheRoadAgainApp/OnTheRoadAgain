@@ -15,5 +15,8 @@ public class FooController {
     public String faq(){
         return "faq";
     }
+    @GetMapping("/contact")
+    public String contact() {return "contact";}
 
 }
+                        

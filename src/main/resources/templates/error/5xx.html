@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+    <title th:text="'Ooops, ' + ${error}"></title>
+</head>
+<body>
+
+<th:block th:switch="${error}">
+    <div th:case="'Bad Gateway'" class="text-center">
+        <h1 class="mt-5 mb-5">Bad Gateway!</h1>
+        <img src="./images/502.jpg" />
+    </div>
+    <div th:case="'Internal Server Error'" class="text-center">
+        <h1 class="mt-5 mb-5">Something went wrong...</h1>
+        <img src="./images/500.jpg" />
+    </div>
+</th:block>
+<div class="text-center mt-5">
+    <a href="/" th:href="@{/}">Back to Home Page</a>
+</div>
+</body>
+</html>

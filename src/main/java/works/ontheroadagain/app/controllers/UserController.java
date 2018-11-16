@@ -73,6 +73,18 @@ public class UserController {
 
     }
 
+    @GetMapping("/Meet")
+    public String aboutUsPage() {
+        return "users/aboutUs";
+
+    }
+
+    @GetMapping("/Privacy")
+    public String privacyStatementPage() {
+        return "users/privacy";
+
+    }
+
     @GetMapping("/payments")
     public String showPaymentForm(Model model) {
         model.addAttribute("user", new User());
