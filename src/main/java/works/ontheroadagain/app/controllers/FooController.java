@@ -11,4 +11,8 @@ public class FooController {
         return "directions";
     }
 
+    @GetMapping("/contact")
+    public String contact() {return "contact";}
+
 }
+                        
