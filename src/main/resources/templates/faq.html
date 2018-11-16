@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/fragments :: head"></head>
+<title>FAQ's</title>
+<body class=" bg-light">
+<nav th:replace="fragments/fragments :: navbar"></nav>
+<header th:replace=" fragments/fragments :: header"></header>
+<h2 class="text-center">Frequently Asked Questions</h2>
+<ul>
+    <li><a href="#" onclick="toggle_visibility('vis1');"><h4>How Often Should I Change my Oil?</h4></a>
+        <div id="vis1" style="display: none;">Years ago, it was a good idea to change your engine oil and oil filter frequently, but because of advances in engine materials and tighter tolerances, as well as the oil that goes into engines, most manufacturers recommend intervals of 7,500 miles or more.</div></li>
+    <li><a href="#" onclick="toggle_visibility('vis2');"><h4>How do I know when I need a tune up?</h4></a>
+        <div id="vis2" style="display: none;">You may notice your vehicle starts to run rough or the check engine light may come on.  Each vehicle has a different manufactures recommendation for when a tune up is needed.  You can check your owner's manual or stop in and we can help you determine if it's time for a tune up.</div></li>
+    <li><a href="#" onclick="toggle_visibility('vis3');"><h4>What is an ASE Master Certified Technician?</h4></a>
+        <div id="vis3" style="display: none;">ASE is short for National Institute for Automotive Service Excellence.  ASE is an independent, non-profit organization that tests and certifies automotive professionals.  It is a way to gauge the level of technical expertise a technician has and brings confidence to the vehicle owner.  To be an ASE master certified technician, you have to pass a variety of ASE tests in different subject matters.  To remain ASE certified, a technician must re-test every five years to verify they are keeping with all the advancements in the profession.</div></li>
+    <li><a href="#" onclick="toggle_visibility('vis4');"><h4>What do I do if my vehicle starts to over heat?</h4></a>
+        <div id="vis4" style="display: none;">Once you notice your vehicles temperature is starting to climb, it is best to take immediate action.  First thing you should do is turn off your AC if you have it on and find a safe place to pull your car off the road.  Do NOT attempt to remove the radiator cap or check any of the hoses.  It is very dangerous to do this under these conditions, and you are likely to get severely burned.  A car that has over heated can cause massive damage, very quickly.  This is why it is important to pull off the road as soon as you safely can and have your vehicle towed to a On the Road Again Certified repair facility for an inspection.</div></li>
+    <li><a href="#" onclick="toggle_visibility('vis5');"><h4>How Often Should I Check My Vehicle's Fluid Levels?</h4></a>
+        <div id="vis5" style="display: none;">Aside from engine oil, there are many other fluids that are vital to the health of your vehicle. Some examples include the transmission fluid, brake fluid, engine coolant, and power-steering fluid. Their levels are not only affected by how frequently you drive but extreme temperatures as well. As such, specialists advise checking them at the same time as your oil change or every month or two.</div></li>
+    <li><a href="#" onclick="toggle_visibility('vis6');"><h4>When Should I Replace My Brake Pads?</h4></a>
+        <div id="vis6" style="display: none;">On average, brake pads begin to wear out around the 20,000- to 30,000-mile mark, but there are many factors that may impact this figure. Knowing what signs to look out for will therefore prove instrumental in detecting when your brake pads need to be replaced. If you feel your vehicle taking longer to come to a stop or notice a high-pitch screeching or grinding noise when braking, scheduling a checkup is integral. Running with worn brake pads will eventually affect the rotors, which can be a costly repair, so taking a proactive approach will not only keep you safe but save you money as well.</div></li>
+    <li><a href="#" onclick="toggle_visibility('vis7');"><h4>When Should I Replace My Car Battery?</h4></a>
+        <div id="vis7" style="display: none;">The standard battery is projected to last three to five years, but variables like hot and cold weather can influence its longevity, so it is best to keep an eye out for signs your battery power is declining. If your headlights and dashboard lights are starting to dim or if your vehicle has difficulty starting, these are clues that your vehicle may be due for a battery replacement.</div></li>
+    <li><a href="#" onclick="toggle_visibility('vis8');"><h4>When Should I Get a Tire Rotation?</h4></a>
+        <div id="vis8" style="display: none;">As the main point of contact with the pavement, tires are subject to the most wear and tear. This is especially true if you utilize your vehicle for off-roading or have a two-wheel drive system which puts most of the labor on a specific set of wheels. That being the case, having your tires rotated every six months or around 6,000 to 8,000 miles is a good rule to uphold. Doing so will ensure your tires wear evenly.</div></li>
+    <li><a href="#" onclick="toggle_visibility('vis9');"><h4>How Much Air Pressure Should I Put into My Tires?</h4></a>
+        <div id="vis9" style="display: none;">The amount of pressure a tire requires depends on its type and the vehicle. You can find out the optimum air pressure either printed on the door jamb, the side-wall of the tires, or in your owner's manual. Too much pressure can make it difficult for you to maneuver your vehicle while too little pressure can result in a blow-out. You can always speak with a product expert to determine what pressure levels are most appropriate.</div></li>
+    <li><a href="#" onclick="toggle_visibility('vis10');"><h4>Why is the On the Road Again Web Application so AWESOME?</h4></a>
+        <div id="vis10" style="display: none;">There are many reasons why On the Road Again is the most kick ass automotive web application ever to be designed, but the simple answer is the PEOPLE who created it!!!</div></li>
+</ul>
+
+
+
+<footer th:replace="fragments/fragments :: footer"></footer>j
+<script src="./jsThings.js"></script>
+</body>
+</html>
