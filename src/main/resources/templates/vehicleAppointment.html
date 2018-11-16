@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments/fragments :: head">
-<script src="/static/jsThings.js"></script>
-<link rel="stylesheet" href="/static/styles.css" />
 </head>
 <body class=" bg-light">
 <nav th:replace="fragments/fragments :: navbar"></nav>
@@ -14,18 +12,18 @@
     <section class="col-6">
         <div class="card" style="width: 18rem;">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Customer Name</li>
-                <li class="list-group-item">Service Requested</li>
-                <li class="list-group-item">Vehicle Year</li>
-                <li class="list-group-item">Vehicle Make</li>
-                <li class="list-group-item">Vehicle Model</li>
+                <li th:text="${booking.vehicle.user.last_name + ', ' + booking.vehicle.user.first}" class="list-group-item" />
+                <li th:text="${booking.service_type.description}" class="list-group-item" />
+                <li th:text="${booking.vehicle.year}" class="list-group-item" />
+                <li th:text="${booking.vehicle.make}" class="list-group-item" />
+                <li th:text="${booking.vehicle.model}" class="list-group-item" />
             </ul>
         </div>
     </section>
     <section class="col-6">
     <h2>Vehicle Status</h2>
     <div class="progress">
-        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar bg-success" role="progressbar" id="progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
     <div class = "ready"></div>
     <div class="card" style="width: 18rem; padding-left: 1%">
@@ -851,7 +849,51 @@
         </form>
     </section>
 </main>
-
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+    $('#check1').click(function() {
+        $("#progress").css("width", "10%");
+    });
+    $('#check2').click(function() {
+        $("#progress").css("width", "25%");
+    });
+    $('#check2E').click(function() {
+        if ( $ ("#check2E").is(':checked')) {
+            $("#progress").addClass("bg-danger");
+            $("#progress").addClass("progress-bar-striped");
+        } else {
+            $("#progress").removeClass("bg-danger");
+            $("#progress").removeClass("progress-bar-striped");
+        }
+    });
+    $('#check3').click(function() {
+        $("#progress").css("width", "50%");
+    });
+    $('#check3E').click(function() {
+        if ( $ ("#check3E").is(':checked')) {
+            $("#progress").addClass("bg-danger");
+            $("#progress").addClass("progress-bar-striped");
+        } else {
+            $("#progress").removeClass("bg-danger");
+            $("#progress").removeClass("progress-bar-striped");
+        }
+    });
+    $('#check4').click(function() {
+        $("#progress").css("width", "75%");
+    });
+    $('#check4E').click(function() {
+        if ( $ ("#check4E").is(':checked')) {
+            $("#progress").addClass("bg-danger");
+            $("#progress").addClass("progress-bar-striped");
+        } else {
+            $("#progress").removeClass("bg-danger");
+            $("#progress").removeClass("progress-bar-striped");
+        }
+    });
+    $('#check5').click(function() {
+        $("#progress").css("width", "100%");
+    });
+</script>
 <!--<footer th:replace="fragments/fragments :: footer"></footer>-->
 
 </body>
