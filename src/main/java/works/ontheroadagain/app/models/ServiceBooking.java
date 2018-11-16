@@ -15,7 +15,7 @@ public class ServiceBooking {
 
     @Column(nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date service_date;
+    private Date date;
 
     //    what type of that time period? HN - not sure... can look at datetime or time for data type TJ
     @Column(nullable = false)
@@ -40,18 +40,22 @@ public class ServiceBooking {
     @OneToOne
     private ServiceType service_type;
 
+    @OneToOne
+    private Event status;
+
 
     public ServiceBooking() {
     }
 
-    public ServiceBooking(Date service_date, String service_time, User advisor, User technician, Vehicle vehicle, ServiceType service_type) {
-        this.service_date = service_date;
+    public ServiceBooking(Date date, String service_time, User advisor, Vehicle vehicle, ServiceType service_type) {
+        this.date = date;
         this.service_time = service_time;
 //        this.user = user;
         this.advisor = advisor;
         this.technician = technician;
         this.vehicle = vehicle;
         this.service_type = service_type;
+        this.status = status;
     }
 
     public long getId() {
@@ -62,12 +66,12 @@ public class ServiceBooking {
         this.id = id;
     }
 
-    public Date getService_date() {
-        return service_date;
+    public Date getDate() {
+        return date;
     }
 
-    public void setService_date(Date service_date) {
-        this.service_date = service_date;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getService_time() {
@@ -125,5 +129,13 @@ public class ServiceBooking {
 
     public void setService_type(ServiceType service_type) {
         this.service_type = service_type;
+    }
+
+    public Event getStatus() {
+        return status;
+    }
+
+    public void setStatus(Event status) {
+        this.status = status;
     }
 }
