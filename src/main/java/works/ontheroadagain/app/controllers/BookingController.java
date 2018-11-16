@@ -61,16 +61,19 @@ public class BookingController {
         booking.setAdvisor(userRepo.findById(advisorId));
         booking.setVehicle(vehicleRepo.findByLicense(license));
         booking.setService_type(serviceTypeRepo.findById(serviceId));
+        String selectedTime = booking.getService_time();
+        System.out.println(selectedTime);
+        booking.getDate().setHours(Integer.valueOf(selectedTime.substring(0, 2)));
+        booking.getDate().setMinutes(Integer.valueOf(selectedTime.substring(3)));
         bookingRepo.save(booking);
         return "redirect:/profile";
     }
 
-    @PostMapping("booking/delete/{id}")
-    public String delete(@PathVariable Long id) {
-        vehicleRepo.delete(id);
+    @PostMapping("book/cancel/{id}")
+    public String deleteBooking(@PathVariable Long id) {
+        bookingRepo.delete(id);
         return "redirect:/profile";
     }
-
 
     @GetMapping("/advisor")
     public String vehicles(Model model) {

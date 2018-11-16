@@ -20,6 +20,10 @@ public class Event {
         this.description = description;
     }
 
+    public Event(String description) {
+        this.description = description;
+    }
+
     public long getId() {
         return id;
     }

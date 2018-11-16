@@ -22,7 +22,7 @@
             </thead>
             <tbody>
             <tr th:each="booking : ${bookings}">
-                <td th:text="${booking.service_date}"/>
+                <td th:text="${booking.date}"/>
                 <td th:text="${booking.vehicle.make + ' ' + booking.vehicle.model}"/>
                 <!--uncomment when database is filled-->
                 <td th:text="${booking.service_type.description}" />

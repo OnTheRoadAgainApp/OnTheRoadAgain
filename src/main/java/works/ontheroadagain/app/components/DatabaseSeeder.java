@@ -5,14 +5,8 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-import works.ontheroadagain.app.models.Role;
-import works.ontheroadagain.app.models.ServiceType;
-import works.ontheroadagain.app.models.User;
-import works.ontheroadagain.app.models.Vehicle;
-import works.ontheroadagain.app.services.RolesRepository;
-import works.ontheroadagain.app.services.ServiceTypeRepository;
-import works.ontheroadagain.app.services.UserRepository;
-import works.ontheroadagain.app.services.VehicleRepository;
+import works.ontheroadagain.app.models.*;
+import works.ontheroadagain.app.services.*;
 
 import java.util.Arrays;
 import java.util.stream.StreamSupport;
@@ -23,15 +17,17 @@ public class DatabaseSeeder {
     private final ServiceTypeRepository serviceTypeRepo;
     private final VehicleRepository vehicleRepo;
     private final UserRepository userRepo;
+    private final EventRepository eventRepo;
     private final PasswordEncoder passwordEncoder;
 
 
     @Autowired
-    public DatabaseSeeder(RolesRepository roleRepo, ServiceTypeRepository serviceTypeRepo, VehicleRepository vehicleRepo, UserRepository userRepo, PasswordEncoder passwordEncoder) {
+    public DatabaseSeeder(RolesRepository roleRepo, ServiceTypeRepository serviceTypeRepo, VehicleRepository vehicleRepo, UserRepository userRepo, EventRepository eventRepo, PasswordEncoder passwordEncoder) {
         this.roleRepo = roleRepo;
         this.serviceTypeRepo = serviceTypeRepo;
         this.vehicleRepo = vehicleRepo;
         this.userRepo = userRepo;
+        this.eventRepo = eventRepo;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -41,6 +37,7 @@ public class DatabaseSeeder {
         seedServiceTypes();
         seedUsers();
         seedVehicle();
+        seedEvents();
     }
 
     private void seedRoles() {
@@ -126,6 +123,30 @@ public class DatabaseSeeder {
     }
 
 
+//    private void seedPastAppts() {
+//        long count
+//    }
+
+
+    private void seedEvents() {
+        long count = StreamSupport.stream(
+                eventRepo.findAll().spliterator(),
+                false)
+                .count();
+        if (count < 10) {
+            Event events[] = {
+                    new Event("Booking Created"),
+                    new Event("Vehicle Checked-in"),
+                    new Event("Service Started"),
+                    new Event("Halfway Point Reached"),
+                    new Event("Inspection Underway"),
+                    new Event("Final Quality Check"),
+                    new Event("Vehicle Ready"),
+                    new Event("Error Encountered"),
+            };
+            eventRepo.save(Arrays.asList(events));
+        }
+    }
 }
 
 
