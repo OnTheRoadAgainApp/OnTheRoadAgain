@@ -49,4 +49,10 @@ public class VehicleController {
         return "redirect:/profile";
     }
 
+    @PostMapping("vehicles/delete/{id}")
+    public String delete(@PathVariable Long id) {
+        vehicleRepo.delete(id);
+        return "redirect:/profile";
+    }
+
 }
