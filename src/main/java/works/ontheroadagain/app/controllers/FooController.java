@@ -11,6 +11,10 @@ public class FooController {
         return "directions";
     }
 
+    @GetMapping("/faq")
+    public String faq(){
+        return "faq";
+    }
     @GetMapping("/contact")
     public String contact() {return "contact";}
 

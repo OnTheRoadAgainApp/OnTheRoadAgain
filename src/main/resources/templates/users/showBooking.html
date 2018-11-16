@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments/fragments :: head"></head>
+<style>
+    #progress {
+        width: 100%;
+        background-color: grey;
+    }
+    #bar {
+        width: 1%;
+        height: 30px;
+        background-color: green;
+    }
+</style>
 <body class=" bg-light">
 <nav th:replace="fragments/fragments :: navbar"></nav>
 
@@ -32,13 +43,29 @@
         </table>
     </div>
 
-    <div class="mt-5">
-           <h1>THIS IS AN AWESOME PROGRESS BAR</h1>
+    <div class="mt-5" id="progress">
+           <div id="bar"></div>
     </div>
 
 
 </main>
 
 <footer th:replace="fragments/fragments :: footer"></footer>
+<script>
+    function move() {
+        var elem = document.getElementById("bar");
+        var width = 1;
+        var id = setInterval(frame, 10);
+        function frame() {
+            if (width >= 100) {
+                clearInterval(id);
+            } else {
+                width++;
+                elem.style.width = width + '%';
+            }
+        }
+    }
+
+</script>
 </body>
 </html>

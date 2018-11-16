@@ -3,17 +3,17 @@ Maintains communication between customers, mechanics, and managers in regards to
 
 ## Feature List
 ### Core Functionality 
-- [ ] Initial home page shown to all users, upon login home page will change based on user credentials (Customer, Technicians or Advisor)
+- [x] Initial home page shown to all users, upon login home page will change based on user credentials (Customer, Technicians or Advisor)
 - [x] Customer can register an account 
 - [x] Customer can add their car(s) 
-- [ ] Customer can create service appointment for their car(s)
+- [x] Customer can create service appointment for their car(s)
 - [ ] Customer can monitor status of their car 
 - [ ] Customers receive an alert when unexpected error occurs or vehicle complete
-- [ ] All technicians and advisors for shop must register and sign in  
+- [x] All technicians and advisors for shop must register and sign in  
 - [ ] Technicians are assigned cars based on specialty and availability
-- [ ] Technicians see a checklist for regular services 
+- [x] Technicians see a checklist for regular services 
 - [ ] Technicians can update status of appt/car with one click 
-- [ ] Advisors can see status of all assigned cars on single page 
+- [x] Advisors can see status of all assigned cars on single page 
 - [ ] Advisor needs to confirm service complete before checking out customer
 
 ### Addt’l Functionality 
@@ -31,9 +31,3 @@ Maintains communication between customers, mechanics, and managers in regards to
 * Convert alerts to SMS API feature to alert customer that vehicle work has started, is 80% complete, and finally complete (to request payment).
 * An API with a VIN decoder to specifically identify vehicles before arrival to repair shop.
 
-## Beta is currently focused on customer stories. only integrate customer stories to beta. once completed, will be added to master.
-### Latest integrations - 11/11/18 11:45a
-* Micheal 
-* models
-* authentication 
-* forms 
