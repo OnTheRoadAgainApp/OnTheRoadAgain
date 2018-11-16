@@ -63,9 +63,15 @@ public class UserController {
 
     }
 
-    @GetMapping("/About")
+    @GetMapping("/Meet")
     public String aboutUsPage() {
         return "users/aboutUs";
+
+    }
+
+    @GetMapping("/Privacy")
+    public String privacyStatementPage() {
+        return "users/privacy";
 
     }
 
