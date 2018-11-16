@@ -11,6 +11,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import works.ontheroadagain.app.models.ServiceBooking;
 import works.ontheroadagain.app.models.User;
 import works.ontheroadagain.app.services.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import works.ontheroadagain.app.services.BookingRepository;
+import works.ontheroadagain.app.services.ServiceBookingRepository;
+import works.ontheroadagain.app.services.ServiceBookingService;
+import works.ontheroadagain.app.services.UserRepository;
 
 @Controller
 public class BookingController {
@@ -61,7 +68,29 @@ public class BookingController {
     @GetMapping("/advisor")
     public String vehicles(Model model) {
         model.addAttribute("serviceBookings", bookingRepo.findAll());
+        model.addAttribute("technicians", userRepo.findAllByRole(rolesRepo.findById(3L)));
         return "users/advisor";
     }
-    
+
+    //assign a technician to booking
+    @PostMapping("/advisor")
+    public String technician(@ModelAttribute ServiceBooking serviceBooking, @RequestParam("tech") Long technicianId,
+                             @RequestParam("booking-id") Long bookingId){
+        ServiceBooking booking = bookingRepo.findOne(bookingId);
+        booking.setTechnician(userRepo.findById(technicianId));
+        bookingRepo.save(booking);
+        return "redirect:/advisor";
+    }
+
+
+
+    @GetMapping(path = "/book/{id}")
+    public String bookingsId(@PathVariable long id, Model vModel) {
+
+        vModel.addAttribute("bookings", bookingRepo.findOne(id));
+        return "users/showBooking";
+    }
+
+
+
 }

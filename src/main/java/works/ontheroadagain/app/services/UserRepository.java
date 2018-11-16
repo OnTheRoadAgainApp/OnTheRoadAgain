@@ -11,4 +11,5 @@ public interface UserRepository extends CrudRepository<User, Long> {
     User findByFirst(String first);
     User findById(Long id);
     List<User> findAllByRole(Role role);
+    //to use say userRepo.findAllByRole(rolesRepo.findBy(1));
 }

@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments/fragments :: head"></head>
+<style type="text/css">
+    #map-canvas {
+        width: 500px;
+        height: 300px;
+    }
+</style>
+
+
 <!--<head>-->
 <!--<meta charset="UTF-8" />-->
 
@@ -13,21 +21,6 @@
 <h1 class="container">Welcome back, <span th:text="${#authentication.principal.first}"/>! <hr class="hr-4"/></h1>
 
 <main class="container row mx-auto">
-    <!--progress bar test-->
-    <!--<div id="myProgress">-->
-        <!--<div id="myBar"></div>-->
-    <!--</div>-->
-    <!--<style>-->
-        <!--#myProgress {-->
-            <!--width: 100%;-->
-            <!--background-color: grey;-->
-        <!--}-->
-        <!--#myBar {-->
-            <!--width: 1%;-->
-            <!--height: 30px;-->
-            <!--background-color: green;-->
-        <!--}-->
-    <!--/*</style>*/-->
 
     <article class="col-6">
         <h2>Your Info</h2>
@@ -70,16 +63,25 @@
                 <th scope="col">Vehicle</th>
                 <th scope="col">Type</th>
                 <th scope="col">Advisor</th>
-                <th scope="col">Cancel Appt.</th>
+                <th scope="col">Options</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="booking : ${bookings}">
                 <td th:text="${booking.service_date}" />
                 <td th:text="${booking.vehicle.make + ' ' + booking.vehicle.model}" />
+                <!--uncomment when database is filled-->
                 <td th:text="${booking.service_type.description}" />
                 <td th:text="${booking.advisor.first}" />
-                <td><a href="/booking/cancel" class="btn btn-danger">Cancel</a></td>
+                <td>
+                    <a href="/booking/cancel" class="btn btn-danger">Cancel</a>
+                    
+                    <form th:action="@{/book/{id}(id=${booking.id})}" method="get" th:object="${booking.id}">
+                        <button type="submit" class="btn btn-success">Details</button>
+                    </form>
+
+
+                </td>
             </tr>
             </tbody>
         </table>
@@ -105,25 +107,33 @@
             <!--</tbody>-->
         </table>
     </article>
+    <div id="map-canvas"></div>
 
 </main>
 
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC96DvMPlkNkha8pQ0QUy9abAXnfT7F2lY"></script>
+
+<script type="text/javascript">
+    (function() {
+        "use strict";
+
+        var mapOptions = {
+
+            zoom: 19,
+
+
+            center: {
+                lat:  29.426791,
+                lng: -98.489602
+            }
+        };
+
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+    })();
+</script>
+
 <footer th:replace="fragments/fragments :: footer"></footer>
-<!--JS for progress bar this is just a test-->
-<!--<script>-->
-    <!--function move() {-->
-        <!--var elem = document.getElementById("myBar");-->
-        <!--var width = 1;-->
-        <!--var id = setInterval(frame, 10);-->
-        <!--function frame() {-->
-            <!--if (width >= 100) {-->
-                <!--clearInterval(id);-->
-            <!--} else {-->
-                <!--width++;-->
-                <!--elem.style.width = width + '%';-->
-            <!--}-->
-        <!--}-->
-    <!--}-->
-<!--// </script>-->
 </body>
 </html>
