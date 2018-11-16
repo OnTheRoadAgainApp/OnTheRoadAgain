@@ -131,14 +131,6 @@ public class ServiceBooking {
         this.service_type = service_type;
     }
 
-    public User getTechnician() {
-        return technician;
-    }
-
-    public void setTechnician(User technician) {
-        this.technician = technician;
-    }
-
     public Event getStatus() {
         return status;
     }
