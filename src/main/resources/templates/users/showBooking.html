@@ -17,7 +17,7 @@
                 <th scope="col">Vehicle</th>
                 <th scope="col">Service Type</th>
                 <th scope="col">Advisor</th>
-
+                <th scope="col">Status</th>
             </tr>
             </thead>
             <tbody>
@@ -27,13 +27,16 @@
                 <!--uncomment when database is filled-->
                 <td th:text="${booking.service_type.description}" />
                 <td th:text="${booking.advisor.first}" />
+                <td th:text="${booking.}"
             </tr>
             </tbody>
         </table>
     </div>
 
     <div class="mt-5">
-           <h1>THIS IS AN AWESOME PROGRESS BAR</h1>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
     </div>
 
 

@@ -20,99 +20,112 @@
 <header th:replace=" fragments/fragments :: header"></header>
 <h1 class="container">Welcome back, <span th:text="${#authentication.principal.first}"/>! <hr class="hr-4"/></h1>
 
-<main class="container row mx-auto">
+<main class="container mx-auto">
 
-    <article class="col-6">
-        <h2>Your Info</h2>
-        <hr class="hr-4" />
-        <h5><span th:text="${#authentication.principal.id}"/></h5>
-        <h5>Username: <span th:text="${#authentication.principal.username}"/></h5>
-        <h5>Email: <span th:text="${#authentication.principal.email}"/></h5>
-        <hr class="hr-4" />
-        <h2>Your Vehicles</h2>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">Year</th>
-                <th scope="col">Vehicle</th>
-                <th scope="col">Mileage</th>
-                <th scope="col">License</th>
-                <th scope="col">Remove</th>
+    <section class="row">
+        <article class="col-5">
+            <h2>Your Info</h2>
+            <hr class="hr-4" />
+            <h5>Customer No.:<span th:text="${#authentication.principal.id}"/></h5>
+            <h5>Username: <span th:text="${#authentication.principal.username}"/></h5>
+            <h5>Email: <span th:text="${#authentication.principal.email}"/></h5>
+            <hr class="hr-4" />
+        </article>
 
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="vehicle : ${#authentication.principal.vehicles}">
-                <td th:text="${vehicle.year}" />
-                <td th:text="${vehicle.make + ' ' + vehicle.model + ', ' + vehicle.color}" />
-                <td th:text="${vehicle.mileage}" />
-                <td th:text="${vehicle.license}" />
-                <td>
-                    <form th:action="@{vehicles/delete/{id}(id=${vehicle.id})}" method="post">
-                        <button type="submit" class="btn btn-danger">Remove</button>
-                    </form>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <a class="btn btn-warning btn-block" href="/vehicles/add">Add Vehicle</a>
-    </article>
+        <article class="col-7">
+            <h2>Your Vehicles</h2>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Year</th>
+                    <th scope="col">Vehicle</th>
+                    <th scope="col">Mileage</th>
+                    <th scope="col">License</th>
+                    <th scope="col">Remove</th>
 
-    <article class="col-6">
-        <h2>Upcoming Appointments</h2>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Vehicle</th>
-                <th scope="col">Type</th>
-                <th scope="col">Advisor</th>
-                <th scope="col">Options</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="booking : ${bookings}">
-                <td th:text="${booking.date}" />
-                <td th:text="${booking.vehicle.make + ' ' + booking.vehicle.model}" />
-                <!--uncomment when database is filled-->
-                <td th:text="${booking.service_type.description}" />
-                <td th:text="${booking.advisor.first}" />
-                <td class="form-inline">
-                    <form th:action="@{book/cancel/{id}(id=${booking.id})}" method="post">
-                        <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
-                    </form>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="vehicle : ${#authentication.principal.vehicles}">
+                    <td th:text="${vehicle.year}" />
+                    <td th:text="${vehicle.make + ' ' + vehicle.model + ', ' + vehicle.color}" />
+                    <td th:text="${vehicle.mileage}" />
+                    <td th:text="${vehicle.license}" />
+                    <td>
+                        <form th:action="@{vehicles/delete/{id}(id=${vehicle.id})}" method="post">
+                            <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <a class="btn btn-warning btn-block" href="/vehicles/add">Add Vehicle</a>
+        </article>
+    </section>
 
-                    <form th:action="@{/book/{id}(id=${booking.id})}" method="get" th:object="${booking.id}">
-                        <button type="submit" class="btn btn-success btn-sm">Details</button>
-                    </form>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <a class="btn btn-warning btn-block" href="/booking/create">Book Service Appt</a>
-        <hr class="hr-4" />
-        <h2>Past Appointments</h2>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Vehicle</th>
-                <th scope="col">Type</th>
-                <th scope="col">Advisor</th>
-            </tr>
-            </thead>
-            <!--<tbody>-->
-            <!--<tr th:each="vehicle : ${#authentication.principal.vehicles}">-->
-                <!--<td th:text="${vehicle.year}" />-->
-                <!--<td th:text="${vehicle.make + ' ' + vehicle.model + ', ' + vehicle.color}" />-->
-                <!--<td th:text="${vehicle.mileage}" />-->
-                <!--<td th:text="${vehicle.license}" />-->
-            <!--</tr>-->
-            <!--</tbody>-->
-        </table>
-    </article>
+<hr class="hr-4 m-4"/>
+    <section class="mx-auto">
+        <article class="col-12">
+            <h2>Upcoming Appointments</h2>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Vehicle</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Advisor</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Options</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="booking : ${bookings}">
+                    <td th:text="${booking.date}" />
+                    <td th:text="${booking.vehicle.make + ' ' + booking.vehicle.model}" />
+                    <td th:text="${booking.service_type.description}" />
+                    <td th:text="${booking.advisor.first}" />
+                    <td th:text="${booking.status.description}" />
+                    <td class="form-inline">
+                        <form th:action="@{book/cancel/{id}(id=${booking.id})}" method="post">
+                            <button type="submit" class="btn btn-danger btn-sm mr-4">Cancel</button>
+                        </form>
+
+                        <form th:action="@{/book/{id}(id=${booking.id})}" method="get" th:object="${booking.id}">
+                            <button type="submit" class="btn btn-success btn-sm">Details</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <a class="btn btn-warning btn-block" href="/booking/create">Book Service Appt</a>
+            <hr class="hr-4" />
+            <h2>Past Appointments</h2>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Vehicle</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Advisor</th>
+                </tr>
+                </thead>
+                <!--<tbody>-->
+                <!--<tr th:each="vehicle : ${#authentication.principal.vehicles}">-->
+                    <!--<td th:text="${vehicle.year}" />-->
+                    <!--<td th:text="${vehicle.make + ' ' + vehicle.model + ', ' + vehicle.color}" />-->
+                    <!--<td th:text="${vehicle.mileage}" />-->
+                    <!--<td th:text="${vehicle.license}" />-->
+                <!--</tr>-->
+                <!--</tbody>-->
+            </table>
+        </article>
+
+    </section>
+
+    <section>
+        <h2>Where to Find us:</h2>
     <div id="map-canvas"></div>
-
+    </section>
 </main>
 
 

@@ -40,6 +40,9 @@ public class ServiceBooking {
     @OneToOne
     private ServiceType service_type;
 
+    @OneToOne
+    private Event status;
+
 
     public ServiceBooking() {
     }
@@ -51,6 +54,7 @@ public class ServiceBooking {
         this.advisor = advisor;
         this.vehicle = vehicle;
         this.service_type = service_type;
+        this.status = status;
     }
 
     public long getId() {
@@ -115,5 +119,21 @@ public class ServiceBooking {
 
     public void setService_type(ServiceType service_type) {
         this.service_type = service_type;
+    }
+
+    public User getTechnician() {
+        return technician;
+    }
+
+    public void setTechnician(User technician) {
+        this.technician = technician;
+    }
+
+    public Event getStatus() {
+        return status;
+    }
+
+    public void setStatus(Event status) {
+        this.status = status;
     }
 }

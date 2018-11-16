@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import works.ontheroadagain.app.models.Event;
 import works.ontheroadagain.app.models.ServiceBooking;
 import works.ontheroadagain.app.models.User;
 import works.ontheroadagain.app.services.*;
@@ -27,14 +28,16 @@ public class BookingController {
     private final UserRepository userRepo;
     private final ServiceTypeRepository serviceTypeRepo;
     private final RolesRepository rolesRepo;
+    private final EventRepository eventRepo;
 
     public BookingController(VehicleRepository vehicleRepo, BookingRepository bookingRepo, UserRepository userRepo,
-                             ServiceTypeRepository serviceTypeRepo, RolesRepository rolesRepo) {
+                             ServiceTypeRepository serviceTypeRepo, RolesRepository rolesRepo, EventRepository eventRepo) {
         this.vehicleRepo = vehicleRepo;
         this.bookingRepo = bookingRepo;
         this.userRepo = userRepo;
         this.serviceTypeRepo = serviceTypeRepo;
         this.rolesRepo = rolesRepo;
+        this.eventRepo = eventRepo;
     }
 
     @GetMapping("/booking/create")
@@ -65,6 +68,7 @@ public class BookingController {
         System.out.println(selectedTime);
         booking.getDate().setHours(Integer.valueOf(selectedTime.substring(0, 2)));
         booking.getDate().setMinutes(Integer.valueOf(selectedTime.substring(3)));
+        booking.setStatus(eventRepo.findOne(1L));
         bookingRepo.save(booking);
         return "redirect:/profile";
     }

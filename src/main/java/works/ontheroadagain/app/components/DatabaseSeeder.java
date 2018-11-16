@@ -60,7 +60,8 @@ public class DatabaseSeeder {
                 serviceTypeRepo.findAll().spliterator(),
                 false)
                 .count();
-        if (count < 9) {
+        if (count < 8
+                ) {
             ServiceType types[] = {
                     new ServiceType("Lube, Oil, and Filter"),
                     new ServiceType("Tire Rotation"),
@@ -133,7 +134,7 @@ public class DatabaseSeeder {
                 eventRepo.findAll().spliterator(),
                 false)
                 .count();
-        if (count < 10) {
+        if (count < 8) {
             Event events[] = {
                     new Event("Booking Created"),
                     new Event("Vehicle Checked-in"),
