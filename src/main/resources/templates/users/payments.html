@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/fragments :: head"></head>
+    <title>Payments</title>
+<body class=" bg-light">
+<nav th:replace="fragments/fragments :: navbar"></nav>
+<header th:replace=" fragments/fragments :: header"></header>
+<h2 class="text-center">Payment Method</h2>
+<script src="https://js.stripe.com/v3/"></script>
+<div class="text-center">
+<form action="your-server-side-code" method="POST">
+    <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="pk_test_TYooMQauvdEDq54NiTphI7jx"
+            data-amount="Your total:"
+            data-name="Stripe.com"
+            data-description="Service charge"
+            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+            data-locale="auto"
+            data-zip-code="true">
+    </script>
+</form>
+</div>
+<div class="text-center">
+<button class="btn-primary">Pay with Cash or Check</button>
+</div>
+
+<footer th:replace="fragments/fragments :: footer"></footer>
+</body>
+</html>

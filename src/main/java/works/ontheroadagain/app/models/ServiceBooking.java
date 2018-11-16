@@ -52,6 +52,7 @@ public class ServiceBooking {
         this.service_time = service_time;
 //        this.user = user;
         this.advisor = advisor;
+        this.technician = technician;
         this.vehicle = vehicle;
         this.service_type = service_type;
         this.status = status;
@@ -96,6 +97,15 @@ public class ServiceBooking {
 //    public void setUser(User user) {
 //        this.user = user;
 //    }
+
+
+    public User getTechnician() {
+        return technician;
+    }
+
+    public void setTechnician(User technician) {
+        this.technician = technician;
+    }
 
     public User getAdvisor() {
         return advisor;

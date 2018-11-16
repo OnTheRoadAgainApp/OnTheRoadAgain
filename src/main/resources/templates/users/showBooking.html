@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments/fragments :: head"></head>
+<style>
+    #progress {
+        width: 100%;
+        background-color: grey;
+    }
+    #bar {
+        width: 1%;
+        height: 30px;
+        background-color: green;
+    }
+</style>
 <body class=" bg-light">
 <nav th:replace="fragments/fragments :: navbar"></nav>
 
@@ -8,7 +19,6 @@
 <h3 class="container mt-5 mb-5">Look at your booking details, <span th:text="${#authentication.principal.first}"/>!</h3>
 
 <main class="container row mx-auto">
-
     <div class="border border-warning rounded col-12">
         <article class="m-4">
             <h3>Service Details:</h3>
@@ -45,5 +55,21 @@
 </main>
 
 <footer th:replace="fragments/fragments :: footer"></footer>
+<script>
+    function move() {
+        var elem = document.getElementById("bar");
+        var width = 1;
+        var id = setInterval(frame, 10);
+        function frame() {
+            if (width >= 100) {
+                clearInterval(id);
+            } else {
+                width++;
+                elem.style.width = width + '%';
+            }
+        }
+    }
+
+</script>
 </body>
 </html>

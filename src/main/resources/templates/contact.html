@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:include="fragments/fragments :: head"></head>
+
+
+<body class=" bg-light">
+<nav th:replace="fragments/fragments :: navbar"></nav>
+
+<header th:replace=" fragments/fragments :: header"></header>
+
+<div class="text-center mt-5">
+    <h3>Contact us!</h3>
+    <br />
+    <span><img src="./images/iconmonstr-email-12-32.png" class="mr-1" /><a href="mailto:ontheroadagaing@otra.works">ontheroadagaing@otra.works</a></span>
+    <br />
+    <span><img src="./images/iconmonstr-smartphone-3-32.png" class="mr-1" /> 210 571-6810</span>
+    <br />
+    <br />
+    <span>600 Navarro St. #350</span>
+    <br />
+    <span>San Antonio, Texas</span>
+</div>
+
+<footer th:replace="fragments/fragments :: footer"></footer>
+
+</body>
+</html>

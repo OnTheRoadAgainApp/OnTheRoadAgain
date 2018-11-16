@@ -46,6 +46,10 @@
             <a class="nav-link" href="/register">Register</a>
         </li>
 
+        <li sec:authorize="hasAuthority('CUSTOMER')" class="nav-item">
+            <a class="nav-link" href="/payments">Pay for Service</a>
+        </li>
+
         <li sec:authorize="isAuthenticated()" class="nav-item">
             <form th:action="@{/logout}" th:method="post"><button class="btn-link btn text-danger">Logout</button></form>
         </li>
@@ -56,11 +60,11 @@
 <footer th:fragment="footer" class="navbar navbar-light navbar-expand-lg fixed-bottom bg-danger text-center mt-5">
     <ul class="navbar-nav mr-3 mx-auto">
         <li class="nav-item mt-2">&copy;On The Road Again</li>
-        <li class="nav-item"><a class="nav-link" href="#">Directions</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">FAQs</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Privacy</a></li>
+        <li class="nav-item"><a class="nav-link" href="/directions">Directions</a></li>
+        <li class="nav-item"><a class="nav-link" href="/faq">FAQs</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="/Meet">Meet The Team</a></li>
+        <li class="nav-item"><a class="nav-link" href="/Privacy">Privacy</a></li>
     </ul>
 </footer>
 </body>
