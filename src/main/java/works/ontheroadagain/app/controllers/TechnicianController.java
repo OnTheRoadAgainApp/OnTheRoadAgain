@@ -5,6 +5,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import works.ontheroadagain.app.models.Event;
 import works.ontheroadagain.app.models.ServiceBooking;
 import works.ontheroadagain.app.models.User;
 import works.ontheroadagain.app.models.Vehicle;
@@ -55,9 +56,9 @@ public class TechnicianController {
 
     }
 
-    @PostMapping()
-    public String vehicleAppointmentStatus(@ModelAttribute ){
-         = eventRepository.findById();
-        return;
+    @PostMapping("booking/{bookingId}/update")
+    public String vehicleAppointmentStatus(@ModelAttribute Event status){
+        Event updateStatus = eventRepository.findById(status);
+        return "booking/" + updateStatus.getId();
     }
 }

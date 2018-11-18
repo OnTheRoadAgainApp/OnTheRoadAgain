@@ -69,7 +69,7 @@
         <input type="checkbox" name="Final Quality Check" value="9" class="custom-control-input" id="check5" />
         <label class="custom-control-label" for="check5">Final Quality Check</label>
         <!--Button should save this vehicle to the technicians completed vehicles card.-->
-        <button type="button" name="Vehicle Ready" value="10" class="btn btn-outline-success btn-sm">Vehicle Ready</button>
+        <button th:href="@{/booking/{id}/update(id=${events.id})}" type="button" name="Vehicle Ready" value="10" class="btn btn-outline-success btn-sm">Vehicle Ready</button>
     </div>
             <!--STILL TO DO-->
             <!--update status to event descriptions-->
@@ -857,6 +857,7 @@
                 </tr>
             </table>
             <textarea name="comment" style="resize: none; width: 36rem" placeholder="Enter Vehicle Notes Here"></textarea>
+            <a onClick="window.print()" class="btn btn-success btn-block">Print Checklist</a>
             <a onclick="window.location.href = '/technicians';" class="btn btn-primary btn-block">Submit</a>
         </form>
     </section>
