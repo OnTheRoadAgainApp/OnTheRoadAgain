@@ -68,8 +68,11 @@
     <div class="custom-control custom-checkbox">
         <input type="checkbox" name="Final Quality Check" value="9" class="custom-control-input" id="check5" />
         <label class="custom-control-label" for="check5">Final Quality Check</label>
+        <!--Vehicle Ready updates the bar to 100% so this should update the customer's status...yes?!?!?-->
+        <button th:href="@{/booking/{id}/update(id=${events.id})}">Update Customer</button>
         <!--Button should save this vehicle to the technicians completed vehicles card.-->
-        <button th:href="@{/booking/{id}/update(id=${events.id})}" type="button" name="Vehicle Ready" value="10" class="btn btn-outline-success btn-sm">Vehicle Ready</button>
+        <button type="button" name="Vehicle Ready" value="10" class="btn btn-outline-success btn-sm">Vehicle Ready</button>
+
     </div>
             <!--STILL TO DO-->
             <!--update status to event descriptions-->
