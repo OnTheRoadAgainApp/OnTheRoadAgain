@@ -10,6 +10,7 @@ import works.ontheroadagain.app.models.User;
 import works.ontheroadagain.app.models.Vehicle;
 import works.ontheroadagain.app.repositories.UsersRepository;
 import works.ontheroadagain.app.services.BookingRepository;
+import works.ontheroadagain.app.services.EventRepository;
 import works.ontheroadagain.app.services.VehicleRepository;
 import works.ontheroadagain.app.services.VehicleService;
 
@@ -20,12 +21,14 @@ import java.util.List;
 public class TechnicianController {
         private final VehicleRepository vehicleRepository;
         private final BookingRepository bookingRepo;
+        private final EventRepository eventRepository;
 
 
 
-    public TechnicianController(VehicleRepository vehicleRepository, BookingRepository bookingRepo) {
+    public TechnicianController(VehicleRepository vehicleRepository, BookingRepository bookingRepo, EventRepository eventRepository) {
         this.vehicleRepository = vehicleRepository;
         this.bookingRepo = bookingRepo;
+        this.eventRepository = eventRepository;
     }
 
 
@@ -50,5 +53,11 @@ public class TechnicianController {
         model.addAttribute("booking", bookingRepo.findById(bookingId));
         return "vehicleAppointment";
 
+    }
+
+    @PostMapping()
+    public String vehicleAppointmentStatus(@ModelAttribute ){
+         = eventRepository.findById();
+        return;
     }
 }
