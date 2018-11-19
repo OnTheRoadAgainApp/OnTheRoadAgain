@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
->
-<head th:include="fragments/fragments :: head"></head>
+
+<head th:include="fragments/fragments :: head">
+    <script type="text/javascript">
+        function showMessage(){
+            alert("SMS has been sent!");
+        }
+    </script>
+</head>
 <style>
     #progress {
         width: 100%;
@@ -16,6 +22,11 @@
     }
 </style>
 <body class=" bg-light">
+
+<!--<aside th:if="${param.}" class="alert alert-success" role="alert">-->
+    <!--SMS has been sent!-->
+<!--</aside>-->
+
 <nav th:replace="fragments/fragments :: navbar"></nav>
 
 <header th:replace=" fragments/fragments :: header"></header>
@@ -56,15 +67,17 @@
         </article>
 
 
-        <article class="text-center mb-5" th:if="${bookings.status.id == 1}" sec:authorize="hasAuthority('ADVISOR')">
-            <h3>Vehicle service has been complited!</h3>
+        <article class="text-center mb-5" th:if="${bookings.status.id == 10}" sec:authorize="hasAuthority('ADVISOR')">
+            <h3>Vehicle service has been completed!</h3>
             <form>
                 <label for="send">Tell the customer that the car is ready to pick up!</label>
                 <br/>
-                <a href="/send" class="btn btn-success btn-lg active" role="button" aria-pressed="true" id="send">Send
+                <a href="/send" class="btn btn-success btn-lg active" role="button" aria-pressed="true" id="send" onClick='showMessage()'>Send
                     SMS!</a>
             </form>
         </article>
+        
+
     </div>
 </main>
 
