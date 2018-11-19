@@ -117,7 +117,7 @@ public class DatabaseSeeder {
         if (count < 2) {
             Vehicle mikescars[] = {
                     new Vehicle(2004, "2340XT", "Chevrolet", "Tahoe", 215376L, 5L, "White", userRepo.findByFirst("Michael")),
-                    new Vehicle(2011, "92WKXY", "Kia", "Sorrento", 125743L, 2L, "Gray", userRepo.findByFirst("Michael"))
+                    new Vehicle(2011, "92WKXY", "Kia", "Sorento", 125743L, 2L, "Gray", userRepo.findByFirst("Michael"))
             };
             vehicleRepo.save(Arrays.asList(mikescars));
         }
@@ -148,6 +148,18 @@ public class DatabaseSeeder {
                     new Event("Vehicle Ready")
             };
             eventRepo.save(Arrays.asList(events));
+        }
+    }
+
+    private void seedAppts() {
+        long count = StreamSupport.stream(
+                eventRepo.findAll().spliterator(),
+                false)
+                .count();
+        if (count < 2) {
+            Event appts[] = {
+            };
+            eventRepo.save(Arrays.asList(appts));
         }
     }
 }
