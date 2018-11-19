@@ -10,10 +10,8 @@ import works.ontheroadagain.app.services.SmsSender;
 public class SmsController {
     @GetMapping("/send")
     public String vehicleAppointmentPage(){
-//        model.addAttribute("booking", bookingRepo.findById(bookingId));
         SmsSender smsSender = new SmsSender();
         smsSender.sendText();
-        return "users/advisor";
-
+        return "redirect:/advisor";
     }
 }
