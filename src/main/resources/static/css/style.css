@@ -27,4 +27,5 @@ h1, h2 {
 .sub-header {
     font-family: 'Bangers', cursive;
     font-size: 200%;
+    text-shadow: 2px 2px 4px #000000;
 }

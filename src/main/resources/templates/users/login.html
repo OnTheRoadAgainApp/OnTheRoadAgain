@@ -12,36 +12,36 @@
 <!-- header with website logo -->
 <header th:replace=" fragments/fragments :: header"></header>
 
-<main class="container mx-auto mb-5 pb-5">
+<main class="container mx-auto mb-5 pb-5 mt-3">
+    <section class="col-7 mx-auto">
+        <h1 class="page-title my-2 text-dark" style="border-bottom: 2px solid #ffc107;">Log In</h1>
 
+        <aside th:if="${param.error}" class="alert alert-danger" role="alert">
+            Invalid Username and Password.
+        </aside>
 
-<h1 class="page-title my-2 text-dark col-10" style="border-bottom: 2px solid #ffc107;">Log In</h1>
+        <aside th:if="${param.logout}" class="alert alert-warning" role="alert">
+            You have been logged out.
+        </aside>
 
-    <article class="mx-auto">
-    <aside th:if="${param.error}" class="alert alert-danger" role="alert">
-        Invalid Username and Password.
-    </aside>
-
-    <aside th:if="${param.logout}" class="alert alert-warning" role="alert">
-        You have been logged out.
-    </aside>
-
-    <form th:action="@{/login}" method="post">
-        <fieldset>
-            <article class="form-group col-md-6">
-                <label class="col-3" for="username">Username</label>
-                <input id="username" name="username" type="text"/>
+        <form th:action="@{/login}" method="post" class="mt-3">
+            <article class="form-group row justify-content-center justify-items-center">
+                <label class="col-12 col-md-2" for="username">Username</label>
+                <input id="username" name="username" type="text" class="form-control col-12 col-md-6"/>
             </article>
 
-            <article class="form-group col-md-6">
-                <label class="col-3" for="password">Password</label>
-                <input id="password" name="password" type="password"/>
+            <article class="form-group row justify-content-center justify-items-center">
+                <label class="col-12 col-md-2" for="password">Password</label>
+                <input id="password" name="password" type="password" class="form-control col-12 col-md-6"/>
             </article>
 
-            <input type="submit" class="btn btn-warning" value="Log In"/>
-        </fieldset>
-    </form>
-    </article>
+            <article class="form-group row justify-content-center justify-items-center">
+                <input type="submit" class="btn btn-warning btn-lg" value="Log In"/>
+            </article>
+        </form>
+
+    </section>
+    <aside class="py-5 my-5"></aside>
 </main>
 <!-- red footer with links  -->
 <footer th:replace="fragments/fragments :: footer"></footer>
