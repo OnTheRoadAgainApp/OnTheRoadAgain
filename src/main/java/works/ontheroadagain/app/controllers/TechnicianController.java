@@ -10,6 +10,7 @@ import works.ontheroadagain.app.models.User;
 import works.ontheroadagain.app.models.Vehicle;
 import works.ontheroadagain.app.repositories.UsersRepository;
 import works.ontheroadagain.app.services.BookingRepository;
+import works.ontheroadagain.app.services.SmsSender;
 import works.ontheroadagain.app.services.VehicleRepository;
 import works.ontheroadagain.app.services.VehicleService;
 
@@ -18,12 +19,14 @@ import java.util.List;
 
 @Controller
 public class TechnicianController {
+        private SmsSender smsSender;
         private final VehicleRepository vehicleRepository;
         private final BookingRepository bookingRepo;
 
 
 
-    public TechnicianController(VehicleRepository vehicleRepository, BookingRepository bookingRepo) {
+    public TechnicianController(VehicleRepository vehicleRepository, BookingRepository bookingRepo, SmsSender smsSender) {
+        this.smsSender = smsSender;
         this.vehicleRepository = vehicleRepository;
         this.bookingRepo = bookingRepo;
     }
@@ -48,6 +51,8 @@ public class TechnicianController {
     @GetMapping("/booking/{bookingId}")
     public String vehicleAppointmentPage(Model model, @PathVariable Long bookingId){
         model.addAttribute("booking", bookingRepo.findById(bookingId));
+        SmsSender smsSender = new SmsSender();
+        smsSender.sendText();
         return "vehicleAppointment";
 
     }
