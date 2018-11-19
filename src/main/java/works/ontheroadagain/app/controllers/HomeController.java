@@ -14,8 +14,8 @@ public class HomeController {
     }
     @GetMapping("/")
     public String welcome() {
-        SmsSender smsSender = new SmsSender();
-        smsSender.sendText();
+//        SmsSender smsSender = new SmsSender();
+//        smsSender.sendText();
         return "home";
     }
 

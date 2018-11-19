@@ -48,12 +48,12 @@ public class TechnicianController {
     }
 
 
-    @GetMapping("/booking/{bookingId}")
-    public String vehicleAppointmentPage(Model model, @PathVariable Long bookingId){
-        model.addAttribute("booking", bookingRepo.findById(bookingId));
-        SmsSender smsSender = new SmsSender();
-        smsSender.sendText();
-        return "vehicleAppointment";
-
-    }
+//    @GetMapping("/booking/{bookingId}")
+//    public String vehicleAppointmentPage(Model model, @PathVariable Long bookingId){
+//        model.addAttribute("booking", bookingRepo.findById(bookingId));
+//        SmsSender smsSender = new SmsSender();
+//        smsSender.sendText();
+//        return "vehicleAppointment";
+//
+//    }
 }
