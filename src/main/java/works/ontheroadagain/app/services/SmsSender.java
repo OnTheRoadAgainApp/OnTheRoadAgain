@@ -20,7 +20,7 @@ public class SmsSender {
         Message message = Message
                 .creator(new PhoneNumber("+12104152689"), // to
                         new PhoneNumber("+18302660961"), // from
-                        "Your vehicle is ready for pickup!")
+                        "Cole's vehicle is ready for pickup!")
                 .create();
 
         System.out.println(message.getSid());

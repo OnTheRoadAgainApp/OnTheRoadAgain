@@ -11,7 +11,11 @@ import works.ontheroadagain.app.models.User;
 import works.ontheroadagain.app.models.Vehicle;
 import works.ontheroadagain.app.repositories.UsersRepository;
 import works.ontheroadagain.app.services.BookingRepository;
+
 import works.ontheroadagain.app.services.EventRepository;
+
+import works.ontheroadagain.app.services.SmsSender;
+
 import works.ontheroadagain.app.services.VehicleRepository;
 import works.ontheroadagain.app.services.VehicleService;
 
@@ -21,13 +25,19 @@ import java.util.List;
 
 @Controller
 public class TechnicianController {
+        private SmsSender smsSender;
         private final VehicleRepository vehicleRepository;
         private final BookingRepository bookingRepo;
         private final EventRepository eventRepository;
 
 
 
+
     public TechnicianController(VehicleRepository vehicleRepository, BookingRepository bookingRepo, EventRepository eventRepository) {
+
+    public TechnicianController(VehicleRepository vehicleRepository, BookingRepository bookingRepo, SmsSender smsSender) {
+        this.smsSender = smsSender;
+
         this.vehicleRepository = vehicleRepository;
         this.bookingRepo = bookingRepo;
         this.eventRepository = eventRepository;
@@ -48,6 +58,7 @@ public class TechnicianController {
         model.addAttribute("vehicles",vehicles);
         return "technicians";
     }
+
 
 
     @GetMapping("/booking/{bookingId}")
@@ -82,4 +93,5 @@ public class TechnicianController {
 
         return "redirect:/booking/" + bookingId;
     }
+
 }
