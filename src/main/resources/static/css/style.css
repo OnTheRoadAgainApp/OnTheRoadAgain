@@ -1,0 +1,32 @@
+body {
+    font-family: 'Nunito', sans-serif;
+}
+
+h1, h2 {
+    font-family: 'Bangers', cursive;
+
+
+}
+
+.normie {
+    font-family: 'Nunito', sans-serif;
+}
+
+.heads {
+    font-family: 'Bangers', cursive;
+}
+
+.large-text {
+    font-size: 20px;
+}
+
+.page-title {
+    font-size: 300% !important;
+}
+
+.sub-header {
+    font-family: 'Bangers', cursive;
+    font-size: 200%;
+    text-shadow: 2px 2px 4px #000000;
+    letter-spacing: 2px;
+}
