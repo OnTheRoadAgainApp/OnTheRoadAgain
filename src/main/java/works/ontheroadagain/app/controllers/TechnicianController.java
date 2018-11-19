@@ -16,6 +16,7 @@ import works.ontheroadagain.app.services.VehicleRepository;
 import works.ontheroadagain.app.services.VehicleService;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -58,18 +59,27 @@ public class TechnicianController {
 
 //    This is where it theoretically should update status
     @PostMapping("booking/{bookingId}/update")
-    public String vehicleAppointmentStatus(@ModelAttribute Event status, @RequestParam("status") Long statusId,
+    public String vehicleAppointmentStatus(@ModelAttribute Event status, @RequestParam("status") String[] statusId,
                                            @PathVariable Long bookingId){
-        Event updateStatus = eventRepository.findById(statusId);
-        System.out.println(status);
-        ServiceBooking updatedBooking = bookingRepo.findById(bookingId);
-        System.out.println(bookingId);
-        updatedBooking.setStatus(updateStatus);
-        System.out.println(updateStatus);
-        bookingRepo.save(updatedBooking);
-        System.out.println(updatedBooking);
 
-//        return "redirect:/vehicleAppointment";
-        return "redirect:/booking/";
+//        //to ensure highest number
+//        Long highestStatus = 0L;
+//        for(String id : statusId) {
+//            System.out.println(id);
+//            if (Long.valueOf(id) > highestStatus)
+//                highestStatus = Long.valueOf(id);
+//        }
+
+        System.out.println();
+
+        Event updateStatus = eventRepository.findById(Long.valueOf(statusId[statusId.length-1]));
+
+        ServiceBooking updatedBooking = bookingRepo.findById(bookingId);
+
+        updatedBooking.setStatus(updateStatus);
+
+        bookingRepo.save(updatedBooking);
+
+        return "redirect:/booking/" + bookingId;
     }
 }
