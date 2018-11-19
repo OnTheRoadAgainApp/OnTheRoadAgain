@@ -4,6 +4,8 @@ body {
 
 h1, h2 {
     font-family: 'Bangers', cursive;
+
+
 }
 
 .normie {
@@ -12,4 +14,17 @@ h1, h2 {
 
 .heads {
     font-family: 'Bangers', cursive;
+}
+
+.large-text {
+    font-size: 20px;
+}
+
+.page-title {
+    font-size: 300% !important;
+}
+
+.sub-header {
+    font-family: 'Bangers', cursive;
+    font-size: 200%;
 }

@@ -12,11 +12,12 @@
 <!-- header with website logo -->
 <header th:replace=" fragments/fragments :: header"></header>
 
+<main class="container mx-auto mb-5 pb-5">
 
-<h1 class="container text-warning">Log In</h1>
 
-<main class="container mx-auto">
+<h1 class="page-title my-2 text-dark col-10" style="border-bottom: 2px solid #ffc107;">Log In</h1>
 
+    <article class="mx-auto">
     <aside th:if="${param.error}" class="alert alert-danger" role="alert">
         Invalid Username and Password.
     </aside>
@@ -40,7 +41,7 @@
             <input type="submit" class="btn btn-warning" value="Log In"/>
         </fieldset>
     </form>
-
+    </article>
 </main>
 <!-- red footer with links  -->
 <footer th:replace="fragments/fragments :: footer"></footer>
