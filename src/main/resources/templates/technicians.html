@@ -9,12 +9,12 @@
     <h1>Welcome Back, <span th:text="${#authentication.principal.first}"></span></h1>
     <hr class="hr-6"/>
     <section class="row">
-    <article class="col-sm-12 col-6">
+    <article class="col-6">
         <h2>Your Info:</h2>
         <h4 th:text="${#authentication.principal.email}"/>
         <h4 th:text="${#authentication.principal.phone_number}"/>
     </article>
-    <article class="col-sm-12 col-6 row">
+    <article class="col-6 row">
         <h2>Scheduled Vehicles</h2>
         <table class="table table-striped">
             <thead>

@@ -13,7 +13,7 @@
     <section class="col-6">
         <div class="card" style="width: 18rem;">
             <ul class="list-group list-group-flush">
-                <li th:text="${booking.id}" type="hidden"  />
+                <!--<li th:text="${booking.id}" type="hidden" />-->
                 <li th:text="${booking.vehicle.user.last_name + ', ' + booking.vehicle.user.first}" class="list-group-item" />
                 <li th:text="${booking.service_type.description}" class="list-group-item" />
                 <li th:text="${booking.vehicle.year}" class="list-group-item" />
@@ -22,8 +22,8 @@
             </ul>
         </div>
     </section>
-    <section class="col-sm-12 col-6">
-    <form>
+    <section class="col-6">
+    <form th:action="@{/booking/{id}/update(id=${booking.id})}" method="post">
     <h2>Vehicle Status</h2>
     <div class="progress">
         <div class="progress-bar bg-success" role="progressbar" id="progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
@@ -70,9 +70,10 @@
     <div class="custom-control custom-checkbox">
         <input type="checkbox" name="status" value="9" class="custom-control-input" id="check5" />
         <label class="custom-control-label" for="check5">Final Quality Check</label>
+        <!--<input type="hidden" name="booking" th:value="${booking.id}" />-->
         <!--Vehicle Ready updates the bar to 100% so this should update the customer's status...yes?!?!?-->
         <!--Button should save this vehicle to the technicians completed vehicles card.-->
-        <button th:href="@{/booking/{id}/update(id=${event.id})}" type="button" name="status" value="10" class="btn btn-outline-success btn-sm">Vehicle Ready</button>
+        <input type="submit" name="status" class="btn btn-outline-success btn-sm" value="Update Status"/>
 
     </div>
             <!--STILL TO DO-->
@@ -89,7 +90,7 @@
     </div>
     </form>
     </section>
-    <section class="col-sm-12 col-6 row">
+    <section class="col-6 row">
         <h3>Vehicle Inspection Checklist</h3>
         <form id="checklist">
             <!--th:method="post" & th:action="users/profile page somehow?!?!?!?!-->
