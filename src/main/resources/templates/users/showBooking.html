@@ -28,7 +28,7 @@
 <h3 class="container mt-5 mb-5">Look at this booking details, <span th:text="${#authentication.principal.first}"/>!</h3>
 
 <main class="container row mx-auto">
-    <div class="border border-warning rounded col-12">
+    <div class="border border-warning rounded col-12 mb-5 pb-2">
         <article class="m-4">
             <h3>Service Details:</h3>
             <table class="table table-striped">
@@ -62,7 +62,7 @@
         </article>
 
 
-        <article class="text-center mb-5" th:if="${bookings.status.id == 10}" sec:authorize="hasAuthority('ADVISOR')">
+        <article class="text-center mb-5" th:if="${bookings.status.id == 9}" sec:authorize="hasAuthority('ADVISOR')">
             <h3>Vehicle service has been completed!</h3>
             <form>
                 <label for="send">Tell the customer that the car is ready to pick up!</label>
@@ -71,9 +71,10 @@
                     SMS!</a>
             </form>
         </article>
-        
-
     </div>
+    <aside class="py-5 my-5"></aside>
+    <aside class="py-5 my-5"></aside>
+
 </main>
 
 <footer th:replace="fragments/fragments :: footer"></footer>

@@ -33,9 +33,8 @@ public class TechnicianController {
 
 
 
-    public TechnicianController(VehicleRepository vehicleRepository, BookingRepository bookingRepo, EventRepository eventRepository) {
 
-    public TechnicianController(VehicleRepository vehicleRepository, BookingRepository bookingRepo, SmsSender smsSender) {
+    public TechnicianController(VehicleRepository vehicleRepository, BookingRepository bookingRepo, SmsSender smsSender,EventRepository eventRepository) {
         this.smsSender = smsSender;
 
         this.vehicleRepository = vehicleRepository;
