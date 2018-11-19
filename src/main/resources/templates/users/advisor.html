@@ -23,7 +23,9 @@
                     <th scope="col">Booking Date</th>
                     <th scope="col">Service</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Technican</th>
+                    <th scope="col">Technician</th>
+                    <th scope="col">Assign / Change Technician</th>
+                    <th scope="col">Details</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -32,15 +34,15 @@
                     <td th:text="${service_booking.vehicle.license}"/>
                     <td th:text="${service_booking.date}"/>
                     <td th:text="${service_booking.service_type.description}"/>
-                    <!--<td th:text="${service_booking.event.description}" />-->
-                    <td>status</td>
-                    <th:block  th:if="${service_booking.technician != null}">
-                        <td th:text="${service_booking.technician.first}" />
+                    <td th:text="${service_booking.status.description}"/>
+                    <th:block th:if="${service_booking.technician != null}">
+                        <td th:text="${service_booking.technician.first}"/>
                     </th:block>
-                    <td></td>
-                    <td></td>
+                    <th:block th:if="${service_booking.technician == null}">
+                        <td>not assigned</td>
+                    </th:block>
                     <td>
-                        <form th:action="@{/advisor}" method="post" th:object="${serviceBooking}">
+                        <form th:action="@{/advisor}" method="post" class="form-inline" th:object="${serviceBooking}">
                             <div class="form-group">
                                 <select name="tech" id="technician" class="form-control">
                                     <option th:each="technician : ${technicians}" th:value="${technician.id}">
@@ -49,7 +51,13 @@
                                 </select>
                                 <input type="hidden" name="booking-id" th:value="${service_booking.id}"/>
                             </div>
-                            <input type="submit" name="tech"/>
+                            <button type="submit" class="btn btn-primary btn-sm ml-1" name="tech">Submit</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form th:action="@{/book/{id}(id=${service_booking.id})}" method="get"
+                              th:object="${service_booking.id}">
+                            <button type="submit" class="btn btn-success btn-sm">Details</button>
                         </form>
                     </td>
                 </tr>
