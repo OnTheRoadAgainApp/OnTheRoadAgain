@@ -62,10 +62,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .hasAuthority("ADVISOR")
                 .and()
                 .authorizeRequests()
-                .antMatchers("/profile", "/vehicles/add", "vehicles/book", "/booking/create", "/payments", "/book/{id}") //put for each role
+                .antMatchers("/profile", "/vehicles/add", "vehicles/book", "/booking/create", "/payments") //put for each role
                 .hasAuthority("CUSTOMER")
+                .and()
+                .authorizeRequests()
                 .antMatchers("/book/{id}") 
-                .hasAuthority("ADVISOR")
+                .hasAnyAuthority("ADVISOR", "CUSTOMER")
 //                .and()
 //                .authorizeRequests()
 //

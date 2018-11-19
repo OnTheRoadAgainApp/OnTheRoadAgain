@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+>
 <head th:include="fragments/fragments :: head"></head>
 <style>
     #progress {
         width: 100%;
         background-color: grey;
     }
+
     #bar {
         width: 1%;
         height: 30px;
@@ -16,7 +19,7 @@
 <nav th:replace="fragments/fragments :: navbar"></nav>
 
 <header th:replace=" fragments/fragments :: header"></header>
-<h3 class="container mt-5 mb-5">Look at your booking details, <span th:text="${#authentication.principal.first}"/>!</h3>
+<h3 class="container mt-5 mb-5">Look at this booking details, <span th:text="${#authentication.principal.first}"/>!</h3>
 
 <main class="container row mx-auto">
     <div class="border border-warning rounded col-12">
@@ -51,6 +54,17 @@
                      role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         </article>
+
+
+        <article class="text-center mb-5" th:if="${bookings.status.id == 1}" sec:authorize="hasAuthority('ADVISOR')">
+            <h3>Vehicle service has been complited!</h3>
+            <form>
+                <label for="send">Tell the customer that the car is ready to pick up!</label>
+                <br/>
+                <a href="/send" class="btn btn-success btn-lg active" role="button" aria-pressed="true" id="send">Send
+                    SMS!</a>
+            </form>
+        </article>
     </div>
 </main>
 
@@ -60,6 +74,7 @@
         var elem = document.getElementById("bar");
         var width = 1;
         var id = setInterval(frame, 10);
+
         function frame() {
             if (width >= 100) {
                 clearInterval(id);
