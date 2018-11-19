@@ -15,7 +15,8 @@
 <main class="container mx-auto mb-5 pb-5 mt-3">
     <section class="col-7 mx-auto">
         <h1 class="page-title my-2 text-dark" style="border-bottom: 2px solid #ffc107;">Log In</h1>
-
+        <p>If you've already created an account, login to start adding vehicles and creating appointments!
+            If you don't have an account, create one <a class="text-danger" href="/register">here.</a></p>
         <aside th:if="${param.error}" class="alert alert-danger" role="alert">
             Invalid Username and Password.
         </aside>

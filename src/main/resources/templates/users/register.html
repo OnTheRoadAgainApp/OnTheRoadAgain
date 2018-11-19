@@ -14,8 +14,9 @@
 <main class="container mx-auto mb-5 pb-5">
     <section class="col-10 mx-auto">
         <h1 class="page-title my-2 text-dark" style="border-bottom: 2px solid #ffc107;">Register</h1>
-        <p>Please enter your info below. Your username and password will be used to login. Any other info will
-            only be used to contact you in regards to your vehicle.</p>
+        <p>Please enter your info below to create a new account. If you already have one, login
+            <a class="text-danger" href="/login">here</a>. For more details about how we use your data,
+            take a peek at our <a class="text-danger" href="/Privacy">privacy policy</a>.</p>
         <form th:action="@{/register}" method="post" th:object="${user}">
             <div class="row mx-auto justify-content-center justify-items-center">
 
@@ -147,7 +148,7 @@
                 </section>
 
             </div>
-            <article class="form-group row justify-content-center justify-items-center">
+            <article class="form-group row justify-content-center justify-items-center mt-3">
                 <input type="submit" class="btn btn-warning btn-lg" value="Register"/>
             </article>
         </form>
