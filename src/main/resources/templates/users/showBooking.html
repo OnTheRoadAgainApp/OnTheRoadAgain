@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+>
 <head th:include="fragments/fragments :: head"></head>
 <style>
     #progress {
@@ -51,7 +53,9 @@
                      role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         </article>
-        <article class="text-center mb-5">
+
+
+        <article class="text-center mb-5" th:if="${bookings.status.id == 9}" sec:authorize="hasAuthority('ADVISOR')">
             <form>
                 <label for="send">Tell the customer that his car is ready to pick up!</label>
                 <br />
