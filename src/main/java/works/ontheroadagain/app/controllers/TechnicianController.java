@@ -56,9 +56,11 @@ public class TechnicianController {
 
     }
 
+//    This is where it theoretically should update status
     @PostMapping("booking/{bookingId}/update")
-    public String vehicleAppointmentStatus(@ModelAttribute Event status){
-        Event updateStatus = eventRepository.findById(status);
-        return "booking/" + updateStatus.getId();
+    public String vehicleAppointmentStatus(@ModelAttribute Event status, @RequestParam("status") Long statusId){
+//        Event updateStatus = eventRepository.findById(status);
+        bookingRepo (events_id.findById(statusId));
+        return "redirect/technician";
     }
 }

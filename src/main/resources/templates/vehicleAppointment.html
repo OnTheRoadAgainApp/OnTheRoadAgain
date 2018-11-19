@@ -12,6 +12,7 @@
     <section class="col-6">
         <div class="card" style="width: 18rem;">
             <ul class="list-group list-group-flush">
+                <li th:text="${booking.id}" type="hidden"  />
                 <li th:text="${booking.vehicle.user.last_name + ', ' + booking.vehicle.user.first}" class="list-group-item" />
                 <li th:text="${booking.service_type.description}" class="list-group-item" />
                 <li th:text="${booking.vehicle.year}" class="list-group-item" />
@@ -31,52 +32,52 @@
         <div class="card-body">
         <h5 class="card-title" style="text-align: center">Vehicle Checklist</h5>
     <div class="custom-control custom-checkbox">
-        <input type="checkbox" name="Vehicle Checked-in" value="2" class="custom-control-input" id="check1" />
+        <input type="checkbox" name="status" value="2" class="custom-control-input" id="check1" />
         <label class="custom-control-label" id="test" for="check1">Vehicle Checked-in</label>
     </div>
         <hr/>
     <div class="custom-control custom-checkbox">
-        <input type="checkbox" name="Service Started" value="3" class="custom-control-input" id="check2" />
+        <input type="checkbox" name="status" value="3" class="custom-control-input" id="check2" />
         <label class="custom-control-label" for="check2">Service Started</label>
     </div>
         <hr/>
     <div class="custom-control custom-checkbox" style="padding-left: 10%">
-        <input type="checkbox" name="Service Started - Error Encountered" value="4" class="custom-control-input" id="check2E" />
+        <input type="checkbox" name="status" value="4" class="custom-control-input" id="check2E" />
         <label class="custom-control-label" for="check2E" style="color: red">Service Started - Error Encountered</label>
     </div>
         <hr/>
     <div class="custom-control custom-checkbox">
-        <input type="checkbox" name="Halfway Point Reached" value="5" class="custom-control-input" id="check3" />
+        <input type="checkbox" name="status" value="5" class="custom-control-input" id="check3" />
         <label class="custom-control-label" for="check3">Halfway Point Reached</label>
     </div>
         <hr/>
     <div class="custom-control custom-checkbox" style="padding-left: 10%">
-        <input type="checkbox" name="Halfway Point Reached - Error Encountered" value="6" class="custom-control-input" id="check3E" />
+        <input type="checkbox" name="status" value="6" class="custom-control-input" id="check3E" />
         <label class="custom-control-label" for="check3E" style="color: red">Halfway Point Reached - Error Encountered</label>
     </div>
         <hr/>
     <div class="custom-control custom-checkbox">
-        <input type="checkbox" name="Inspection Underway" value="7" class="custom-control-input" id="check4" />
+        <input type="checkbox" name="status" value="7" class="custom-control-input" id="check4" />
         <label class="custom-control-label" for="check4">Inspection Underway</label>
     </div>
         <hr/>
     <div class="custom-control custom-checkbox" style="padding-left: 10%">
-        <input type="checkbox" name="Inspection Underway - Error Encountered" value="8" class="custom-control-input" id="check4E" />
+        <input type="checkbox" name="status" value="8" class="custom-control-input" id="check4E" />
         <label class="custom-control-label" for="check4E" style="color: red">Inspection Underway - Error Encountered</label>
     </div>
         <hr/>
     <div class="custom-control custom-checkbox">
-        <input type="checkbox" name="Final Quality Check" value="9" class="custom-control-input" id="check5" />
+        <input type="checkbox" name="status" value="9" class="custom-control-input" id="check5" />
         <label class="custom-control-label" for="check5">Final Quality Check</label>
         <!--Vehicle Ready updates the bar to 100% so this should update the customer's status...yes?!?!?-->
-        <button th:href="@{/booking/{id}/update(id=${events.id})}">Update Customer</button>
         <!--Button should save this vehicle to the technicians completed vehicles card.-->
-        <button type="button" name="Vehicle Ready" value="10" class="btn btn-outline-success btn-sm">Vehicle Ready</button>
+        <button th:href="@{/booking/{id}/update(id=${service_types.id})}" type="button" name="status" value="10" class="btn btn-outline-success btn-sm">Vehicle Ready</button>
 
     </div>
             <!--STILL TO DO-->
             <!--update status to event descriptions-->
             <!--in controller updates status to value submitted-->
+            <!--all names must be same-->
             <!--find event in events repo and set as status on booking -->
 
             <!--DONE, BUT PROB WRONG-->
