@@ -3,11 +3,6 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head th:include="fragments/fragments :: head">
-    <script type="text/javascript">
-        function showMessage(){
-            alert("SMS has been sent!");
-        }
-    </script>
 </head>
 <style>
     #progress {
@@ -72,7 +67,7 @@
             <form>
                 <label for="send">Tell the customer that the car is ready to pick up!</label>
                 <br/>
-                <a href="/send" class="btn btn-success btn-lg active" role="button" aria-pressed="true" id="send" onClick='showMessage()'>Send
+                <a href="/send" class="btn btn-success btn-lg active" role="button" aria-pressed="true" id="send">Send
                     SMS!</a>
             </form>
         </article>
