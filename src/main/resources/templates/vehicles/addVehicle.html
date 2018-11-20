@@ -9,11 +9,15 @@
 <body class=" bg-light">
 <nav th:replace="fragments/fragments :: navbar"></nav>
 
-<h1 class="container text-warning">Enter your vehicle info: </h1>
-
 <main class="container mx-auto">
+    <h1 class="container text-dark mt-5 pt-5 page-title col-12 col-md-10" style="border-bottom: 2px solid #ffc107;">
+        Add Vehicle
+    </h1>
+    <section class="col-12 col-md-10 container large-text">
+        <p>Enter your vehicle's information. Please include as many details as possible.</p>
+    </section>
     <form th:action="@{/vehicles/add}" method="post" th:object="${vehicle}">
-        <section class="form-row">
+        <section class="form-row justify-content-center justify-items-center">
             <article class="form-group col-md-1">
                 <label for="year">Year</label>
                 <input type="number" min="1900" max="2019" id="year" name="year" class="form-control"
@@ -39,7 +43,7 @@
             </article>
         </section>
 
-        <section class="form-row">
+        <section class="form-row justify-content-center justify-items-center">
             <article class="form-group col-md-3">
                 <label for="color">Color</label>
                 <input type="text" id="color" name="color" class="form-control"
@@ -60,7 +64,9 @@
 
         </section>
 
-        <input type="submit" />
+        <aside class="text-center">
+            <input class="btn btn-warning btn-lg" type="submit" value="Add Vehicle" />
+        </aside>
     </form>
 </main>
 

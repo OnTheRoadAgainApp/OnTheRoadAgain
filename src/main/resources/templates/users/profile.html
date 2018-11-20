@@ -17,7 +17,7 @@
 <body class=" bg-light">
 <nav th:replace="fragments/fragments :: navbar"></nav>
 
-    <h1 class="container text-dark mt-5 mb-5 pt-5" style="border-bottom: 2px solid #ffc107;">
+    <h1 class="container text-dark mt-5 mb-5 pt-5 page-title" style="border-bottom: 2px solid #ffc107;">
         Welcome back, <span th:text="${#authentication.principal.first}"/>!
     </h1>
 
@@ -25,14 +25,14 @@
 
     <section class="row">
         <article class="col-5">
-            <h2 class="text-dark mb-0">Your Info</h2>
+            <h2 class="text-dark mb-0 pb-0">Your Info</h2>
             <hr class="hr-4" />
             <h5>Customer #:<span th:text="${#authentication.principal.id}"/></h5>
             <h5>Username: <span th:text="${#authentication.principal.username}"/></h5>
             <h5>Email: <span th:text="${#authentication.principal.email}"/></h5>
 
-            <aside class="justify-content-center justify-items-center">
-                <a href="#" class="btn btn-warning bt-lg">Edit</a>
+            <aside class="">
+                <a href="#" class="btn btn-warning bt-lg mx-5">Edit</a>
                 <a href="#" class="btn btn-danger bt-lg">Delete</a>
             </aside>
             <hr class="hr-4" />
@@ -144,8 +144,8 @@
 
     </section>
 
-    <section class="mb-5 pb-5 text-center">
-        <h2>Where to Find us:</h2>
+    <section class="mb-5 pb-5 text-center mt-5">
+        <h2 class="text-dark">Where to Find us:</h2>
     <div class="mx-auto" id="map-canvas"></div>
     </section>
 </main>

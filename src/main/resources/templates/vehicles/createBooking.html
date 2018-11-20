@@ -11,16 +11,19 @@
 
 <main class="container mx-auto col-12 col-md-10 my-5 py-5">
     <h1 class="page-title my-2 text-dark col-8 mx-auto" style="border-bottom: 2px solid #ffc107;">Create your booking</h1>
-
+    <section class="col-12 col-md-8 container large-text">
+        <p>Enter the details for your service appointment. Select the date and time, the advisor you like working with,
+        which car needs servicing, and the type of service needed. </p>
+    </section>
     <form th:action="@{/booking/create}" method="post" th:object="${serviceBooking}">
         <section class="form-row justify-content-center justify-items-center">
             <article class="form-group col-md-2 ">
-                <label for="date">Date of Appointment:</label>
+                <label for="date">Date</label>
                 <input type="date" id="date" name="date" class="form-control" th:field="*{date}"/>
             </article>
 
             <article class="form-group col-md-2">
-                <label for="time">Time of Appointment:</label>
+                <label for="time">Time</label>
                 <input type="time" id="time" name="time" class="form-control" th:field="*{service_time}"/>
             </article>
 
