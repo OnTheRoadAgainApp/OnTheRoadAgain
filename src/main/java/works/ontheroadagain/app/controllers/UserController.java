@@ -16,6 +16,7 @@ import works.ontheroadagain.app.services.RolesRepository;
 import works.ontheroadagain.app.services.VehicleRepository;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -65,10 +66,17 @@ public class UserController {
 
         List<ServiceBooking> bookings = new ArrayList<>();
         for(Vehicle vehicle : currentVehicles) {
-            bookings.addAll(bookingRepo.findAllByVehicle(vehicle));
+            bookings.addAll(bookingRepo.findAllByVehicleAndDateAfter(vehicle, new Date(System.currentTimeMillis() - 1000L * 60L * 60L * 24L)));
         }
-        System.out.println(bookings);
         model.addAttribute("bookings", bookings);
+
+        List<ServiceBooking> pastBookings = new ArrayList<>();
+        for(Vehicle vehicle : currentVehicles) {
+            pastBookings.addAll(bookingRepo.findAllByVehicleAndDateBefore(vehicle, new Date()));
+        }
+        model.addAttribute("pastBookings", pastBookings);
+
+
         return "users/profile";
 
     }

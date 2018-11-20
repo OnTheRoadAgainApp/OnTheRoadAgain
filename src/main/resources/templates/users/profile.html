@@ -17,23 +17,29 @@
 <body class=" bg-light">
 <nav th:replace="fragments/fragments :: navbar"></nav>
 
-<header th:replace=" fragments/fragments :: header"></header>
-<h1 class="container">Welcome back, <span th:text="${#authentication.principal.first}"/>! <hr class="hr-4"/></h1>
+    <h1 class="container text-dark" style="border-bottom: 2px solid #ffc107;">
+        Welcome back, <span th:text="${#authentication.principal.first}"/>!
+    </h1>
 
 <main class="container mx-auto">
 
     <section class="row">
         <article class="col-5">
-            <h2>Your Info</h2>
+            <h2 class="text-dark">Your Info</h2>
             <hr class="hr-4" />
-            <h5>Customer No.:<span th:text="${#authentication.principal.id}"/></h5>
+            <h5>Customer #:<span th:text="${#authentication.principal.id}"/></h5>
             <h5>Username: <span th:text="${#authentication.principal.username}"/></h5>
             <h5>Email: <span th:text="${#authentication.principal.email}"/></h5>
+
+            <aside class="justify-content-center justify-items-center">
+                <a href="#" class="btn btn-warning bt-lg">Edit</a>
+                <a href="#" class="btn btn-danger bt-lg">Delete</a>
+            </aside>
             <hr class="hr-4" />
         </article>
 
         <article class="col-7">
-            <h2>Your Vehicles</h2>
+            <h2 class="text-dark">Your Vehicles</h2>
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -66,7 +72,7 @@
 <hr class="hr-4 m-4"/>
     <section class="mx-auto">
         <article class="col-12">
-            <h2>Upcoming Appointments</h2>
+            <h2 class="text-dark">Upcoming Appointments</h2>
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -99,7 +105,7 @@
             </table>
             <a class="btn btn-warning btn-block" href="/booking/create">Book Service Appt</a>
             <hr class="hr-4" />
-            <h2>Past Appointments</h2>
+            <h2 class="text-dark">Past Appointments</h2>
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -109,14 +115,24 @@
                     <th scope="col">Advisor</th>
                 </tr>
                 </thead>
-                <!--<tbody>-->
-                <!--<tr th:each="vehicle : ${#authentication.principal.vehicles}">-->
-                    <!--<td th:text="${vehicle.year}" />-->
-                    <!--<td th:text="${vehicle.make + ' ' + vehicle.model + ', ' + vehicle.color}" />-->
-                    <!--<td th:text="${vehicle.mileage}" />-->
-                    <!--<td th:text="${vehicle.license}" />-->
-                <!--</tr>-->
-                <!--</tbody>-->
+                <tbody>
+                <tr th:each="booking : ${pastBookings}">
+                    <td th:text="${booking.date}" />
+                    <td th:text="${booking.vehicle.make + ' ' + booking.vehicle.model}" />
+                    <td th:text="${booking.service_type.description}" />
+                    <td th:text="${booking.advisor.first}" />
+                    <td th:text="${booking.status.description}" />
+                    <td class="form-inline">
+                        <form th:action="@{book/cancel/{id}(id=${booking.id})}" method="post">
+                            <button type="submit" class="btn btn-danger btn-sm mr-4">Cancel</button>
+                        </form>
+
+                        <form th:action="@{/book/{id}(id=${booking.id})}" method="get" th:object="${booking.id}">
+                            <button type="submit" class="btn btn-success btn-sm">Details</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
             </table>
         </article>
 
