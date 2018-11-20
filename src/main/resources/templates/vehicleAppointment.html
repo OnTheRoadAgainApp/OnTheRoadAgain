@@ -6,8 +6,14 @@
 <nav th:replace="fragments/fragments :: navbar"></nav>
 
 <header th:replace=" fragments/fragments :: header"></header>
+<hr style="margin-left: 3%; margin-right: 3%"/>
+<section>
+    <h3 style="margin-left: 5rem">Vehicle Status Progress Bar</h3>
+    <div class="progress" style="height: 40px; margin: 2rem">
+        <div class="progress-bar bg-success" role="progressbar" id="progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+</section>
 <h1 class="container text-info">Customer Service Information</h1>
-
 <main class="container row mx-auto">
     <!--Make col-6 md and it should be col-12 on small screens.-->
     <section class="col-6">
@@ -25,9 +31,6 @@
     <section class="col-6">
     <form th:action="@{/booking/{id}/update(id=${booking.id})}" method="post">
     <h2>Vehicle Status</h2>
-    <div class="progress">
-        <div class="progress-bar bg-success" role="progressbar" id="progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
     <div class = "ready"></div>
     <div class="card" style="width: 18rem; padding-left: 1%" id="vehicleChecklist">
         <div class="card-body">
@@ -81,7 +84,8 @@
     </div>
     </form>
     </section>
-    <section class="col-6 row">
+    <section>
+        <!--class="col-6 row"-->
         <h3>Vehicle Inspection Checklist</h3>
         <form id="checklist">
             <!--th:method="post" & th:action="users/profile page somehow?!?!?!?!-->
@@ -116,15 +120,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="HeadLights" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="HeadLights" name="customRadioInline2" class="custom-control-input" />
                             <label class="custom-control-label" for="HeadLights">✅</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="HeadLights1" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="HeadLights1" name="customRadioInline2" class="custom-control-input" />
                             <label class="custom-control-label" for="HeadLights1">⚠️</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="HeadLights2" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="HeadLights2" name="customRadioInline2" class="custom-control-input" />
                             <label class="custom-control-label" for="HeadLights2">🚨</label>
                         </div>
                         </div>
@@ -135,15 +139,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="WiperBlades" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="WiperBlades" name="customRadioInline3" class="custom-control-input" />
                             <label class="custom-control-label" for="WiperBlades">✅</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="WiperBlades1" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="WiperBlades1" name="customRadioInline3" class="custom-control-input" />
                             <label class="custom-control-label" for="WiperBlades1">⚠️</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="WiperBlades2" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="WiperBlades2" name="customRadioInline3" class="custom-control-input" />
                             <label class="custom-control-label" for="WiperBlades2">🚨</label>
                         </div>
                         </div>
@@ -154,15 +158,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="WindshieldCondition" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="WindshieldCondition" name="customRadioInline4" class="custom-control-input" />
                             <label class="custom-control-label" for="WindshieldCondition">✅</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="WindshieldCondition1" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="WindshieldCondition1" name="customRadioInline4" class="custom-control-input" />
                             <label class="custom-control-label" for="WindshieldCondition1">⚠️</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="WindshieldCondition2" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="WindshieldCondition2" name="customRadioInline4" class="custom-control-input" />
                             <label class="custom-control-label" for="WindshieldCondition2">🚨</label>
                         </div>
                         </div>
@@ -173,15 +177,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Upholstery" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Upholstery" name="customRadioInline5" class="custom-control-input" />
                             <label class="custom-control-label" for="Upholstery">✅</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Upholstery1" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Upholstery1" name="customRadioInline5" class="custom-control-input" />
                             <label class="custom-control-label" for="Upholstery1">⚠️</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Upholstery2" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Upholstery2" name="customRadioInline5" class="custom-control-input" />
                             <label class="custom-control-label" for="Upholstery2">🚨</label>
                         </div>
                         </div>
@@ -192,15 +196,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="ParkingBrake" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="ParkingBrake" name="customRadioInline6" class="custom-control-input" />
                             <label class="custom-control-label" for="ParkingBrake">✅</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="ParkingBrake1" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="ParkingBrake1" name="customRadioInline6" class="custom-control-input" />
                             <label class="custom-control-label" for="ParkingBrake1">⚠️</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="ParkingBrake2" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="ParkingBrake2" name="customRadioInline6" class="custom-control-input" />
                             <label class="custom-control-label" for="ParkingBrake2">🚨</label>
                         </div>
                         </div>
@@ -211,15 +215,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Horn" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Horn" name="customRadioInline7" class="custom-control-input" />
                             <label class="custom-control-label" for="Horn">✅</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Horn1" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Horn1" name="customRadioInline7" class="custom-control-input" />
                             <label class="custom-control-label" for="Horn1">⚠️</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Horn2" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Horn2" name="customRadioInline7" class="custom-control-input" />
                             <label class="custom-control-label" for="Horn2">🚨</label>
                         </div>
                         </div>
@@ -230,15 +234,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="FuelFiller" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="FuelFiller" name="customRadioInline8" class="custom-control-input" />
                             <label class="custom-control-label" for="FuelFiller">✅</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="FuelFiller1" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="FuelFiller1" name="customRadioInline8" class="custom-control-input" />
                             <label class="custom-control-label" for="FuelFiller1">⚠️</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="FuelFiller2" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="FuelFiller2" name="customRadioInline8" class="custom-control-input" />
                             <label class="custom-control-label" for="FuelFiller2">🚨</label>
                         </div>
                         </div>
@@ -249,15 +253,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Microfilter" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Microfilter" name="customRadioInline9" class="custom-control-input" />
                             <label class="custom-control-label" for="Microfilter">✅</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Microfilter1" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Microfilter1" name="customRadioInline9" class="custom-control-input" />
                             <label class="custom-control-label" for="Microfilter1">⚠️</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Microfilter2" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Microfilter2" name="customRadioInline9" class="custom-control-input" />
                             <label class="custom-control-label" for="Microfilter2">🚨</label>
                         </div>
                         </div>
@@ -268,15 +272,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Cluth" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Cluth" name="customRadioInline10" class="custom-control-input" />
                             <label class="custom-control-label" for="Cluth">✅</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Cluth1" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Cluth1" name="customRadioInline10" class="custom-control-input" />
                             <label class="custom-control-label" for="Cluth1">⚠️</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Cluth2" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Cluth2" name="customRadioInline10" class="custom-control-input" />
                             <label class="custom-control-label" for="Cluth2">🚨</label>
                         </div>
                         </div>
@@ -287,15 +291,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                             <div class="custom-control custom-radio custom-control-inline col">
-                                <input type="radio" id="IntLight" name="customRadioInline1" class="custom-control-input" />
+                                <input type="radio" id="IntLight" name="customRadioInline11" class="custom-control-input" />
                                 <label class="custom-control-label" for="IntLight">✅</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline col">
-                                <input type="radio" id="IntLight1" name="customRadioInline1" class="custom-control-input" />
+                                <input type="radio" id="IntLight1" name="customRadioInline11" class="custom-control-input" />
                                 <label class="custom-control-label" for="IntLight1">⚠️</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline col">
-                                <input type="radio" id="IntLight2" name="customRadioInline1" class="custom-control-input" />
+                                <input type="radio" id="IntLight2" name="customRadioInline11" class="custom-control-input" />
                                 <label class="custom-control-label" for="IntLight2">🚨</label>
                             </div>
                         </div>
@@ -310,15 +314,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="FluidLevels" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="FluidLevels" name="customRadioInline12" class="custom-control-input" />
                             <label class="custom-control-label" for="FluidLevels">✅</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="FluidLevels1" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="FluidLevels1" name="customRadioInline12" class="custom-control-input" />
                             <label class="custom-control-label" for="FluidLevels1">⚠️</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="FluidLevels2" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="FluidLevels2" name="customRadioInline12" class="custom-control-input" />
                             <label class="custom-control-label" for="FluidLevels2">🚨</label>
                         </div>
                         </div>
@@ -329,15 +333,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="EngineAir" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="EngineAir" name="customRadioInline13" class="custom-control-input" />
                             <label class="custom-control-label" for="EngineAir">✅</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="EngineAir1" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="EngineAir1" name="customRadioInline13" class="custom-control-input" />
                             <label class="custom-control-label" for="EngineAir1">⚠️</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="EngineAir2" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="EngineAir2" name="customRadioInline13" class="custom-control-input" />
                             <label class="custom-control-label" for="EngineAir2">🚨</label>
                         </div>
                         </div>
@@ -348,15 +352,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="DriveBelts" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="DriveBelts" name="customRadioInline14" class="custom-control-input" />
                             <label class="custom-control-label" for="DriveBelts">✅</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="DriveBelts1" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="DriveBelts1" name="customRadioInline14" class="custom-control-input" />
                             <label class="custom-control-label" for="DriveBelts1">⚠️</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="DriveBelts2" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="DriveBelts2" name="customRadioInline14" class="custom-control-input" />
                             <label class="custom-control-label" for="DriveBelts2">🚨</label>
                         </div>
                         </div>
@@ -367,15 +371,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="EngineCoolant" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="EngineCoolant" name="customRadioInline15" class="custom-control-input" />
                             <label class="custom-control-label" for="EngineCoolant">✅</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="EngineCoolant1" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="EngineCoolant1" name="customRadioInline15" class="custom-control-input" />
                             <label class="custom-control-label" for="EngineCoolant1">⚠️</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="EngineCoolant2" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="EngineCoolant2" name="customRadioInline15" class="custom-control-input" />
                             <label class="custom-control-label" for="EngineCoolant2">🚨</label>
                         </div>
                         </div>
@@ -386,15 +390,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Cooling" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Cooling" name="customRadioInline16" class="custom-control-input" />
                             <label class="custom-control-label" for="Cooling">✅</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Cooling1" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Cooling1" name="customRadioInline16" class="custom-control-input" />
                             <label class="custom-control-label" for="Cooling1">⚠️</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Cooling2" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Cooling2" name="customRadioInline16" class="custom-control-input" />
                             <label class="custom-control-label" for="Cooling2">🚨</label>
                         </div>
                         </div>
@@ -405,15 +409,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Radiator" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Radiator" name="customRadioInline17" class="custom-control-input" />
                             <label class="custom-control-label" for="Radiator">✅</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Radiator1" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Radiator1" name="customRadioInline17" class="custom-control-input" />
                             <label class="custom-control-label" for="Radiator1">⚠️</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Radiator2" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Radiator2" name="customRadioInline17" class="custom-control-input" />
                             <label class="custom-control-label" for="Radiator2">🚨</label>
                         </div>
                         </div>
@@ -428,15 +432,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Shock" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Shock" name="customRadioInline18" class="custom-control-input" />
                             <label class="custom-control-label" for="Shock">✅</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Shock1" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Shock1" name="customRadioInline18" class="custom-control-input" />
                             <label class="custom-control-label" for="Shock1">⚠️</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Shock2" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Shock2" name="customRadioInline18" class="custom-control-input" />
                             <label class="custom-control-label" for="Shock2">🚨</label>
                         </div>
                         </div>
@@ -447,15 +451,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Steering" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Steering" name="customRadioInline19" class="custom-control-input" />
                             <label class="custom-control-label" for="Steering">✅</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Steering1" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Steering1" name="customRadioInline19" class="custom-control-input" />
                             <label class="custom-control-label" for="Steering1">⚠️</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Steering2" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Steering2" name="customRadioInline19" class="custom-control-input" />
                             <label class="custom-control-label" for="Steering2">🚨</label>
                         </div>
                         </div>
@@ -466,15 +470,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Muffler" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Muffler" name="customRadioInline20" class="custom-control-input" />
                             <label class="custom-control-label" for="Muffler">✅</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Muffler1" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Muffler1" name="customRadioInline20" class="custom-control-input" />
                             <label class="custom-control-label" for="Muffler1">⚠️</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Muffler2" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Muffler2" name="customRadioInline20" class="custom-control-input" />
                             <label class="custom-control-label" for="Muffler2">🚨</label>
                         </div>
                         </div>
@@ -485,15 +489,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="EngineOil" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="EngineOil" name="customRadioInline21" class="custom-control-input" />
                             <label class="custom-control-label" for="EngineOil">✅</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="EngineOil1" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="EngineOil1" name="customRadioInline21" class="custom-control-input" />
                             <label class="custom-control-label" for="EngineOil1">⚠️</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="EngineOil2" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="EngineOil2" name="customRadioInline21" class="custom-control-input" />
                             <label class="custom-control-label" for="EngineOil2">🚨</label>
                         </div>
                         </div>
@@ -504,15 +508,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="BrakeLines" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="BrakeLines" name="customRadioInline22" class="custom-control-input" />
                             <label class="custom-control-label" for="BrakeLines">✅</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="BrakeLines1" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="BrakeLines1" name="customRadioInline22" class="custom-control-input" />
                             <label class="custom-control-label" for="BrakeLines1">⚠️</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="BrakeLines2" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="BrakeLines2" name="customRadioInline22" class="custom-control-input" />
                             <label class="custom-control-label" for="BrakeLines2">🚨</label>
                         </div>
                         </div>
@@ -523,15 +527,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="DriveShaft" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="DriveShaft" name="customRadioInline23" class="custom-control-input" />
                             <label class="custom-control-label" for="DriveShaft">✅</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="DriveShaft1" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="DriveShaft1" name="customRadioInline23" class="custom-control-input" />
                             <label class="custom-control-label" for="DriveShaft1">⚠️</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="DriveShaft2" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="DriveShaft2" name="customRadioInline23" class="custom-control-input" />
                             <label class="custom-control-label" for="DriveShaft2">🚨</label>
                         </div>
                         </div>
@@ -542,15 +546,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Transmission" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Transmission" name="customRadioInline24" class="custom-control-input" />
                             <label class="custom-control-label" for="Transmission">✅</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Transmission1" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Transmission1" name="customRadioInline24" class="custom-control-input" />
                             <label class="custom-control-label" for="Transmission1">⚠️</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Transmission2" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Transmission2" name="customRadioInline24" class="custom-control-input" />
                             <label class="custom-control-label" for="Transmission2">🚨</label>
                         </div>
                         </div>
@@ -561,15 +565,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="FuelSys" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="FuelSys" name="customRadioInline25" class="custom-control-input" />
                             <label class="custom-control-label" for="FuelSys">✅</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="FuelSys1" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="FuelSys1" name="customRadioInline25" class="custom-control-input" />
                             <label class="custom-control-label" for="FuelSys1">⚠️</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="FuelSys2" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="FuelSys2" name="customRadioInline25" class="custom-control-input" />
                             <label class="custom-control-label" for="FuelSys2">🚨</label>
                         </div>
                         </div>
@@ -817,15 +821,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Battery" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Battery" name="customRadioInline26" class="custom-control-input" />
                             <label class="custom-control-label" for="Battery">✅</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Battery1" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Battery1" name="customRadioInline26" class="custom-control-input" />
                             <label class="custom-control-label" for="Battery1">⚠️</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Battery2" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Battery2" name="customRadioInline26" class="custom-control-input" />
                             <label class="custom-control-label" for="Battery2">🚨</label>
                         </div>
                         </div>
@@ -836,15 +840,15 @@
                     <td>
                         <div class="form-check form-check-inline">
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Storage" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Storage" name="customRadioInline27" class="custom-control-input" />
                             <label class="custom-control-label" for="Storage">✅</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Storage1" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Storage1" name="customRadioInline27" class="custom-control-input" />
                             <label class="custom-control-label" for="Storage1">⚠️</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Storage2" name="customRadioInline1" class="custom-control-input" />
+                            <input type="radio" id="Storage2" name="customRadioInline27" class="custom-control-input" />
                             <label class="custom-control-label" for="Storage2">🚨</label>
                         </div>
                         </div>
