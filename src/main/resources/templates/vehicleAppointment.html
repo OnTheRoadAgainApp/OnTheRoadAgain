@@ -29,7 +29,7 @@
         <div class="progress-bar bg-success" role="progressbar" id="progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
     <div class = "ready"></div>
-    <div class="card" style="width: 18rem; padding-left: 1%">
+    <div class="card" style="width: 18rem; padding-left: 1%" id="vehicleChecklist">
         <div class="card-body">
         <h5 class="card-title" style="text-align: center">Vehicle Checklist</h5>
     <div class="custom-control custom-checkbox">
@@ -76,16 +76,7 @@
         <input type="submit" class="btn btn-outline-success btn-sm" value="Update Status"/>
 
     </div>
-            <!--STILL TO DO-->
-            <!--update status to event descriptions-->
-            <!--in controller updates status to value submitted-->
-            <!--find event in events repo and set as status on booking -->
 
-            <!--DONE, BUT PROB WRONG-->
-            <!-- each checkbox must have same name attr -->
-            <!--values should match event ids -->
-            <!--open form, all input in same form -->
-            <!--close form, submit button to update status-->
     </div>
     </div>
     </form>
@@ -862,8 +853,8 @@
                 </tr>
             </table>
             <textarea name="comment" style="resize: none; width: 36rem" placeholder="Enter Vehicle Notes Here"></textarea>
-            <a onClick="window.print()"  class="btn btn-success btn-block">Print Checklist</a>
-            <a onclick="window.location.href = '/technicians';" class="btn btn-primary btn-block">Submit</a>
+            <a onClick="window.print()"  class="btn btn-success btn-block" style="color: white">Print Checklist</a>
+            <a onclick="window.location.href = '/technicians';" class="btn btn-primary btn-block" style="color: white">Submit</a>
         </form>
     </section>
 </main>
