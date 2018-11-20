@@ -3,6 +3,11 @@ body {
     font-size: 18px;
 }
 
+ul {
+    font-size: 16px;
+}
+
+
 h1, h2 {
     font-family: 'Bangers', cursive;
 
