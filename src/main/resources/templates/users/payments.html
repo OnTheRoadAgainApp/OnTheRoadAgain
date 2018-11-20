@@ -8,13 +8,13 @@
 <h2 class="text-center">Payment Method</h2>
 <script src="https://js.stripe.com/v3/"></script>
 <div class="text-center">
-<form action="your-server-side-code" method="POST">
+<form th:action="@{/payments}" method="POST">
     <script
             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="pk_test_TYooMQauvdEDq54NiTphI7jx"
             data-amount="Your total:"
-            data-name="Stripe.com"
-            data-description="Service charge"
+            data-name="On the Road Again"
+            data-description="Your total is $39.97"
             data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
             data-locale="auto"
             data-zip-code="true">

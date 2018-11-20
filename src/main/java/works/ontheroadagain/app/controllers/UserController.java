@@ -91,6 +91,12 @@ public class UserController {
         return "users/payments";
     }
 
+    @PostMapping("/payments")
+    public String showPayedForm(Model model){
+        model.addAttribute("user", new User());
+        return "users/paymentaccepted";
+    }
+
 
 
 //    @GetMapping("/advisor")
