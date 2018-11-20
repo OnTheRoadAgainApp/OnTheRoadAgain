@@ -17,7 +17,7 @@
 <body class=" bg-light">
 <nav th:replace="fragments/fragments :: navbar"></nav>
 
-    <h1 class="container text-dark" style="border-bottom: 2px solid #ffc107;">
+    <h1 class="container text-dark mt-5 mb-5 pt-5" style="border-bottom: 2px solid #ffc107;">
         Welcome back, <span th:text="${#authentication.principal.first}"/>!
     </h1>
 
@@ -25,7 +25,7 @@
 
     <section class="row">
         <article class="col-5">
-            <h2 class="text-dark">Your Info</h2>
+            <h2 class="text-dark mb-0">Your Info</h2>
             <hr class="hr-4" />
             <h5>Customer #:<span th:text="${#authentication.principal.id}"/></h5>
             <h5>Username: <span th:text="${#authentication.principal.username}"/></h5>
@@ -65,7 +65,9 @@
                 </tr>
                 </tbody>
             </table>
-            <a class="btn btn-warning btn-block" href="/vehicles/add">Add Vehicle</a>
+            <aside class="text-center">
+                <a class="btn btn-warning" href="/vehicles/add">Add Vehicle</a>
+            </aside>
         </article>
     </section>
 
@@ -103,8 +105,12 @@
                 </tr>
                 </tbody>
             </table>
-            <a class="btn btn-warning btn-block" href="/booking/create">Book Service Appt</a>
+            <aside class="text-center">
+                <a class="btn btn-warning" href="/booking/create">Book Service Appt</a>
+            </aside>
+
             <hr class="hr-4" />
+
             <h2 class="text-dark">Past Appointments</h2>
             <table class="table table-striped">
                 <thead>
@@ -138,9 +144,9 @@
 
     </section>
 
-    <section>
+    <section class="mb-5 pb-5 text-center">
         <h2>Where to Find us:</h2>
-    <div id="map-canvas"></div>
+    <div class="mx-auto" id="map-canvas"></div>
     </section>
 </main>
 
