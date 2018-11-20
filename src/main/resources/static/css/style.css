@@ -1,11 +1,21 @@
 body {
     font-family: 'Nunito', sans-serif;
+    font-size: 18px;
 }
+
+ul {
+    font-size: 16px;
+}
+
 
 h1, h2 {
     font-family: 'Bangers', cursive;
 
 
+}
+
+h1 {
+    font-size: 200%;
 }
 
 .normie {

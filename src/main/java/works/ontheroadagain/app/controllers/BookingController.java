@@ -101,21 +101,22 @@ public class BookingController {
     @GetMapping(path = "/book/{id}")
     public String bookingsId(@PathVariable long id, Model vModel) {
         ServiceBooking booking = bookingRepo.findOne(id);
-        vModel.addAttribute("bookings", booking);
+        vModel.addAttribute("booking", booking);
         vModel.addAttribute("status", booking.getStatus().getDescription());
         int statusId = (int) bookingRepo.findOne(id).getStatus().getId();
         int pWidth = 0;
         String pColor = "";
         switch (statusId) {
-            case 1: pWidth = 0;
-                    break;
-            case 2: pWidth = 10;
-                    pColor = "bg-info progress-bar-striped";
-                    break;
-            case 3: pWidth =  10;
+            case 1: pWidth = 5;
                     pColor = "bg-warning progress-bar-striped progress-bar-animated";
                     break;
-            case 4: pWidth =  10;
+            case 2: pWidth = 15;
+                    pColor = "bg-warning progress-bar-striped progress-bar-animated";
+                    break;
+            case 3: pWidth =  30;
+                    pColor = "bg-warning progress-bar-striped progress-bar-animated";
+                    break;
+            case 4: pWidth =  30;
                     pColor = "bg-danger progress-bar-striped progress-bar-animated";
                     break;
             case 5: pWidth = 50;
