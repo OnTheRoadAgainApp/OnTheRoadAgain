@@ -25,17 +25,16 @@ import java.util.List;
 
 @Controller
 public class TechnicianController {
-        private SmsSender smsSender;
-        private final VehicleRepository vehicleRepository;
-        private final BookingRepository bookingRepo;
-        private final EventRepository eventRepository;
+    private SmsSender smsSender;
+    private final VehicleRepository vehicleRepository;
+    private final BookingRepository bookingRepo;
+    private final EventRepository eventRepository;
 
 
 
 
-    public TechnicianController(VehicleRepository vehicleRepository, BookingRepository bookingRepo, EventRepository eventRepository) {
 
-    public TechnicianController(VehicleRepository vehicleRepository, BookingRepository bookingRepo, SmsSender smsSender) {
+    public TechnicianController(VehicleRepository vehicleRepository, BookingRepository bookingRepo, SmsSender smsSender,EventRepository eventRepository) {
         this.smsSender = smsSender;
 
         this.vehicleRepository = vehicleRepository;
@@ -68,7 +67,7 @@ public class TechnicianController {
 
     }
 
-//    This is where it theoretically should update status
+    //    This is where it theoretically should update status
     @PostMapping("booking/{bookingId}/update")
     public String vehicleAppointmentStatus(@ModelAttribute Event status, @RequestParam("status") String[] statusId,
                                            @PathVariable Long bookingId){
