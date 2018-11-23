@@ -29,7 +29,7 @@
 </h1>
 
 <main class="container row mx-auto mb-5">
-    <div class="border border-warning rounded col-12">
+    <div class="border border-warning rounded col-12 card">
 
         <article class="m-4">
             <h3>Service Details:</h3>
@@ -65,7 +65,7 @@
         </article>
 
 
-        <article class="text-center mb-5" th:if="${bookings.status.id == 9}" sec:authorize="hasAuthority('ADVISOR')">
+        <article class="text-center mb-5" th:if="${booking.status.id == 9}" sec:authorize="hasAuthority('ADVISOR')">
             <h3>Vehicle service has been completed!</h3>
             <form>
                 <label for="send">Tell the customer that the car is ready to pick up!</label>
