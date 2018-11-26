@@ -28,7 +28,7 @@ Maintains communication between customers, mechanics, and managers in regards to
 
 ### Suppl’ Functionality 
 - [ ] Technicians are assigned cars based on specialty and availability
-- [ ] Customers can pay for repairs once vehicle is ready using outward API 
+- [x] Customers can pay for repairs once vehicle is ready using outward API 
 - [ ] An API to post vehicle recall/safety information.
 - [x] Google Maps API to show directions to repair shop(s).
 - [ ] Customers have the ability to leave reviews of their visit, and managers have the ability to respond.
