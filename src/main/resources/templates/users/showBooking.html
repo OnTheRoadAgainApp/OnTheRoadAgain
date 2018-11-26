@@ -63,10 +63,10 @@
 
         <!--part to show on the customer page-->
 
-        <article class="text-center m-4" th:if="${bookings.cost != null}" sec:authorize="hasAuthority('CUSTOMER')">
-            <h4>Total cost of your service:</h4>
-            <h3 th:text="${bookings.cost}"></h3>
-        </article>
+        <!--<article class="text-center m-4" th:if="${bookings.cost != null}" sec:authorize="hasAuthority('CUSTOMER')">-->
+            <!--<h4>Total cost of your service:</h4>-->
+            <!--<h3 th:text="${bookings.cost}"></h3>-->
+        <!--</article>-->
 
         
 
@@ -74,15 +74,15 @@
 
             <!--form without action - just to show the idea - actual form below-->
             
-            <article class="m-4">
-                <form class="form-inline">
-                    <article class="form-group">
-                        <label class="mr-1" for="cost">Total cost of the service:</label>
-                        <input type="" id="cost" name="cost" class="form-control" placeholder="Cost"/>
-                    </article>
-                    <button type="submit" class="btn btn-success btn-sm ml-1" name="cost">Submit</button>
-                </form>
-            </article>
+            <!--<article class="m-4">-->
+                <!--<form class="form-inline">-->
+                    <!--<article class="form-group">-->
+                        <!--<label class="mr-1" for="cost">Total cost of the service:</label>-->
+                        <!--<input type="" id="cost" name="cost" class="form-control" placeholder="Cost"/>-->
+                    <!--</article>-->
+                    <!--<button type="submit" class="btn btn-success btn-sm ml-1" name="cost">Submit</button>-->
+                <!--</form>-->
+            <!--</article>-->
 
 
 
