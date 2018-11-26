@@ -5,118 +5,151 @@
 <body class=" bg-light">
 <nav th:replace="fragments/fragments :: navbar"></nav>
 
-<header th:replace=" fragments/fragments :: header"></header>
-<h1 class="container text-info">Customer Service Information</h1>
+<h1 class="container mt-5 mb-5 page-title col-12 col-md-10" style="border-bottom: 2px solid #ffc107;">
+    Service Booking #
+    <th:span th:text="${booking.id}"/>
+</h1>
 
-<main class="container row mx-auto">
+<main class="container mx-auto">
+    <h2 class="text-dark">Status</h2>
+    <hr class="hr-4"/>
+
+    <div class="progress mb-5" style="height: 50px;">
+        <div class="progress-bar" id="progress" th:style="'width: ' + ${width} + '%'" th:classappend="${color}"
+             role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+
     <!--Make col-6 md and it should be col-12 on small screens.-->
-    <section class="col-6">
+    <article class="row">
+    <section class="col-12 col-md-4">
+        <h2 class="text-dark">Customer Info</h2>
+        <hr class="hr-4"/>
         <div class="card" style="width: 18rem;">
-            <ul class="list-group list-group-flush">
+            <ul class="list-group list-group-flush large-text">
                 <!--<li th:text="${booking.id}" type="hidden" />-->
-                <li th:text="${booking.vehicle.user.last_name + ', ' + booking.vehicle.user.first}" class="list-group-item" />
-                <li th:text="${booking.service_type.description}" class="list-group-item" />
-                <li th:text="${booking.vehicle.year}" class="list-group-item" />
-                <li th:text="${booking.vehicle.make}" class="list-group-item" />
-                <li th:text="${booking.vehicle.model}" class="list-group-item" />
+                <li th:text="${booking.vehicle.user.last_name + ', ' + booking.vehicle.user.first}"
+                    class="list-group-item"/>
+                <li th:text="${booking.service_type.description}" class="list-group-item"/>
+                <li th:text="${booking.vehicle.year}" class="list-group-item"/>
+                <li th:text="${booking.vehicle.make}" class="list-group-item"/>
+                <li th:text="${booking.vehicle.model}" class="list-group-item"/>
             </ul>
         </div>
     </section>
-    <section class="col-6">
-    <form th:action="@{/booking/{id}/update(id=${booking.id})}" method="post">
-    <h2>Vehicle Status</h2>
-    <div class="progress">
-        <div class="progress-bar bg-success" role="progressbar" id="progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
-    <div class = "ready"></div>
-    <div class="card" style="width: 18rem; padding-left: 1%">
-        <div class="card-body">
-        <h5 class="card-title" style="text-align: center">Vehicle Checklist</h5>
-    <div class="custom-control custom-checkbox">
-        <input type="checkbox" name="status" value="2" class="custom-control-input" id="check1" />
-        <label class="custom-control-label" id="test" for="check1">Vehicle Checked-in</label>
-    </div>
-        <hr/>
-    <div class="custom-control custom-checkbox">
-        <input type="checkbox" name="status" value="3" class="custom-control-input" id="check2" />
-        <label class="custom-control-label" for="check2">Service Started</label>
-    </div>
-        <hr/>
-    <div class="custom-control custom-checkbox" style="padding-left: 10%">
-        <input type="checkbox" name="status" value="4" class="custom-control-input" id="check2E" />
-        <label class="custom-control-label" for="check2E" style="color: red">Service Started - Error Encountered</label>
-    </div>
-        <hr/>
-    <div class="custom-control custom-checkbox">
-        <input type="checkbox" name="status" value="5" class="custom-control-input" id="check3" />
-        <label class="custom-control-label" for="check3">Halfway Point Reached</label>
-    </div>
-        <hr/>
-    <div class="custom-control custom-checkbox" style="padding-left: 10%">
-        <input type="checkbox" name="status" value="6" class="custom-control-input" id="check3E" />
-        <label class="custom-control-label" for="check3E" style="color: red">Halfway Point Reached - Error Encountered</label>
-    </div>
-        <hr/>
-    <div class="custom-control custom-checkbox">
-        <input type="checkbox" name="status" value="7" class="custom-control-input" id="check4" />
-        <label class="custom-control-label" for="check4">Inspection Underway</label>
-    </div>
-        <hr/>
-    <div class="custom-control custom-checkbox" style="padding-left: 10%">
-        <input type="checkbox" name="status" value="8" class="custom-control-input" id="check4E" />
-        <label class="custom-control-label" for="check4E" style="color: red">Inspection Underway - Error Encountered</label>
-    </div>
-        <hr/>
-    <div class="custom-control custom-checkbox">
-        <input type="checkbox" name="status" value="9" class="custom-control-input" id="check5" />
-        <label class="custom-control-label" for="check5">Final Quality Check</label>
-        <!--<input type="hidden" name="booking" th:value="${booking.id}" />-->
-        <!--Vehicle Ready updates the bar to 100% so this should update the customer's status...yes?!?!?-->
-        <!--Button should save this vehicle to the technicians completed vehicles card.-->
-        <input type="submit" class="btn btn-outline-success btn-sm" value="Update Status"/>
 
-    </div>
-            <!--STILL TO DO-->
-            <!--update status to event descriptions-->
-            <!--in controller updates status to value submitted-->
-            <!--find event in events repo and set as status on booking -->
 
-            <!--DONE, BUT PROB WRONG-->
-            <!-- each checkbox must have same name attr -->
-            <!--values should match event ids -->
-            <!--open form, all input in same form -->
-            <!--close form, submit button to update status-->
-    </div>
-    </div>
-    </form>
+    <section class="col-12 col-md-8">
+        <form th:action="@{/booking/{id}/update(id=${booking.id})}" method="post">
+            <h2 class="text-dark">Service Checklist</h2>
+            <hr class="hr-4"/>
+            <div class="ready"></div>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="status" value="2" class="custom-control-input" id="check1"/>
+                        <label class="custom-control-label" id="test" for="check1">Vehicle Checked-in</label>
+                    </div>
+                    <hr/>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="status" value="3" class="custom-control-input" id="check2"/>
+                        <label class="custom-control-label" for="check2">Service Started</label>
+                    </div>
+                    <hr/>
+                    <div class="custom-control custom-checkbox" style="padding-left: 10%">
+                        <input type="checkbox" name="status" value="4" class="custom-control-input" id="check2E"/>
+                        <label class="custom-control-label" for="check2E" style="color: red">Service Started - Error
+                            Encountered</label>
+                    </div>
+                    <hr/>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="status" value="5" class="custom-control-input" id="check3"/>
+                        <label class="custom-control-label" for="check3">Halfway Point Reached</label>
+                    </div>
+                    <hr/>
+                    <div class="custom-control custom-checkbox" style="padding-left: 10%">
+                        <input type="checkbox" name="status" value="6" class="custom-control-input" id="check3E"/>
+                        <label class="custom-control-label" for="check3E" style="color: red">Halfway Point Reached -
+                            Error Encountered</label>
+                    </div>
+                    <hr/>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="status" value="7" class="custom-control-input" id="check4"/>
+                        <label class="custom-control-label" for="check4">Inspection Underway</label>
+                    </div>
+                    <hr/>
+                    <div class="custom-control custom-checkbox" style="padding-left: 10%">
+                        <input type="checkbox" name="status" value="8" class="custom-control-input" id="check4E"/>
+                        <label class="custom-control-label" for="check4E" style="color: red">Inspection Underway - Error
+                            Encountered</label>
+                    </div>
+                    <hr/>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="status" value="9" class="custom-control-input" id="check5"/>
+                        <label class="custom-control-label" for="check5">Final Quality Check</label>
+                        <!--<input type="hidden" name="booking" th:value="${booking.id}" />-->
+                        <!--Vehicle Ready updates the bar to 100% so this should update the customer's status...yes?!?!?-->
+                        <!--Button should save this vehicle to the technicians completed vehicles card.-->
+
+                        <hr/>
+                        <div class="custom-control custom-checkbox text-center">
+
+                            <input type="submit" class="btn btn-warning btn-lg" value="Update Status"/>
+
+                        </div>
+                        <!--STILL TO DO-->
+                        <!--update status to event descriptions-->
+                        <!--in controller updates status to value submitted-->
+                        <!--find event in events repo and set as status on booking -->
+
+                        <!--DONE, BUT PROB WRONG-->
+                        <!-- each checkbox must have same name attr -->
+                        <!--values should match event ids -->
+                        <!--open form, all input in same form -->
+                        <!--close form, submit button to update status-->
+                </div>
+                </div>
+            </div>
+        </form>
     </section>
-    <section class="col-6 row">
-        <h3>Vehicle Inspection Checklist</h3>
-        <form id="checklist">
+    </article>
+
+    <section class="col-12 my-5">
+        <h2 class="text-dark">Vehicle Inspection Checklist</h2>
+        <hr class="hr-4"/>
+
+        <form id="checklist" class="card">
             <!--th:method="post" & th:action="users/profile page somehow?!?!?!?!-->
-            <button type="button" class="btn btn-success btn-sm disabled">Satisfactory</button>
-            <button type="button" class="btn btn-warning btn-sm disabled">Warning</button>
-            <button type="button" class="btn btn-danger btn-sm disabled">Critical</button>
-            <table border="2">
+
+            <table class="mx-auto table table-striped">
                 <tr>
-                    <th>Vehicle Condition</th>
-                    <th>Interior / Exterior</th>
+                    <th class="table-danger text-center">Vehicle Condition
+                        <aside class="row mr-3 justify-items-around justify-content-around">
+                        <button type="button" class="btn btn-success btn-sm">Sufficient</button>
+                        <button type="button" class="btn btn-warning btn-sm">Warning</button>
+                        <button type="button" class="btn btn-danger btn-sm">Critical</button>
+                        </aside>
+                    </th>
+                    <th class="table-danger pt-4">Interior / Exterior</th>
                 </tr>
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="WarningLamps" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="WarningLamps">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="WarningLamps1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="WarningLamps1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="WarningLamps2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="WarningLamps2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="WarningLamps" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="WarningLamps">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="WarningLamps1" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="WarningLamps1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="WarningLamps2" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="WarningLamps2">🚨</label>
+                            </div>
                         </div>
                     </td>
                     <td>Vehicle Warning Lamps: ABS/Airbags/Ck Engine/Brake/Other</td>
@@ -124,18 +157,21 @@
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="HeadLights" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="HeadLights">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="HeadLights1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="HeadLights1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="HeadLights2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="HeadLights2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="HeadLights" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="HeadLights">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="HeadLights1" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="HeadLights1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="HeadLights2" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="HeadLights2">🚨</label>
+                            </div>
                         </div>
                     </td>
                     <td>Head Lights/Tail Lights/Turn Signals/Brake Lights/Hazard Warning Lights/Exterior Lamps</td>
@@ -143,18 +179,21 @@
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="WiperBlades" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="WiperBlades">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="WiperBlades1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="WiperBlades1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="WiperBlades2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="WiperBlades2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="WiperBlades" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="WiperBlades">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="WiperBlades1" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="WiperBlades1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="WiperBlades2" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="WiperBlades2">🚨</label>
+                            </div>
                         </div>
                     </td>
                     <td>Windshield Washer Spray/Wiper Blades</td>
@@ -162,18 +201,21 @@
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="WindshieldCondition" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="WindshieldCondition">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="WindshieldCondition1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="WindshieldCondition1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="WindshieldCondition2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="WindshieldCondition2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="WindshieldCondition" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="WindshieldCondition">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="WindshieldCondition1" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="WindshieldCondition1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="WindshieldCondition2" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="WindshieldCondition2">🚨</label>
+                            </div>
                         </div>
                     </td>
                     <td>Windshield Condition (Cracks, Chips, or Fitting)</td>
@@ -181,18 +223,21 @@
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Upholstery" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Upholstery">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Upholstery1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Upholstery1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Upholstery2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Upholstery2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Upholstery" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Upholstery">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Upholstery1" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Upholstery1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Upholstery2" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Upholstery2">🚨</label>
+                            </div>
                         </div>
                     </td>
                     <td>Upholstery/Carpet/Floor Mats/Mirrors/Glass</td>
@@ -200,18 +245,21 @@
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="ParkingBrake" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="ParkingBrake">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="ParkingBrake1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="ParkingBrake1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="ParkingBrake2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="ParkingBrake2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="ParkingBrake" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="ParkingBrake">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="ParkingBrake1" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="ParkingBrake1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="ParkingBrake2" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="ParkingBrake2">🚨</label>
+                            </div>
                         </div>
                     </td>
                     <td>Parking Brake Adjustment and Operation</td>
@@ -219,18 +267,18 @@
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Horn" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Horn">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Horn1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Horn1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Horn2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Horn2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Horn" name="customRadioInline1" class="custom-control-input"/>
+                                <label class="custom-control-label" for="Horn">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Horn1" name="customRadioInline1" class="custom-control-input"/>
+                                <label class="custom-control-label" for="Horn1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Horn2" name="customRadioInline1" class="custom-control-input"/>
+                                <label class="custom-control-label" for="Horn2">🚨</label>
+                            </div>
                         </div>
                     </td>
                     <td>Horn Operation</td>
@@ -238,18 +286,21 @@
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="FuelFiller" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="FuelFiller">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="FuelFiller1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="FuelFiller1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="FuelFiller2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="FuelFiller2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="FuelFiller" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="FuelFiller">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="FuelFiller1" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="FuelFiller1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="FuelFiller2" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="FuelFiller2">🚨</label>
+                            </div>
                         </div>
                     </td>
                     <td>Fuel Filler Cap</td>
@@ -257,18 +308,21 @@
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Microfilter" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Microfilter">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Microfilter1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Microfilter1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Microfilter2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Microfilter2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Microfilter" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Microfilter">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Microfilter1" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Microfilter1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Microfilter2" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Microfilter2">🚨</label>
+                            </div>
                         </div>
                     </td>
                     <td>In-Cabin Microfilter (if equipped)</td>
@@ -276,18 +330,18 @@
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Cluth" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Cluth">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Cluth1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Cluth1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Cluth2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Cluth2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Cluth" name="customRadioInline1" class="custom-control-input"/>
+                                <label class="custom-control-label" for="Cluth">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Cluth1" name="customRadioInline1" class="custom-control-input"/>
+                                <label class="custom-control-label" for="Cluth1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Cluth2" name="customRadioInline1" class="custom-control-input"/>
+                                <label class="custom-control-label" for="Cluth2">🚨</label>
+                            </div>
                         </div>
                     </td>
                     <td>Clutch Operation (if equipped)</td>
@@ -296,15 +350,18 @@
                     <td>
                         <div class="form-check form-check-inline">
                             <div class="custom-control custom-radio custom-control-inline col">
-                                <input type="radio" id="IntLight" name="customRadioInline1" class="custom-control-input" />
+                                <input type="radio" id="IntLight" name="customRadioInline1"
+                                       class="custom-control-input"/>
                                 <label class="custom-control-label" for="IntLight">✅</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline col">
-                                <input type="radio" id="IntLight1" name="customRadioInline1" class="custom-control-input" />
+                                <input type="radio" id="IntLight1" name="customRadioInline1"
+                                       class="custom-control-input"/>
                                 <label class="custom-control-label" for="IntLight1">⚠️</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline col">
-                                <input type="radio" id="IntLight2" name="customRadioInline1" class="custom-control-input" />
+                                <input type="radio" id="IntLight2" name="customRadioInline1"
+                                       class="custom-control-input"/>
                                 <label class="custom-control-label" for="IntLight2">🚨</label>
                             </div>
                         </div>
@@ -312,24 +369,27 @@
                     <td>Interior Lighting</td>
                 </tr>
                 <tr>
-                    <th>Vehicle Condition</th>
-                    <th>Under Hood</th>
+                    <th class="table-warning text-center">Vehicle Condition</th>
+                    <th class="table-warning">Under Hood</th>
                 </tr>
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="FluidLevels" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="FluidLevels">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="FluidLevels1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="FluidLevels1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="FluidLevels2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="FluidLevels2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="FluidLevels" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="FluidLevels">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="FluidLevels1" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="FluidLevels1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="FluidLevels2" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="FluidLevels2">🚨</label>
+                            </div>
                         </div>
                     </td>
                     <td>Fluid Levels: Oil/Coolant/Battery/Power Steering/Brake Clutch/Washer/Automatic Transmission</td>
@@ -337,18 +397,21 @@
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="EngineAir" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="EngineAir">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="EngineAir1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="EngineAir1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="EngineAir2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="EngineAir2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="EngineAir" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="EngineAir">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="EngineAir1" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="EngineAir1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="EngineAir2" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="EngineAir2">🚨</label>
+                            </div>
                         </div>
                     </td>
                     <td>Engine Air Filter</td>
@@ -356,18 +419,21 @@
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="DriveBelts" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="DriveBelts">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="DriveBelts1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="DriveBelts1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="DriveBelts2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="DriveBelts2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="DriveBelts" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="DriveBelts">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="DriveBelts1" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="DriveBelts1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="DriveBelts2" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="DriveBelts2">🚨</label>
+                            </div>
                         </div>
                     </td>
                     <td>Drive Belts (condition and adjustment)</td>
@@ -375,18 +441,21 @@
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="EngineCoolant" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="EngineCoolant">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="EngineCoolant1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="EngineCoolant1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="EngineCoolant2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="EngineCoolant2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="EngineCoolant" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="EngineCoolant">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="EngineCoolant1" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="EngineCoolant1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="EngineCoolant2" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="EngineCoolant2">🚨</label>
+                            </div>
                         </div>
                     </td>
                     <td>Engine Coolant System</td>
@@ -394,18 +463,21 @@
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Cooling" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Cooling">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Cooling1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Cooling1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Cooling2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Cooling2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Cooling" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Cooling">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Cooling1" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Cooling1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Cooling2" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Cooling2">🚨</label>
+                            </div>
                         </div>
                     </td>
                     <td>Cooling System Hoses/Heater Hoses/Air Conditioning Hoses and Connections</td>
@@ -413,41 +485,44 @@
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Radiator" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Radiator">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Radiator1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Radiator1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Radiator2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Radiator2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Radiator" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Radiator">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Radiator1" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Radiator1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Radiator2" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Radiator2">🚨</label>
+                            </div>
                         </div>
                     </td>
                     <td>Radiator Core and Cap</td>
                 </tr>
                 <tr>
-                    <th>Vehicle Condition</th>
-                    <th>Under Vehicle</th>
+                    <th class="table-danger text-center">Vehicle Condition</th>
+                    <th class="table-danger">Under Vehicle</th>
                 </tr>
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Shock" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Shock">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Shock1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Shock1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Shock2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Shock2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Shock" name="customRadioInline1" class="custom-control-input"/>
+                                <label class="custom-control-label" for="Shock">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Shock1" name="customRadioInline1" class="custom-control-input"/>
+                                <label class="custom-control-label" for="Shock1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Shock2" name="customRadioInline1" class="custom-control-input"/>
+                                <label class="custom-control-label" for="Shock2">🚨</label>
+                            </div>
                         </div>
                     </td>
                     <td>Shock Absorbers/Suspension</td>
@@ -455,18 +530,21 @@
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Steering" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Steering">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Steering1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Steering1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Steering2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Steering2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Steering" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Steering">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Steering1" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Steering1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Steering2" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Steering2">🚨</label>
+                            </div>
                         </div>
                     </td>
                     <td>Steering Gear Box/Linkage and Boots/Ball Joints/Dust Covers</td>
@@ -474,18 +552,21 @@
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Muffler" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Muffler">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Muffler1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Muffler1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Muffler2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Muffler2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Muffler" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Muffler">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Muffler1" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Muffler1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Muffler2" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Muffler2">🚨</label>
+                            </div>
                         </div>
                     </td>
                     <td>Muffler/Exhaust Pipes/Mountings</td>
@@ -493,18 +574,21 @@
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="EngineOil" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="EngineOil">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="EngineOil1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="EngineOil1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="EngineOil2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="EngineOil2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="EngineOil" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="EngineOil">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="EngineOil1" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="EngineOil1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="EngineOil2" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="EngineOil2">🚨</label>
+                            </div>
                         </div>
                     </td>
                     <td>Engine Oil and/or Fluid Leaks</td>
@@ -512,18 +596,21 @@
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="BrakeLines" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="BrakeLines">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="BrakeLines1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="BrakeLines1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="BrakeLines2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="BrakeLines2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="BrakeLines" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="BrakeLines">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="BrakeLines1" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="BrakeLines1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="BrakeLines2" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="BrakeLines2">🚨</label>
+                            </div>
                         </div>
                     </td>
                     <td>Brake Lines/Hoses/Parking Brake Cable</td>
@@ -531,18 +618,21 @@
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="DriveShaft" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="DriveShaft">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="DriveShaft1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="DriveShaft1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="DriveShaft2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="DriveShaft2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="DriveShaft" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="DriveShaft">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="DriveShaft1" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="DriveShaft1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="DriveShaft2" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="DriveShaft2">🚨</label>
+                            </div>
                         </div>
                     </td>
                     <td>Drive Shaft Boots/Constant Velocity Boots/U-Joints/Transmission Linkage</td>
@@ -550,58 +640,68 @@
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Transmission" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Transmission">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Transmission1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Transmission1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Transmission2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Transmission2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Transmission" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Transmission">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Transmission1" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Transmission1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Transmission2" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Transmission2">🚨</label>
+                            </div>
                         </div>
                     </td>
-                    <td>Transmission/Differential/Transfer Case (Check Fluid Level, Fluid Condition and Fluid Leaks)</td>
+                    <td>Transmission/Differential/Transfer Case (Check Fluid Level, Fluid Condition and Fluid Leaks)
+                    </td>
                 </tr>
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="FuelSys" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="FuelSys">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="FuelSys1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="FuelSys1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="FuelSys2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="FuelSys2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="FuelSys" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="FuelSys">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="FuelSys1" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="FuelSys1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="FuelSys2" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="FuelSys2">🚨</label>
+                            </div>
                         </div>
                     </td>
                     <td>Fuel System Inspection</td>
                 </tr>
                 <tr>
-                    <th>Vehicle Condition</th>
-                    <th>Tires</th>
+                    <th class="table-warning text-center">Vehicle Condition</th>
+                    <th class="table-warning">Tires</th>
                 </tr>
                 <tr>
                     <td>Left Front: Tire Tread</td>
                     <td>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input position-static" id="LFtire" name="LFTread" type="radio" value="option1" />
+                            <input class="form-check-input position-static" id="LFtire" name="LFTread" type="radio"
+                                   value="option1"/>
                             <label class="form-check-label" for="LFtire">4/32" or Deeper</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input position-static" id="LFtire1" name="LFTread" type="radio" value="option2" />
+                            <input class="form-check-input position-static" id="LFtire1" name="LFTread" type="radio"
+                                   value="option2"/>
                             <label class="form-check-label" for="LFtire1">3/32"</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input position-static" id="LFtire2" name="LFTread" type="radio" value="option3" />
+                            <input class="form-check-input position-static" id="LFtire2" name="LFTread" type="radio"
+                                   value="option3"/>
                             <label class="form-check-label" for="LFtire2">2/32" or Less</label>
                         </div>
                     </td>
@@ -610,11 +710,13 @@
                     <td>Left Front: Wear Pattern</td>
                     <td>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input position-static" id="LFtireW" name="LFWear" type="radio" value="option1" />
+                            <input class="form-check-input position-static" id="LFtireW" name="LFWear" type="radio"
+                                   value="option1"/>
                             <label class="form-check-label" for="LFtireW">Satisfactory</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input position-static" id="LFtireW1" name="LFWear" type="radio" value="option2" />
+                            <input class="form-check-input position-static" id="LFtireW1" name="LFWear" type="radio"
+                                   value="option2"/>
                             <label class="form-check-label" for="LFtireW1">Uneven Wear</label>
                         </div>
                     </td>
@@ -634,15 +736,18 @@
                     <td>Left Rear: Tire Tread</td>
                     <td>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input position-static" id="LRtire" name="LRTread" type="radio" value="option1" />
+                            <input class="form-check-input position-static" id="LRtire" name="LRTread" type="radio"
+                                   value="option1"/>
                             <label class="form-check-label" for="LRtire">4/32" or Deeper</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input position-static" id="LRtire1" name="LRTread" type="radio" value="option2" />
+                            <input class="form-check-input position-static" id="LRtire1" name="LRTread" type="radio"
+                                   value="option2"/>
                             <label class="form-check-label" for="LRtire1">3/32"</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input position-static" id="LRtire2" name="LRTread" type="radio" value="option3" />
+                            <input class="form-check-input position-static" id="LRtire2" name="LRTread" type="radio"
+                                   value="option3"/>
                             <label class="form-check-label" for="LRtire2">2/32" or Less</label>
                         </div>
                     </td>
@@ -651,11 +756,13 @@
                     <td>Left Rear: Wear Pattern</td>
                     <td>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input position-static" id="LRtireW" name="LRWear" type="radio" value="option1" />
+                            <input class="form-check-input position-static" id="LRtireW" name="LRWear" type="radio"
+                                   value="option1"/>
                             <label class="form-check-label" for="LRtireW">Satisfactory</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input position-static" id="LRtireW1" name="LRWear" type="radio" value="option2" />
+                            <input class="form-check-input position-static" id="LRtireW1" name="LRWear" type="radio"
+                                   value="option2"/>
                             <label class="form-check-label" for="LRtireW1">Uneven Wear</label>
                         </div>
                     </td>
@@ -675,15 +782,18 @@
                     <td>Right Front: Tire Tread</td>
                     <td>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input position-static" id="RFtire" name="RFTread" type="radio" value="option1" />
+                            <input class="form-check-input position-static" id="RFtire" name="RFTread" type="radio"
+                                   value="option1"/>
                             <label class="form-check-label" for="RFtire">4/32" or Deeper</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input position-static" id="RFtire1" name="RFTread" type="radio" value="option2" />
+                            <input class="form-check-input position-static" id="RFtire1" name="RFTread" type="radio"
+                                   value="option2"/>
                             <label class="form-check-label" for="RFtire1">3/32"</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input position-static" id="RFtire2" name="RFTread" type="radio" value="option3" />
+                            <input class="form-check-input position-static" id="RFtire2" name="RFTread" type="radio"
+                                   value="option3"/>
                             <label class="form-check-label" for="RFtire2">2/32" or Less</label>
                         </div>
                     </td>
@@ -692,11 +802,13 @@
                     <td>Right Front: Wear Pattern</td>
                     <td>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input position-static" id="RFtireW" name="RFWear" type="radio" value="option1" />
+                            <input class="form-check-input position-static" id="RFtireW" name="RFWear" type="radio"
+                                   value="option1"/>
                             <label class="form-check-label" for="RFtireW">Satisfactory</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input position-static" id="RFtireW1" name="RFWear" type="radio" value="option2" />
+                            <input class="form-check-input position-static" id="RFtireW1" name="RFWear" type="radio"
+                                   value="option2"/>
                             <label class="form-check-label" for="RFtireW1">Uneven Wear</label>
                         </div>
                     </td>
@@ -716,15 +828,18 @@
                     <td>Right Rear: Tire Tread</td>
                     <td>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input position-static" id="RRtire" name="RRTread" type="radio" value="option1" />
+                            <input class="form-check-input position-static" id="RRtire" name="RRTread" type="radio"
+                                   value="option1"/>
                             <label class="form-check-label" for="RRtire">4/32" or Deeper</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input position-static" id="RRtire1" name="RRTread" type="radio" value="option2" />
+                            <input class="form-check-input position-static" id="RRtire1" name="RRTread" type="radio"
+                                   value="option2"/>
                             <label class="form-check-label" for="RRtire1">3/32"</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input position-static" id="RRtire2" name="RRTread" type="radio" value="option3" />
+                            <input class="form-check-input position-static" id="RRtire2" name="RRTread" type="radio"
+                                   value="option3"/>
                             <label class="form-check-label" for="RRtire2">2/32" or Less</label>
                         </div>
                     </td>
@@ -733,11 +848,13 @@
                     <td>Right Rear: Wear Pattern</td>
                     <td>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input position-static" id="RRtireW" name="RRWear" type="radio" value="option1" />
+                            <input class="form-check-input position-static" id="RRtireW" name="RRWear" type="radio"
+                                   value="option1"/>
                             <label class="form-check-label" for="RRtireW">Satisfactory</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input position-static" id="RRtireW1" name="RRWear" type="radio" value="option2" />
+                            <input class="form-check-input position-static" id="RRtireW1" name="RRWear" type="radio"
+                                   value="option2"/>
                             <label class="form-check-label" for="RRtireW1">Uneven Wear</label>
                         </div>
                     </td>
@@ -765,8 +882,8 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>Vehicle Condition</th>
-                    <th>Brakes</th>
+                    <th class="table-danger text-center">Vehicle Condition</th>
+                    <th class="table-danger">Brakes</th>
                 </tr>
                 <tr>
                     <td>Brake Inspection</td>
@@ -819,24 +936,27 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>Vehicle Condition</th>
-                    <th>Battery Performance</th>
+                    <th class="table-warning text-center">Vehicle Condition</th>
+                    <th class="table-warning">Battery Performance</th>
                 </tr>
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Battery" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Battery">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Battery1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Battery1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Battery2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Battery2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Battery" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Battery">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Battery1" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Battery1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Battery2" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Battery2">🚨</label>
+                            </div>
                         </div>
                     </td>
                     <td>Battery Terminal/Cables/Mountings</td>
@@ -844,75 +964,90 @@
                 <tr>
                     <td>
                         <div class="form-check form-check-inline">
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Storage" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Storage">✅</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Storage1" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Storage1">⚠️</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline col">
-                            <input type="radio" id="Storage2" name="customRadioInline1" class="custom-control-input" />
-                            <label class="custom-control-label" for="Storage2">🚨</label>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Storage" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Storage">✅</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Storage1" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Storage1">⚠️</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline col">
+                                <input type="radio" id="Storage2" name="customRadioInline1"
+                                       class="custom-control-input"/>
+                                <label class="custom-control-label" for="Storage2">🚨</label>
+                            </div>
                         </div>
                     </td>
                     <td>Storage Capacity Test</td>
                 </tr>
             </table>
-            <textarea name="comment" style="resize: none; width: 36rem" placeholder="Enter Vehicle Notes Here"></textarea>
-            <a onClick="window.print()"  class="btn btn-success btn-block">Print Checklist</a>
-            <a onclick="window.location.href = '/technicians';" class="btn btn-primary btn-block">Submit</a>
+            <textarea class="mx-auto mb-3" name="comment" style="resize: none; width: 60rem;"
+                      placeholder="Enter Vehicle Notes Here"></textarea>
+            <aside class="row text-center justify-content-around mb-3">
+                <a onClick="window.print()" class="btn btn-secondary col-5 btn-block text-light">Print</a>
+                <a onclick="window.location.href = '/technicians';" class="btn btn-warning col-5 btn-block mt-0">Save</a>
+            </aside>
         </form>
     </section>
 </main>
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script>
-    $('#check1').click(function() {
+    $('#check1').click(function () {
         $("#progress").css("width", "10%");
+        $("#progress").addClass("bg-warning");
+        $("#progress").addClass("progress-bar-striped");
     });
-    $('#check2').click(function() {
+    $('#check2').click(function () {
         $("#progress").css("width", "25%");
+        $("#progress").addClass("bg-warning");
+        $("#progress").addClass("progress-bar-striped");
     });
-    $('#check2E').click(function() {
-        if ( $ ("#check2E").is(':checked')) {
+    $('#check2E').click(function () {
+        if ($("#check2E").is(':checked')) {
             $("#progress").addClass("bg-danger");
             $("#progress").addClass("progress-bar-striped");
         } else {
             $("#progress").removeClass("bg-danger");
-            $("#progress").removeClass("progress-bar-striped");
         }
     });
-    $('#check3').click(function() {
+    $('#check3').click(function () {
         $("#progress").css("width", "50%");
+        $("#progress").addClass("bg-warning");
+        $("#progress").addClass("progress-bar-striped");
     });
-    $('#check3E').click(function() {
-        if ( $ ("#check3E").is(':checked')) {
+    $('#check3E').click(function () {
+        if ($("#check3E").is(':checked')) {
             $("#progress").addClass("bg-danger");
             $("#progress").addClass("progress-bar-striped");
         } else {
             $("#progress").removeClass("bg-danger");
-            $("#progress").removeClass("progress-bar-striped");
         }
     });
-    $('#check4').click(function() {
+    $('#check4').click(function () {
         $("#progress").css("width", "75%");
+        $("#progress").addClass("bg-warning");
+        $("#progress").addClass("progress-bar-striped");
     });
-    $('#check4E').click(function() {
-        if ( $ ("#check4E").is(':checked')) {
+    $('#check4E').click(function () {
+        if ($("#check4E").is(':checked')) {
             $("#progress").addClass("bg-danger");
             $("#progress").addClass("progress-bar-striped");
         } else {
             $("#progress").removeClass("bg-danger");
-            $("#progress").removeClass("progress-bar-striped");
         }
     });
-    $('#check5').click(function() {
+    $('#check5').click(function () {
         $("#progress").css("width", "100%");
+        $("#progress").removeClass("bg-warning");
+        $("#progress").removeClass("progress-bar-striped");
+        $("#progress").addClass("bg-success");
     });
 </script>
-<!--<footer th:replace="fragments/fragments :: footer"></footer>-->
+<footer th:replace="fragments/fragments :: footer" />
 
 </body>
 </html>

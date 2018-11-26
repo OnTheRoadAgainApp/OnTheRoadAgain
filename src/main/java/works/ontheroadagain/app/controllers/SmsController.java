@@ -12,6 +12,7 @@ public class SmsController {
     public String vehicleAppointmentPage(){
         SmsSender smsSender = new SmsSender();
         smsSender.sendText();
+
         return "redirect:/advisor";
     }
 }

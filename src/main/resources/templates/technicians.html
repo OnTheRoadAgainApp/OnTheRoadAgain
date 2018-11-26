@@ -3,48 +3,53 @@
 <head th:include="fragments/fragments :: head"></head>
 <body class=" bg-light">
 <nav th:replace="fragments/fragments :: navbar"></nav>
-<header th:replace=" fragments/fragments :: header"></header>
 
+<h1 class="container text-dark mt-5 mb-5 pt-5 page-title" style="border-bottom: 2px solid #ffc107;">
+    Welcome back, <span th:text="${#authentication.principal.first}"/>!
+</h1>
 <main class="container mx-auto">
-    <h1>Welcome Back, <span th:text="${#authentication.principal.first}"></span></h1>
-    <hr class="hr-6"/>
-    <section class="row">
-    <article class="col-6">
-        <h2>Your Info:</h2>
-        <h4 th:text="${#authentication.principal.email}"/>
-        <h4 th:text="${#authentication.principal.phone_number}"/>
-    </article>
-    <article class="col-6 row">
-        <h2>Scheduled Vehicles</h2>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">License Plate</th>
-                <th scope="col">Service Requested</th>
-                <th scope="col">Make</th>
-                <th scope="col">Model</th>
-                <th scope="col">Year</th>
-                <th scope="col">Vehicle Page</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="booking : ${serviceBookings}">
-                <td th:text="${booking.vehicle.license}" />
-                <td th:text="${booking.service_type.description}" />
-                <td th:text="${booking.vehicle.make}" />
-                <td th:text="${booking.vehicle.model}" />
-                <td th:text="${booking.vehicle.year}" />
-                <td><a th:href="@{/booking/{id}(id=${booking.id})}"  class="btn btn-primary btn-block">Vehicle Page</a></td>
 
-            </tr>
-            </tbody>
-        </table>
-    </article>
+    <section class="row">
+        <article class="col-5">
+            <h2 class="text-dark mb-0 pb-0">Your Info</h2>
+            <hr class="hr-4"/>
+            <h5>Email: <span th:text="${#authentication.principal.email}"/></h5>
+            <h5>Phone: <span th:text="${#authentication.principal.phone_number}"/></h5>
+            <aside class="text-center">
+            <a href="#" class="btn btn-warning bt-lg mx-5">Edit</a>
+            </aside>
+        </article>
+
+        <article class="col-7 row">
+            <h2 class="text-dark pb-1">Scheduled Vehicles</h2>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">License</th>
+                    <th scope="col">Service</th>
+                    <th scope="col">Make</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Year</th>
+                    <th scope="col">Checklist</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="booking : ${serviceBookings}">
+                    <td th:text="${booking.vehicle.license}"/>
+                    <td th:text="${booking.service_type.description}"/>
+                    <td th:text="${booking.vehicle.make}"/>
+                    <td th:text="${booking.vehicle.model}"/>
+                    <td th:text="${booking.vehicle.year}"/>
+                    <td><a th:href="@{/booking/service/{id}(id=${booking.id})}" class="btn btn-warning btn-block">Service</a></td>
+
+                </tr>
+                </tbody>
+            </table>
+        </article>
     </section>
 
 
 </main>
-
 
 
 <footer th:replace="fragments/fragments :: footer"></footer>

@@ -60,9 +60,49 @@ public class TechnicianController {
 
 
 
-    @GetMapping("/booking/{bookingId}")
+    @GetMapping("/booking/service/{bookingId}")
     public String vehicleAppointmentPage(Model model, @PathVariable Long bookingId){
         model.addAttribute("booking", bookingRepo.findById(bookingId));
+
+        int statusId = (int) bookingRepo.findOne(bookingId).getStatus().getId();
+        int pWidth = 0;
+        String pColor = "";
+        switch (statusId) {
+            case 1: pWidth = 5;
+                pColor = "bg-warning progress-bar-striped progress-bar-animated";
+                break;
+            case 2: pWidth = 15;
+                pColor = "bg-warning progress-bar-striped progress-bar-animated";
+                break;
+            case 3: pWidth =  30;
+                pColor = "bg-warning progress-bar-striped progress-bar-animated";
+                break;
+            case 4: pWidth =  30;
+                pColor = "bg-danger progress-bar-striped progress-bar-animated";
+                break;
+            case 5: pWidth = 50;
+                pColor = "bg-warning progress-bar-striped progress-bar-animated";
+                break;
+            case 6: pWidth = 50;
+                pColor = "bg-danger progress-bar-striped progress-bar-animated";
+                break;
+            case 7: pWidth = 75;
+                pColor = "bg-warning progress-bar-striped progress-bar-animated";
+                break;
+            case 8: pWidth = 75;
+                pColor = "bg-danger progress-bar-striped progress-bar-animated";
+                break;
+            case 9: pWidth = 90;
+                pColor = "bg-warning progress-bar-striped progress-bar-animated";
+                break;
+            case 10: pWidth = 100;
+                pColor = "bg-success ";
+                break;
+        }
+
+        model.addAttribute("width", pWidth);
+        model.addAttribute("color", pColor);
+
         return "vehicleAppointment";
 
     }
@@ -90,7 +130,7 @@ public class TechnicianController {
 
         bookingRepo.save(updatedBooking);
 
-        return "redirect:/booking/" + bookingId;
+        return "redirect:/booking/service/" + bookingId;
     }
 
 }
