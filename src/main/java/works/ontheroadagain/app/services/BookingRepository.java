@@ -12,6 +12,8 @@ public interface BookingRepository extends CrudRepository<ServiceBooking, Long> 
 
       List<ServiceBooking> findAllByVehicle (Vehicle vehicle);
       List<ServiceBooking> findAllByDateBefore(Date today);
+      List<ServiceBooking> findAllByVehicleAndDateBefore(Vehicle vehicle, Date today);
+      List<ServiceBooking> findAllByVehicleAndDateAfter(Vehicle vehicle, Date today);
       List<ServiceBooking> findAllByTechnician (User user);
       ServiceBooking findById (Long id);
 }
