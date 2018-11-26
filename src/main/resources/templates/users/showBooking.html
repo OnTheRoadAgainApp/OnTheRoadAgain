@@ -44,7 +44,6 @@
                 <tr th:each="booking : ${bookings}">
                     <td th:text="${booking.date}"/>
                     <td th:text="${booking.vehicle.make + ' ' + booking.vehicle.model}"/>
-                    <!--uncomment when database is filled-->
                     <td th:text="${booking.service_type.description}"/>
                     <td th:text="${booking.advisor.first}"/>
                 </tr>
@@ -62,32 +61,32 @@
         </article>
 
 
+        <!--part to show on the customer page-->
 
-
-        <!--&lt;!&ndash;<article class="text-center m-4" th:if="${bookings.cost != null}" sec:authorize="hasAuthority('CUSTOMER')">&ndash;&gt;-->
-            <!--<article class="text-center m-4">-->
-            <!--<h4>Total cost of your service: </h4>-->
-            <!--&lt;!&ndash;<h3 th:text="${bookings.cost}"></h3>&ndash;&gt;-->
-                <!--<h3>cost</h3>-->
-        <!--</article>-->
-
-
-
-        <!--button without action-->
-        <article class="m-4">
-            <form class="form-inline">
-                <article class="form-group">
-                    <label class="mr-1" for="cost">Total cost of the service:</label>
-                    <input type="" id="cost" name="cost" class="form-control" placeholder="Cost"/>
-                </article>
-                <button type="submit" class="btn btn-success btn-sm ml-1" name="cost">Submit</button>
-            </form>
+        <article class="text-center m-4" th:if="${bookings.cost != null}" sec:authorize="hasAuthority('CUSTOMER')">
+            <h4>Total cost of your service:</h4>
+            <h3 th:text="${bookings.cost}"></h3>
         </article>
 
-
+        
 
         <article class="text-center mb-5" th:if="${bookings.status.id == 1}" sec:authorize="hasAuthority('ADVISOR')">
 
+            <!--form without action - just to show the idea - actual form below-->
+            
+            <article class="m-4">
+                <form class="form-inline">
+                    <article class="form-group">
+                        <label class="mr-1" for="cost">Total cost of the service:</label>
+                        <input type="" id="cost" name="cost" class="form-control" placeholder="Cost"/>
+                    </article>
+                    <button type="submit" class="btn btn-success btn-sm ml-1" name="cost">Submit</button>
+                </form>
+            </article>
+
+
+
+            <!--actual form-->
 
             <!--<article class="m-4">-->
                 <!--<form th:action="@{/book/{id}}" method="post" class="form-inline" th:object="${serviceBooking}">-->

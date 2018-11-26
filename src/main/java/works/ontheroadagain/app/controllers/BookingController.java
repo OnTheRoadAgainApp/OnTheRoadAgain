@@ -151,8 +151,10 @@ public class BookingController {
         return "users/showBooking";
 
     }
+    
 
-
+//    adding cost after finishing the service
+    
     @PostMapping(path = "/book/{id}")
     public String cost(@ModelAttribute ServiceBooking serviceBooking, @RequestParam("cost") Long cost,
                        @RequestParam("booking-id") Long bookingId) {
@@ -160,9 +162,6 @@ public class BookingController {
         booking.setCost(cost);
         bookingRepo.save(booking);
 
-
         return "users/showBooking";
     }
-
-
-}
+}                                                            
