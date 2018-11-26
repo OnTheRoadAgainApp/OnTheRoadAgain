@@ -24,7 +24,7 @@
 
 <nav th:replace="fragments/fragments :: navbar"></nav>
 
-<h1 class="container mt-5 mb-5 page-title col-12 col-md-10" style="border-bottom: 2px solid #ffc107;">
+<h1 class="container mt-5 mb-5 page-title col-12 col-md-8" style="border-bottom: 2px solid #ffc107;">
     Service Booking #<th:span th:text="${booking.id}"/>
 </h1>
 
@@ -44,7 +44,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="booking : ${booking}">
-                    <td th:text="${booking.date}"/>
+                    <td th:text="${#dates.format(booking.date, 'MMM dd')}" />
                     <td th:text="${booking.vehicle.make + ' ' + booking.vehicle.model}"/>
                     <!--uncomment when database is filled-->
                     <td th:text="${booking.service_type.description}"/>

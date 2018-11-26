@@ -40,7 +40,7 @@
                     <td th:text="${booking.vehicle.make}"/>
                     <td th:text="${booking.vehicle.model}"/>
                     <td th:text="${booking.vehicle.year}"/>
-                    <td><a th:href="@{/booking/{id}(id=${booking.id})}" class="btn btn-warning btn-block">Service</a></td>
+                    <td><a th:href="@{/booking/service/{id}(id=${booking.id})}" class="btn btn-warning btn-block">Service</a></td>
 
                 </tr>
                 </tbody>

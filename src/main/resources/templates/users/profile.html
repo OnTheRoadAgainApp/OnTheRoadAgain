@@ -88,7 +88,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="booking : ${bookings}">
-                    <td th:text="${booking.date}" />
+                    <td th:text="${#dates.format(booking.date, 'MMM dd HH:mm')}" />
                     <td th:text="${booking.vehicle.make + ' ' + booking.vehicle.model}" />
                     <td th:text="${booking.service_type.description}" />
                     <td th:text="${booking.advisor.first}" />
@@ -99,7 +99,7 @@
                         </form>
 
                         <form th:action="@{/book/{id}(id=${booking.id})}" method="get" th:object="${booking.id}">
-                            <button type="submit" class="btn btn-success btn-sm">Details</button>
+                            <button type="submit" class="btn btn-dark text-light btn-sm">Details</button>
                         </form>
                     </td>
                 </tr>
@@ -123,18 +123,14 @@
                 </thead>
                 <tbody>
                 <tr th:each="booking : ${pastBookings}">
-                    <td th:text="${booking.date}" />
+                    <td th:text="${#dates.format(booking.date, 'MMM dd')}" />
                     <td th:text="${booking.vehicle.make + ' ' + booking.vehicle.model}" />
                     <td th:text="${booking.service_type.description}" />
                     <td th:text="${booking.advisor.first}" />
                     <td th:text="${booking.status.description}" />
                     <td class="form-inline">
-                        <form th:action="@{book/cancel/{id}(id=${booking.id})}" method="post">
-                            <button type="submit" class="btn btn-danger btn-sm mr-4">Cancel</button>
-                        </form>
-
                         <form th:action="@{/book/{id}(id=${booking.id})}" method="get" th:object="${booking.id}">
-                            <button type="submit" class="btn btn-success btn-sm">Details</button>
+                            <button type="submit" class="btn btn-dark text-light btn-sm">Details</button>
                         </form>
                     </td>
                 </tr>
