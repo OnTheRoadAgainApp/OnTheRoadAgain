@@ -44,7 +44,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="booking : ${booking}">
-                    <td th:text="${#dates.format(booking.date, 'MMM dd')}" />
+                    <td th:text="${#dates.format(booking.date, 'MMM dd hh:mm a')}" />
                     <td th:text="${booking.vehicle.make + ' ' + booking.vehicle.model}"/>
                     <!--uncomment when database is filled-->
                     <td th:text="${booking.service_type.description}"/>
@@ -67,13 +67,19 @@
 
         <article class="text-center mb-5" th:if="${booking.status.id == 9}" sec:authorize="hasAuthority('ADVISOR')">
             <h3>Vehicle service has been completed!</h3>
-            <form>
+            <form th:action="@{/send}" method="post">
                 <label for="send">Tell the customer that the car is ready to pick up!</label>
                 <br/>
-                <a href="/send" class="btn btn-success btn-lg active" role="button" aria-pressed="true" id="send">Send
-                    SMS!</a>
+                <input type="hidden" name="bookingId" th:value="${booking.id}" />
+                <input type="submit" class="btn btn-success btn-lg" role="button" aria-pressed="true" id="send"
+                value="Send SMS!"/>
             </form>
         </article>
+
+        <article class="text-center mb-5" th:if="${booking.status.id == 10}" sec:authorize="hasAuthority('ADVISOR')">
+            <h3>The customer has been notified their car is ready.</h3>
+        </article>
+
     </div>
     <aside class="py-5 my-5"></aside>
     <aside class="py-5 my-5"></aside>
