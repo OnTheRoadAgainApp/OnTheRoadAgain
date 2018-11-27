@@ -10,8 +10,9 @@
 <main class="container mx-auto my-5 col-8">
     <h1 class="page-title my-2 text-dark col-12" style="border-bottom: 2px solid #ffc107;">Service Bookings</h1>
     <aside class="large-text">
-        <p>Here are all the current and past bookings for your shop. Assign or reassign a technician to each appointment,
-        and go to the details page for more info. </p>
+        <p>Here are all the current and past bookings for your shop. Assign or reassign a technician to each
+            appointment,
+            and go to the details page for more info. </p>
     </aside>
     <div class="col mb-5">
         <h2 class="text-dark">Current Bookings</h2>
@@ -29,17 +30,17 @@
                 </thead>
                 <tbody>
                 <tr th:each="service_booking : ${serviceBookings}">
-                    <td th:text="${#dates.format(service_booking.date, 'MMM dd HH:mm')}"/>
+                    <td th:text="${#dates.format(service_booking.date, 'MMM dd hh:mm a')}"/>
                     <td th:text="${service_booking.vehicle.user.last_name + ', ' + service_booking.vehicle.user.first}"/>
                     <td th:text="${service_booking.vehicle.license}"/>
                     <th:block th:if="${service_booking.technician != null}">
-                        <td th:text="${service_booking.technician.first}"/>
+                        <td class="pl-5" th:text="${service_booking.technician.first}"/>
                     </th:block>
                     <th:block th:if="${service_booking.technician == null}">
                         <td>Unassigned</td>
                     </th:block>
                     <td>
-                        <form th:action="@{/advisor}" method="post" class="form-inline" th:object="${serviceBooking}">
+                        <form th:action="@{/advisor}" method="post" class="form-inline">
                             <div class="form-group">
                                 <select name="tech" id="technician" class="form-control">
                                     <option th:each="technician : ${technicians}" th:value="${technician.id}">
@@ -48,7 +49,7 @@
                                 </select>
                                 <input type="hidden" name="booking-id" th:value="${service_booking.id}"/>
                             </div>
-                            <button type="submit" class="btn btn-dark btn-sm ml-3 mt-2" name="tech">Save</button>
+                            <button type="submit" class="btn btn-dark btn-sm ml-3" name="tech">Save</button>
                         </form>
                     </td>
                     <td>
@@ -57,15 +58,19 @@
                             <button type="submit" class="btn btn-warning">Details</button>
                         </form>
                     </td>
+                    <th:block th:if="${service_booking.status.id &lt; 9}">
+                        <td class="p-0"></td>
+                    </th:block>
 
-                        <th:block th:if="${service_booking.status.id == 9}">
-                            <td class="p-0">
-                                Ready!
-                            </td>
-                        </th:block>
-                    <th:block th:if="${service_booking.status.id == 10}">
+                    <th:block th:if="${service_booking.status.id == 9}">
                         <td class="p-0">
-                            <img src="./images/check.png" title="Done!" width="50%" class="pt-2"/>
+                            <p class="mt-3">Ready to QC</p>
+                        </td>
+                    </th:block>
+
+                    <th:block th:if="${service_booking.status.id == 10}">
+                        <td class="p-0 pl-4">
+                            <img src="./images/check.png" title="Done!" width="50px" class="pt-2"/>
                         </td>
                     </th:block>
                 </tr>
@@ -86,11 +91,11 @@
                 </thead>
                 <tbody>
                 <tr th:each="service_booking : ${serviceBookings}">
-                    <td th:text="${#dates.format(service_booking.date, 'MMM dd HH:mm')}"/>
+                    <td th:text="${#dates.format(service_booking.date, 'MMM dd yyyy')}"/>
                     <td th:text="${service_booking.vehicle.user.last_name + ', ' + service_booking.vehicle.user.first}"/>
                     <td th:text="${service_booking.vehicle.license}"/>
                     <th:block th:if="${service_booking.technician != null}">
-                        <td th:text="${service_booking.technician.first}"/>
+                        <td class="pl-5" th:text="${service_booking.technician.first}"/>
                     </th:block>
                     <th:block th:if="${service_booking.technician == null}">
                         <td>Unassigned</td>
