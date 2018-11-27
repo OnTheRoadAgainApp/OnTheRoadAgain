@@ -89,13 +89,12 @@ public class BookingController {
     //assign a technician to booking
     @PostMapping("/advisor")
     public String technician(@ModelAttribute ServiceBooking serviceBooking, @RequestParam("tech") Long technicianId,
-                             @RequestParam("booking-id") Long bookingId){
+                             @RequestParam("booking-id") Long bookingId) {
         ServiceBooking booking = bookingRepo.findOne(bookingId);
         booking.setTechnician(userRepo.findById(technicianId));
         bookingRepo.save(booking);
         return "redirect:/advisor";
     }
-
 
 
     @GetMapping(path = "/book/{id}")
@@ -107,6 +106,7 @@ public class BookingController {
         int pWidth = 0;
         String pColor = "";
         switch (statusId) {
+
             case 1: pWidth = 5;
                     pColor = "bg-warning progress-bar-striped progress-bar-animated";
                     break;
@@ -141,8 +141,19 @@ public class BookingController {
         vModel.addAttribute("width", pWidth);
         vModel.addAttribute("color", pColor);
         return "users/showBooking";
+
     }
+    
 
-
-
-}
+//    adding cost after finishing the service
+    
+//    @PostMapping(path = "/book/{id}")
+//    public String cost(@ModelAttribute ServiceBooking serviceBooking, @RequestParam("cost") Long cost,
+//                       @RequestParam("booking-id") Long bookingId) {
+//        ServiceBooking booking = bookingRepo.findOne(bookingId);
+//        booking.setCost(cost);
+//        bookingRepo.save(booking);
+//
+//        return "users/showBooking";
+//    }
+}                                                            
