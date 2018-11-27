@@ -19,7 +19,7 @@
 <body class=" bg-light">
 
 <!--<aside th:if="${param.}" class="alert alert-success" role="alert">-->
-    <!--SMS has been sent!-->
+<!--SMS has been sent!-->
 <!--</aside>-->
 
 <nav th:replace="fragments/fragments :: navbar"></nav>
@@ -46,7 +46,6 @@
                 <tr th:each="booking : ${booking}">
                     <td th:text="${booking.date}"/>
                     <td th:text="${booking.vehicle.make + ' ' + booking.vehicle.model}"/>
-                    <!--uncomment when database is filled-->
                     <td th:text="${booking.service_type.description}"/>
                     <td th:text="${booking.advisor.first}"/>
                 </tr>
@@ -65,15 +64,56 @@
         </article>
 
 
+        <!--part to show on the customer page-->
+
+        <!--<article class="text-center m-4" th:if="${bookings.cost != null}" sec:authorize="hasAuthority('CUSTOMER')">-->
+            <!--<h4>Total cost of your service:</h4>-->
+            <!--<h3 th:text="${bookings.cost}"></h3>-->
+        <!--</article>-->
+
+        
+
+        <article class="text-center mb-5" th:if="${bookings.status.id == 9}" sec:authorize="hasAuthority('ADVISOR')">
+
+            <!--form without action - just to show the idea - actual form below-->
+            
+            <!--<article class="m-4">-->
+                <!--<form class="form-inline">-->
+                    <!--<article class="form-group">-->
+                        <!--<label class="mr-1" for="cost">Total cost of the service:</label>-->
+                        <!--<input type="" id="cost" name="cost" class="form-control" placeholder="Cost"/>-->
+                    <!--</article>-->
+                    <!--<button type="submit" class="btn btn-success btn-sm ml-1" name="cost">Submit</button>-->
+                <!--</form>-->
+            <!--</article>-->
+
+
+
+            <!--actual form-->
+
+            <!--<article class="m-4">-->
+                <!--<form th:action="@{/book/{id}}" method="post" class="form-inline" th:object="${serviceBooking}">-->
+                    <!--<article class="form-group">-->
+                        <!--<label class="mr-1" for="cost">Total Cost:</label>-->
+                        <!--<input type="" id="cost" name="cost" class="form-control"-->
+                               <!--th:field="*{cost}" placeholder="Cost"/>-->
+                        <!--<input type="hidden" name="booking-id" th:value="${service_booking.id}"/>-->
+                    <!--</article>-->
+                    <!--<button type="submit" class="btn btn-success btn-sm ml-1" name="cost">Submit</button>-->
+                <!--</form>-->
+            <!--</article>-->
+
         <article class="text-center mb-5" th:if="${bookings.status.id == 9}" sec:authorize="hasAuthority('ADVISOR')">
             <h3>Vehicle service has been completed!</h3>
-            <form>
+
+            <form class="m-4">
                 <label for="send">Tell the customer that the car is ready to pick up!</label>
                 <br/>
                 <a href="/send" class="btn btn-success btn-lg active" role="button" aria-pressed="true" id="send">Send
                     SMS!</a>
             </form>
         </article>
+
     </div>
     <aside class="py-5 my-5"></aside>
     <aside class="py-5 my-5"></aside>
