@@ -73,8 +73,6 @@
 
         
 
-        <article class="text-center mb-5" th:if="${bookings.status.id == 9}" sec:authorize="hasAuthority('ADVISOR')">
-
             <!--form without action - just to show the idea - actual form below-->
             
             <!--<article class="m-4">-->
@@ -117,7 +115,6 @@
         <article class="text-center mb-5" th:if="${booking.status.id == 10}" sec:authorize="hasAuthority('ADVISOR')">
             <h3>The customer has been notified their car is ready.</h3>
         </article>
-
     </div>
     <aside class="py-5 my-5"></aside>
     <aside class="py-5 my-5"></aside>
