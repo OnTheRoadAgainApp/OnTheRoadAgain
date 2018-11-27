@@ -54,7 +54,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 /* Pages that require authentication */
                 .and()
                 .authorizeRequests()
-                .antMatchers("/technicians", "/vehicleAppointment") //put for each role 402 - access is denied
+                .antMatchers("/technicians", "/vehicleAppointment", "/booking/service/{id}") //put for each role 402 - access is denied
                 .hasAuthority("TECHNICIAN")
                 .and()
                 .authorizeRequests()

@@ -5,41 +5,38 @@
 <body class=" bg-light">
 <nav th:replace="fragments/fragments :: navbar"></nav>
 
-<header th:replace=" fragments/fragments :: header"></header>
-<br/>
 <!--<h1 class="container">Welcome, <span th:text="${#authentication.principal.first}"/> - our favorite advisor!</h1>-->
-<br/>
-<main class="container row mx-auto">
 
-    <div class="col">
-
-        <h2>All Vehicles with booked appointments</h2>
-        <div class="border border-warning rounded">
-            <table class="table table-striped">
+<main class="container mx-auto my-5 col-8">
+    <h1 class="page-title my-2 text-dark col-12" style="border-bottom: 2px solid #ffc107;">Service Bookings</h1>
+    <aside class="large-text">
+        <p>Here are all the current and past bookings for your shop. Assign or reassign a technician to each appointment,
+        and go to the details page for more info. </p>
+    </aside>
+    <div class="col mb-5">
+        <h2 class="text-dark">Current Bookings</h2>
+        <div class="border border-warning rounded mb-4">
+            <table class="table table-striped mb-0">
                 <thead>
                 <tr>
-                    <th scope="col">Vehicle</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Customer</th>
                     <th scope="col">License</th>
-                    <th scope="col">Booking Date</th>
-                    <th scope="col">Service</th>
-                    <th scope="col">Status</th>
                     <th scope="col">Technician</th>
-                    <th scope="col">Assign / Change Technician</th>
+                    <th scope="col">Assign Tech</th>
                     <th scope="col">Details</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="service_booking : ${serviceBookings}">
-                    <td th:text="${service_booking.vehicle.make + ' ' + service_booking.vehicle.model + ', ' + service_booking.vehicle.color}"/>
+                    <td th:text="${#dates.format(service_booking.date, 'MMM dd HH:mm')}"/>
+                    <td th:text="${service_booking.vehicle.user.last_name + ', ' + service_booking.vehicle.user.first}"/>
                     <td th:text="${service_booking.vehicle.license}"/>
-                    <td th:text="${service_booking.date}"/>
-                    <td th:text="${service_booking.service_type.description}"/>
-                    <td th:text="${service_booking.status.description}"/>
                     <th:block th:if="${service_booking.technician != null}">
                         <td th:text="${service_booking.technician.first}"/>
                     </th:block>
                     <th:block th:if="${service_booking.technician == null}">
-                        <td>not assigned</td>
+                        <td>Unassigned</td>
                     </th:block>
                     <td>
                         <form th:action="@{/advisor}" method="post" class="form-inline" th:object="${serviceBooking}">
@@ -51,13 +48,57 @@
                                 </select>
                                 <input type="hidden" name="booking-id" th:value="${service_booking.id}"/>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-sm ml-1" name="tech">Submit</button>
+                            <button type="submit" class="btn btn-dark btn-sm ml-3 mt-2" name="tech">Save</button>
                         </form>
                     </td>
                     <td>
                         <form th:action="@{/book/{id}(id=${service_booking.id})}" method="get"
                               th:object="${service_booking.id}">
-                            <button type="submit" class="btn btn-success btn-sm">Details</button>
+                            <button type="submit" class="btn btn-warning">Details</button>
+                        </form>
+                    </td>
+
+                        <th:block th:if="${service_booking.status.id == 9}">
+                            <td class="p-0">
+                                Ready!
+                            </td>
+                        </th:block>
+                    <th:block th:if="${service_booking.status.id == 10}">
+                        <td class="p-0">
+                            <img src="./images/check.png" title="Done!" width="50%" class="pt-2"/>
+                        </td>
+                    </th:block>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h2 class="text-dark">Past Bookings</h2>
+        <div class="border border-warning rounded">
+            <table class="table table-striped mb-0">
+                <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">License</th>
+                    <th scope="col">Technician</th>
+                    <th scope="col">Details</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="service_booking : ${serviceBookings}">
+                    <td th:text="${#dates.format(service_booking.date, 'MMM dd HH:mm')}"/>
+                    <td th:text="${service_booking.vehicle.user.last_name + ', ' + service_booking.vehicle.user.first}"/>
+                    <td th:text="${service_booking.vehicle.license}"/>
+                    <th:block th:if="${service_booking.technician != null}">
+                        <td th:text="${service_booking.technician.first}"/>
+                    </th:block>
+                    <th:block th:if="${service_booking.technician == null}">
+                        <td>Unassigned</td>
+                    </th:block>
+                    <td>
+                        <form th:action="@{/book/{id}(id=${service_booking.id})}" method="get"
+                              th:object="${service_booking.id}">
+                            <button type="submit" class="btn btn-warning">Details</button>
                         </form>
                     </td>
                 </tr>

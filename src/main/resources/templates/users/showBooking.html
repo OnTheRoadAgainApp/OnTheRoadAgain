@@ -24,12 +24,12 @@
 
 <nav th:replace="fragments/fragments :: navbar"></nav>
 
-<h1 class="container mt-5 mb-5 page-title col-12 col-md-10" style="border-bottom: 2px solid #ffc107;">
+<h1 class="container mt-5 mb-5 page-title col-12 col-md-8" style="border-bottom: 2px solid #ffc107;">
     Service Booking #<th:span th:text="${booking.id}"/>
 </h1>
 
 <main class="container row mx-auto mb-5">
-    <div class="border border-warning rounded col-12">
+    <div class="border border-warning rounded col-12 card">
 
         <article class="m-4">
             <h3>Service Details:</h3>
@@ -44,7 +44,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="booking : ${booking}">
-                    <td th:text="${booking.date}"/>
+                    <td th:text="${#dates.format(booking.date, 'MMM dd')}" />
                     <td th:text="${booking.vehicle.make + ' ' + booking.vehicle.model}"/>
                     <td th:text="${booking.service_type.description}"/>
                     <td th:text="${booking.advisor.first}"/>
@@ -103,7 +103,7 @@
                 <!--</form>-->
             <!--</article>-->
 
-        <article class="text-center mb-5" th:if="${bookings.status.id == 9}" sec:authorize="hasAuthority('ADVISOR')">
+        <article class="text-center mb-5" th:if="${booking.status.id == 9}" sec:authorize="hasAuthority('ADVISOR')">
             <h3>Vehicle service has been completed!</h3>
 
             <form class="m-4">
