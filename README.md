@@ -8,26 +8,29 @@ Maintains communication between customers, mechanics, and managers in regards to
 - [x] Customer can add their car(s) 
 - [x] Customer can create service appointment for their car(s)
 - [x] Customer can monitor status of their car 
-- [ ] Customers receive an alert when unexpected error occurs or vehicle complete
-- [ ] Convert alerts to SMS API feature to alert customer that vehicle work has started, is 80% complete, and finally complete (to request payment).
+- [x] Customers receive an alert when vehicle complete
+- [x] Convert alerts to SMS API feature to alert customer when service complete (to request payment).
 - [x] All technicians and advisors for shop must register and sign in  
 - [x] Technicians see a checklist for regular services 
-- [ ] Technicians can update status of appt/car with one click 
+- [x] Technicians can update status of appt/car
 - [x] Advisors can see status of all assigned cars on single page 
-- [ ] Advisor needs to confirm service complete before checking out customer
+- [x] Advisor needs to confirm service complete before checking out customer
 
 ### Addt’l Functionality 
-- [ ] Technicians are assigned cars based on specialty and availability
-- [ ] Customers can see history of maintenance 
-- [ ] Customers are reminded to schedule regular maintenance - 
+- [x] Customers can see history of maintenance 
+- [ ] Customers are reminded to schedule regular maintenance 
 - [ ] A reminder function to alert customer when maintenance is due based on average miles and time since last visit.
-* Advisors can search for customer’s last appointment 
-* Advisors have reminder to make appt if customer has upcoming service
+- [ ] Customers receive an alert when unexpected error occurs
+- [ ] Convert alerts to SMS API feature to alert customer that vehicle work has started and is 80% complete, in addition to car being complete
+- [ ] Technicians can update status of appt/car with one click (no need to save)
+- [ ] Advisors can search for customer’s last appointment 
+- [ ] Advisors have reminder to make appt if customer has upcoming service
 
 ### Suppl’ Functionality 
-- [ ] Customers can pay for repairs once vehicle is ready using outward API 
+- [ ] Technicians are assigned cars based on specialty and availability
+- [x] Customers can pay for repairs once vehicle is ready using outward API 
 - [ ] An API to post vehicle recall/safety information.
 - [x] Google Maps API to show directions to repair shop(s).
-* Customers have the ability to leave reviews of their visit, and managers have the ability to respond.
-* An API with a VIN decoder to specifically identify vehicles before arrival to repair shop.
+- [ ] Customers have the ability to leave reviews of their visit, and managers have the ability to respond.
+- [ ] An API with a VIN decoder to specifically identify vehicles before arrival to repair shop.
 
