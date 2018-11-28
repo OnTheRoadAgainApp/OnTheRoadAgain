@@ -20,6 +20,8 @@ import works.ontheroadagain.app.services.ServiceBookingRepository;
 import works.ontheroadagain.app.services.ServiceBookingService;
 import works.ontheroadagain.app.services.UserRepository;
 
+import java.util.Date;
+
 @Controller
 public class BookingController {
 
@@ -81,8 +83,11 @@ public class BookingController {
 
     @GetMapping("/advisor")
     public String vehicles(Model model) {
-        model.addAttribute("serviceBookings", bookingRepo.findAll());
+        model.addAttribute("serviceBookings", bookingRepo.findAllByDateAfter(new Date(System.currentTimeMillis() - 1000L * 60L * 60L * 24L)));
+        model.addAttribute("pastBookings", bookingRepo.findAllByDateBefore(new Date()));
+
         model.addAttribute("technicians", userRepo.findAllByRole(rolesRepo.findById(3L)));
+
         return "users/advisor";
     }
 

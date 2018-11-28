@@ -90,7 +90,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="service_booking : ${serviceBookings}">
+                <tr th:each="service_booking : ${pastBookings}">
                     <td th:text="${#dates.format(service_booking.date, 'MMM dd yyyy')}"/>
                     <td th:text="${service_booking.vehicle.user.last_name + ', ' + service_booking.vehicle.user.first}"/>
                     <td th:text="${service_booking.vehicle.license}"/>
