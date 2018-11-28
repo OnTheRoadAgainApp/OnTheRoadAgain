@@ -12,6 +12,8 @@ import java.util.List;
 
 public class UserWithRoles extends User implements UserDetails {
 
+
+
     private String userRole;
 
     public UserWithRoles(User user) {
@@ -44,6 +46,10 @@ public class UserWithRoles extends User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public String getUserRole() {
+        return userRole;
     }
 }
 
