@@ -150,4 +150,17 @@ footer {
     padding: 5%;
 }
 
+#logout {
+    color: rgba(255,255,255,.5);
+    text-decoration: none;
+    background-color: #343a40 !important;
+    font-weight: 400;
+}
 
+#logout:hover, #logout:focus {
+    color: rgba(255, 255, 255, 0.75) !important;
+}
+
+nav button:hover {
+    color: rgba(255, 255, 255, 0.75) !important;
+}
