@@ -68,16 +68,16 @@ public class TechnicianController {
         int pWidth = 0;
         String pColor = "";
         switch (statusId) {
-            case 1: pWidth = 5;
+            case 1: pWidth = 0;
                 pColor = "bg-warning progress-bar-striped progress-bar-animated";
                 break;
-            case 2: pWidth = 15;
+            case 2: pWidth = 10;
                 pColor = "bg-warning progress-bar-striped progress-bar-animated";
                 break;
-            case 3: pWidth =  30;
+            case 3: pWidth =  25;
                 pColor = "bg-warning progress-bar-striped progress-bar-animated";
                 break;
-            case 4: pWidth =  30;
+            case 4: pWidth =  25;
                 pColor = "bg-danger progress-bar-striped progress-bar-animated";
                 break;
             case 5: pWidth = 50;
@@ -92,9 +92,7 @@ public class TechnicianController {
             case 8: pWidth = 75;
                 pColor = "bg-danger progress-bar-striped progress-bar-animated";
                 break;
-            case 9: pWidth = 90;
-                pColor = "bg-warning progress-bar-striped progress-bar-animated";
-                break;
+            case 9:
             case 10: pWidth = 100;
                 pColor = "bg-success ";
                 break;
