@@ -61,9 +61,10 @@
 
         <li sec:authorize="isAuthenticated()" class="nav-item">
             <form th:action="@{/logout}" th:method="post">
-                <button class="btn-link btn large-text" style="text-decoration: none;">
+                <button class="btn-link btn large-text" style="text-decoration: none; color: rgba(255,255,255,.5);">
                     <img src="/images/logout.png" alt="logout icon"/>
-                    <span id="logout" style="text-decoration: none;">Logout</span>
+                    <span id="logout" style="text-decoration: none; color: rgba(255,255,255,.5);
+">Logout</span>
                 </button>
             </form>
         </li>
