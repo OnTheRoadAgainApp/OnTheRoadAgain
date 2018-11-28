@@ -24,45 +24,45 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-3 ml-auto normie large-text">
         <li sec:authorize="isAnonymous()" class="nav-item">
-            <a class="nav-link" href="/"><img src="./images/home.png" alt="home icon"/> Home</a>
+            <a class="nav-link" href="/"><img src="/images/home.png" alt="home icon"/> Home</a>
         </li>
 
         <li sec:authorize="hasAuthority('ADVISOR')" class="nav-item">
-            <a class="nav-link" href="/advisor"><img src="./images/booking.png" alt="booking icon"/> All Bookings</a>
+            <a class="nav-link" href="/advisor"><img src="/images/booking.png" alt="booking icon"/> All Bookings</a>
         </li>
 
         <li sec:authorize="hasAuthority('TECHNICIAN')" class="nav-item">
-            <a class="nav-link" href="/technicians"><img src="./images/dashboard.png" alt="dashboard icon"/> Dashboard</a>
+            <a class="nav-link" href="/technicians"><img src="/images/dashboard.png" alt="dashboard icon"/> Dashboard</a>
         </li>
 
         <li sec:authorize="hasAuthority('TECHNICIAN')" class="nav-item">
-            <a class="nav-link" href="#"><img src="./images/history.png" alt="history icon"/> History</a>
+            <a class="nav-link" href="#"><img src="/images/history.png" alt="history icon"/> History</a>
         </li>
 
         <li sec:authorize="hasAuthority('CUSTOMER')" class="nav-item">
-            <a class="nav-link" href="/profile"><img src="./images/profile.png" alt="profile icon"/> Profile</a>
+            <a class="nav-link" href="/profile"><img src="/images/profile.png" alt="profile icon"/> Profile</a>
         </li>
 
         <li sec:authorize="hasAuthority('CUSTOMER')" class="nav-item">
-            <a class="nav-link" href="/booking/create"><img src="./images/schedule.png" alt="schedule icon"/> Schedule Service</a>
+            <a class="nav-link" href="/booking/create"><img src="/images/schedule.png" alt="schedule icon"/> Schedule Service</a>
         </li>
 
         <li sec:authorize="isAnonymous()" class="nav-item">
-            <a class="nav-link" href="/login"><img src="./images/login.png" alt="login icon"/> Login</a>
+            <a class="nav-link" href="/login"><img src="/images/login.png" alt="login icon"/> Login</a>
         </li>
 
         <li sec:authorize="isAnonymous()" class="nav-item">
-            <a class="nav-link" href="/register"><img src="./images/register.png" alt="register icon"/> Register</a>
+            <a class="nav-link" href="/register"><img src="/images/register.png" alt="register icon"/> Register</a>
         </li>
 
         <li sec:authorize="hasAuthority('CUSTOMER')" class="nav-item">
-            <a class="nav-link" href="/payments"><img src="./images/payment.png" alt="payment icon"/> Pay for Service</a>
+            <a class="nav-link" href="/payments"><img src="/images/payment.png" alt="payment icon"/> Pay for Service</a>
         </li>
 
         <li sec:authorize="isAuthenticated()" class="nav-item">
             <form th:action="@{/logout}" th:method="post">
                 <button class="btn-link btn large-text" style="text-decoration: none;">
-                    <img src="./images/logout.png" alt="logout icon"/>
+                    <img src="/images/logout.png" alt="logout icon"/>
                     <span id="logout" style="text-decoration: none;">Logout</span>
                 </button>
             </form>
